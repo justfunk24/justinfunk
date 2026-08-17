@@ -1,0 +1,144 @@
+---
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Prose from '../../components/Prose.astro';
+import { site } from '../../lib/site';
+import { getProjects, formatDate } from '../../lib/content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const projects = await getProjects();
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const STATUS_LABELS: Record<string, string> = {
+  shipped: 'Shipped',
+  'in-progress': 'In progress',
+  experiment: 'Experiment',
+};
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: project.data.title,
+  headline: project.data.title,
+  abstract: project.data.summary,
+  author: { '@type': 'Person', name: site.name, url: site.url },
+  url: new URL(`/projects/${project.id}`, site.url).href,
+  dateCreated: project.data.date.toISOString().slice(0, 10),
+  keywords: project.data.stack.join(', '),
+  ...(project.data.repo && { codeRepository: project.data.repo }),
+};
+---
+
+<Base
+  title={project.data.title}
+  description={project.data.summary}
+  ogType="article"
+  schema={schema}
+>
+  <article>
+    <header class="shell pt-12 pb-10 sm:pt-16">
+      <a href="/projects" class="annotation hover:text-signal transition-colors">
+        <span aria-hidden="true">←</span> All projects
+      </a>
+
+      <div class="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span class="annotation">{formatDate(project.data.date)}</span>
+        <span
+          class:list={[
+            'annotation',
+            project.data.status === 'shipped' ? 'text-copper' : 'text-ink-muted',
+          ]}
+        >
+          {STATUS_LABELS[project.data.status]}
+        </span>
+      </div>
+
+      <h1 class="font-display mt-3 max-w-3xl text-3xl font-semibold sm:text-4xl">
+        {project.data.title}
+      </h1>
+
+      <p class="text-ink-muted max-w-measure mt-4 text-lg">{project.data.summary}</p>
+
+      <!-- The problem gets its own block, ahead of the stack. The stack is
+           only interesting once you know what it was for. -->
+      <div class="border-line max-w-measure mt-8 border-l-2 pl-5">
+        <p class="annotation">The problem</p>
+        <p class="mt-2 text-sm leading-relaxed">{project.data.problem}</p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <ul class="flex flex-wrap gap-1.5" aria-label="Stack">
+          {
+            project.data.stack.map((tech) => (
+              <li class="border-line text-ink-muted border px-2 py-0.5 font-mono text-[0.6875rem]">
+                {tech}
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="flex flex-wrap gap-4 text-sm">
+          {
+            project.data.repo && (
+              <a
+                href={project.data.repo}
+                rel="noopener"
+                class="text-signal underline underline-offset-4"
+              >
+                Repository →
+              </a>
+            )
+          }
+          {
+            project.data.demo && (
+              <a
+                href={project.data.demo}
+                rel="noopener"
+                class="text-signal underline underline-offset-4"
+              >
+                Live demo →
+              </a>
+            )
+          }
+        </div>
+      </div>
+
+      {
+        project.data.cover && project.data.coverAlt && (
+          <figure class="border-line mt-10 border">
+            {/* Runs through Astro's image pipeline — WebP/AVIF, correctly sized. */}
+            <Image
+              src={project.data.cover}
+              alt={project.data.coverAlt}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 72rem) 68rem, 100vw"
+              class="w-full"
+              loading="eager"
+            />
+          </figure>
+        )
+      }
+    </header>
+
+    <Prose>
+      <Content />
+    </Prose>
+
+    <footer class="shell mt-14">
+      <div class="border-line border-t pt-8">
+        <a href="/projects" class="text-signal text-sm underline underline-offset-4">
+          Back to the build log
+        </a>
+      </div>
+    </footer>
+  </article>
+</Base>

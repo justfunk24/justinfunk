@@ -1,17 +1,179 @@
 ---
+import Base from '../layouts/Base.astro';
+import RoutingHero from '../components/RoutingHero.astro';
+import ProofStrip from '../components/ProofStrip.astro';
+import { site } from '../lib/site';
+import { getCaseStudies, getProjects, getPosts, formatDate } from '../lib/content';
 
+const caseStudies = await getCaseStudies();
+const projects = await getProjects();
+const posts = await getPosts();
+
+// The three lanes each surface their single strongest or most recent item, so
+// the newest thing in each is one click from home rather than two.
+const lanes = [
+  {
+    label: 'Work',
+    href: '/work',
+    blurb: 'Case studies with the metric as the headline.',
+    item: caseStudies[0]
+      ? {
+          title: caseStudies[0].data.title,
+          href: `/work/${caseStudies[0].id}`,
+          meta: caseStudies[0].data.company,
+        }
+      : null,
+  },
+  {
+    label: 'Projects',
+    href: '/projects',
+    blurb: 'The build log, including work still in progress.',
+    item: projects[0]
+      ? {
+          title: projects[0].data.title,
+          href: `/projects/${projects[0].id}`,
+          meta: projects[0].data.stack.slice(0, 3).join(' · '),
+        }
+      : null,
+  },
+  {
+    label: 'Writing',
+    href: '/writing',
+    blurb: 'Injection of Funk — opinions with the data behind them.',
+    item: posts[0]
+      ? {
+          title: posts[0].data.title,
+          href: `/writing/${posts[0].id}`,
+          meta: formatDate(posts[0].data.date),
+        }
+      : null,
+  },
+];
+
+const latestPosts = posts.slice(0, 3);
+
+/* JSON-LD Person. This is the block an AI screening tool or a chatbot reads
+   when someone asks about Justin, so it states the same things the page does
+   rather than a marketing version of them. */
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: site.role,
+  description: site.tagline,
+  url: site.url,
+  email: `mailto:${site.email}`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: site.location.city,
+    addressRegion: site.location.region,
+    addressCountry: site.location.country,
+  },
+  knowsAbout: site.knowsAbout,
+  alumniOf: site.alumniOf.map((school) => ({
+    '@type': 'CollegeOrUniversity',
+    name: school.name,
+  })),
+  sameAs: [site.linkedin, site.github],
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title={`${site.name} — ${site.role}`} description={site.tagline} schema={schema}>
+  <RoutingHero />
+  <ProofStrip />
+
+  <!-- Three lanes -->
+  <section class="shell py-16 sm:py-24" aria-labelledby="lanes-heading">
+    <h2 id="lanes-heading" class="sr-only">Explore</h2>
+
+    <div class="grid gap-px sm:grid-cols-3">
+      {
+        lanes.map((lane) => (
+          <div class="flex flex-col">
+            <div class="flex items-baseline justify-between gap-3">
+              <h3 class="font-display text-lg font-semibold">{lane.label}</h3>
+              <a href={lane.href} class="annotation hover:text-signal transition-colors">
+                All →
+              </a>
+            </div>
+            <p class="text-ink-muted mt-2 text-sm">{lane.blurb}</p>
+
+            {lane.item ? (
+              <a
+                href={lane.item.href}
+                class="border-line hover:border-signal hover:bg-signal-wash group mt-5 block flex-1 border p-4 transition-colors"
+              >
+                <span class="annotation">Most recent</span>
+                <span class="font-display group-hover:text-signal mt-2 block font-semibold transition-colors">
+                  {lane.item.title}
+                </span>
+                <span class="text-ink-muted mt-1.5 block text-sm">{lane.item.meta}</span>
+              </a>
+            ) : (
+              <p class="border-line text-ink-muted mt-5 flex-1 border border-dashed p-4 text-sm">
+                Nothing published here yet.
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Latest writing -->
+  {
+    latestPosts.length > 0 && (
+      <section class="shell pb-16 sm:pb-24" aria-labelledby="writing-heading">
+        <div class="border-line flex items-baseline justify-between gap-4 border-t pt-10">
+          <h2 id="writing-heading" class="font-display text-2xl font-semibold sm:text-3xl">
+            Latest writing
+          </h2>
+          <a href="/writing" class="annotation hover:text-signal transition-colors">
+            All posts →
+          </a>
+        </div>
+
+        <ul class="mt-8 grid gap-px sm:grid-cols-3">
+          {latestPosts.map((post) => (
+            <li>
+              <a href={`/writing/${post.id}`} class="group block">
+                <span class="annotation">{formatDate(post.data.date)}</span>
+                <h3 class="font-display group-hover:text-signal mt-2 text-base font-semibold transition-colors">
+                  {post.data.title}
+                </h3>
+                <p class="text-ink-muted mt-2 text-sm leading-relaxed">{post.data.hook}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <!-- Closing CTA. One primary action, one secondary. -->
+  <section class="shell pb-8">
+    <div class="border-line border-t pt-10">
+      <h2 class="font-display max-w-2xl text-2xl font-semibold sm:text-3xl">
+        I'm looking for my next CX or applied-AI role.
+      </h2>
+      <p class="text-ink-muted max-w-measure mt-3">
+        If you're hiring, the fastest version of this conversation starts with what your contact
+        center is actually struggling with.
+      </p>
+      <div class="mt-7 flex flex-wrap items-center gap-4">
+        <a
+          href="/contact"
+          class="bg-ink text-ground hover:bg-signal px-5 py-2.5 text-sm font-medium transition-colors"
+        >
+          Let's talk about a role
+        </a>
+        <a
+          href="/resume"
+          class="border-line hover:border-signal hover:text-signal border px-5 py-2.5 text-sm transition-colors"
+        >
+          Read the resume
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

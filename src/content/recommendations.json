@@ -1,0 +1,27 @@
+[
+  {
+    "id": "placeholder-1",
+    "quote": "PLACEHOLDER — paste the quote here exactly as written. Two or three sentences reads best; a full paragraph gets skimmed.",
+    "name": "Colleague Name",
+    "title": "Their Title",
+    "company": "Their Company",
+    "permission": false,
+    "source": "LinkedIn recommendation"
+  },
+  {
+    "id": "placeholder-2",
+    "quote": "PLACEHOLDER — a second quote, ideally from a different company and a different lens than the first.",
+    "name": "Colleague Name",
+    "title": "Their Title",
+    "company": "Their Company",
+    "permission": false
+  },
+  {
+    "id": "placeholder-3",
+    "quote": "PLACEHOLDER — a third. Three is enough; more starts to read as padding.",
+    "name": "Colleague Name",
+    "title": "Their Title",
+    "company": "Their Company",
+    "permission": false
+  }
+]

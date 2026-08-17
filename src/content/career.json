@@ -1,0 +1,130 @@
+[
+  {
+    "id": "att",
+    "company": "AT&T",
+    "role": "Enterprise Account Executive",
+    "location": "Denver, CO",
+    "start": "2013-06",
+    "end": "2016-03",
+    "lenses": ["revenue-ownership", "cx-customer-success"],
+    "summary": "Carried a $30M+ ARR enterprise portfolio across voice, connectivity, and managed services. This is where the contact center vocabulary became native rather than learned.",
+    "highlights": [
+      "Owned a $30M+ ARR portfolio of enterprise accounts",
+      "PLACEHOLDER — add two or three more specifics: named accounts, retention or growth numbers, the largest deal you closed and what made it hard"
+    ],
+    "unverified": ["role", "start", "end", "highlights"]
+  },
+  {
+    "id": "ringcentral-1",
+    "company": "RingCentral",
+    "role": "Customer Success Manager",
+    "location": "Denver, CO",
+    "start": "2016-04",
+    "end": "2018-01",
+    "lenses": ["cx-customer-success", "revenue-ownership"],
+    "summary": "First RingCentral tenure. UCaaS adoption and retention work with mid-market and enterprise customers.",
+    "highlights": [
+      "PLACEHOLDER — what did this first tenure actually cover? Book size, segment, and one outcome you'd want a hiring manager to see"
+    ],
+    "unverified": ["role", "start", "end", "summary", "highlights"]
+  },
+  {
+    "id": "cloud-elements",
+    "company": "Cloud Elements",
+    "role": "Sales Enablement & Operations",
+    "location": "Denver, CO",
+    "start": "2018-02",
+    "end": "2019-08",
+    "lenses": ["sales-enablement", "revenue-ownership"],
+    "summary": "Built the enablement and sales operations function from nothing. No playbook existed, so the job was to write one and then run it.",
+    "highlights": [
+      "Designed and launched the onboarding and certification program for new sellers, delivered through Docebo",
+      "Administered Salesforce as the system of record for the revenue team",
+      "Spoke at Docebo Inspire 2019 on the certification program",
+      "PLACEHOLDER — ramp-time improvement or certification completion rate, if you have the number"
+    ],
+    "caseStudy": "cloud-elements",
+    "unverified": ["role", "start", "end"]
+  },
+  {
+    "id": "ringcentral-2",
+    "company": "RingCentral",
+    "role": "Senior Customer Success Manager",
+    "location": "Denver, CO",
+    "start": "2019-09",
+    "end": "2021-06",
+    "lenses": ["cx-customer-success", "revenue-ownership"],
+    "summary": "Structured discovery and adoption across UCaaS and Contact Center for a book of 40+ enterprise accounts.",
+    "highlights": [
+      "Managed 40+ enterprise accounts across UCaaS and Contact Center",
+      "Finished at 108% of MBO with a 9.7 NPS",
+      "Elected to the RingCentral Customer Success Advisory Board"
+    ],
+    "caseStudy": "ringcentral",
+    "unverified": ["role", "start", "end"]
+  },
+  {
+    "id": "twilio",
+    "company": "Twilio",
+    "role": "Sales Enablement Program Manager",
+    "location": "Denver, CO",
+    "start": "2021-07",
+    "end": "2023-02",
+    "lenses": ["sales-enablement", "revenue-ownership"],
+    "summary": "Owned the Highspot enablement program for a global sales organization — the resource 400+ sellers actually opened, rather than the one that existed.",
+    "highlights": [
+      "Owned Highspot program design and governance for 400+ sellers",
+      "Cut compensation support tickets 60% year over year by rebuilding how sellers found answers",
+      "PLACEHOLDER — adoption or search-success metric from Highspot, if you can pull it"
+    ],
+    "caseStudy": "twilio",
+    "unverified": ["role", "start", "end"]
+  },
+  {
+    "id": "northwestern-mutual",
+    "company": "Northwestern Mutual",
+    "role": "Enablement & Applied AI",
+    "location": "Denver, CO",
+    "start": "2023-03",
+    "end": "2024-05",
+    "lenses": ["applied-ai", "cx-customer-success", "sales-enablement"],
+    "summary": "Rolled out an internal GPT knowledge system to a research team of ten working across internal knowledge bases and compliance documentation. The hard part was adoption and change management in a regulated environment, not the model.",
+    "highlights": [
+      "Led rollout of an internal GPT knowledge system for a team of ten",
+      "Built the adoption path: training, guardrails, and the review process compliance needed to sign off",
+      "PLACEHOLDER — research time saved, query volume, or another adoption number"
+    ],
+    "caseStudy": "northwestern-mutual",
+    "unverified": ["role", "start", "end"]
+  },
+  {
+    "id": "ringcentral-3",
+    "company": "RingCentral",
+    "role": "Enterprise Customer Success Manager",
+    "location": "Denver, CO",
+    "start": "2024-06",
+    "end": "2025-04",
+    "lenses": ["cx-customer-success", "revenue-ownership"],
+    "summary": "Third RingCentral tenure, returning to enterprise Contact Center accounts.",
+    "highlights": ["PLACEHOLDER — what brought you back, and what you owned this time"],
+    "unverified": ["role", "start", "end", "summary", "highlights"]
+  },
+  {
+    "id": "matrice",
+    "company": "Matrice IT Advisors",
+    "role": "Applied AI & Contact Center Practice",
+    "location": "Denver, CO",
+    "start": "2025-05",
+    "end": null,
+    "lenses": ["applied-ai", "cx-customer-success", "revenue-ownership"],
+    "summary": "Building agentic AI contact center environments on Zoom and Dialpad — deployment design, API integration, and the delivery work that turns a demo into something a support org can actually run.",
+    "highlights": [
+      "Designs and delivers agentic contact center builds on Zoom and Dialpad",
+      "Dialpad Agentic Delivery Partner certified",
+      "Builds the API integrations that connect agentic routing to the systems of record behind it",
+      "PLACEHOLDER — a named deployment, deflection rate, or handle-time change once a client says you can publish it"
+    ],
+    "caseStudy": "matrice",
+    "unverified": ["role", "start"]
+  }
+]

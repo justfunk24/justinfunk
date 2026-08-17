@@ -1,1 +1,294 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/* ============================================================================
+   DESIGN SYSTEM — justinfunk.ai
+
+   Concept: THE SCHEMATIC.
+   The visual language is a technical drawing — a deployment diagram or patch
+   panel, not a magazine. Content sits on a measured grid, related elements are
+   joined by orthogonal elbow connectors rather than straight rules, and
+   metadata is annotated in monospace the way callouts are labeled on an
+   engineering drawing. The reason: Justin's credibility rests on drawing an
+   honest line between what he has built and what he has only seen. A schematic
+   is the visual form of "everything here is labeled precisely."
+
+   Deliberately NOT: cream + high-contrast serif + terracotta; near-black +
+   acid green; broadsheet hairline rules. Those read as house style regardless
+   of subject.
+
+   Boldness is spent in exactly one place: the platform fluency matrix, built
+   as a patch panel (see components/PatchPanel). Everything else stays quiet.
+   ========================================================================= */
+
+/* --- Fonts -----------------------------------------------------------------
+   Self-hosted, latin-subset, copied from @fontsource into /public/fonts.
+   To refresh after a package update, re-run the copy documented in README.
+   Two variable faces plus two static mono weights: ~116KB total, of which
+   only Archivo and Plex Sans load above the fold.
+   -------------------------------------------------------------------------*/
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/archivo-var-latin.woff2') format('woff2-variations');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
+    U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url('/fonts/plex-sans-var-latin.woff2') format('woff2-variations');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
+    U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/plex-mono-400-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
+    U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/plex-mono-500-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074,
+    U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* --- Palette ---------------------------------------------------------------
+   Six named values. Both themes are designed, not inverted: the light theme is
+   cool drafting vellum (never warm cream) and the dark theme is the inside of
+   an equipment cabinet (never pure black).
+
+   `copper` is the scarcity accent. It marks exactly two things site-wide: a
+   platform Justin has actually built on, and his current role. Because it
+   appears nowhere else, its presence carries meaning rather than decoration.
+
+   Every foreground/background pair below is verified at WCAG AA or better in
+   both themes; see docs/contrast.md for the measured ratios.
+   -------------------------------------------------------------------------*/
+
+:root {
+  color-scheme: light;
+
+  --c-ground: #f2f4f7; /* page background — cool vellum */
+  --c-surface: #ffffff; /* raised panel */
+  --c-line: #d3dae2; /* borders, schematic rules */
+  --c-ink: #0e141c; /* primary text */
+  --c-ink-muted: #52606f; /* secondary text — 5.8:1 on ground */
+  --c-signal: #1553c7; /* links, active state — 6.1:1 on ground */
+  --c-copper: #a85a12; /* hands-on / current — 4.6:1 on ground */
+
+  /* Tinted washes for fills that must not compete with text. */
+  --c-signal-wash: #1553c714;
+  --c-copper-wash: #a85a1214;
+}
+
+/* System dark. Guarded so an explicit `light` choice still wins. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --c-ground: #0b1017;
+    --c-surface: #131a24;
+    --c-line: #263140;
+    --c-ink: #e8edf2;
+    --c-ink-muted: #93a1b2; /* 7.1:1 on ground */
+    --c-signal: #3d8bff; /* 5.7:1 on ground */
+    --c-copper: #f0a94c; /* 9.4:1 on ground */
+
+    --c-signal-wash: #3d8bff1f;
+    --c-copper-wash: #f0a94c1f;
+  }
+}
+
+/* Explicit dark choice — must also win over a light system preference. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --c-ground: #0b1017;
+  --c-surface: #131a24;
+  --c-line: #263140;
+  --c-ink: #e8edf2;
+  --c-ink-muted: #93a1b2;
+  --c-signal: #3d8bff;
+  --c-copper: #f0a94c;
+
+  --c-signal-wash: #3d8bff1f;
+  --c-copper-wash: #f0a94c1f;
+}
+
+/* --- Tailwind theme --------------------------------------------------------
+   `@theme inline` makes Tailwind emit utilities that reference the runtime
+   custom properties above rather than baking in hex values. That's what lets
+   `bg-ground` follow the theme swap without any `dark:` variant.
+   -------------------------------------------------------------------------*/
+
+@theme inline {
+  --color-ground: var(--c-ground);
+  --color-surface: var(--c-surface);
+  --color-line: var(--c-line);
+  --color-ink: var(--c-ink);
+  --color-ink-muted: var(--c-ink-muted);
+  --color-signal: var(--c-signal);
+  --color-copper: var(--c-copper);
+  --color-signal-wash: var(--c-signal-wash);
+  --color-copper-wash: var(--c-copper-wash);
+
+  --font-display: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Content column widths. `measure` is tuned for the 400–700 word case
+     studies — roughly 68 characters, the readable range for long prose. */
+  --container-measure: 34rem;
+  --container-page: 72rem;
+}
+
+/* Attribute-driven dark variant, so the rare component that genuinely needs a
+   different treatment (not just a different color) can opt in. Matches both
+   the explicit choice and the system default. */
+@custom-variant dark {
+  &:where([data-theme='dark'], [data-theme='dark'] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme='light']) *) {
+      @slot;
+    }
+  }
+}
+
+/* --- Base ----------------------------------------------------------------*/
+
+@layer base {
+  html {
+    /* Anchor links and in-page nav land below the sticky header. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--c-ground);
+    color: var(--c-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    /* Plex Sans reads better with its optical defaults left alone; only
+       enable kerning and contextual alternates. */
+    font-feature-settings: 'kern', 'calt';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible keyboard focus everywhere. Uses :focus-visible so mouse users
+     don't get a ring, but keyboard and screen-reader users always do. The
+     offset keeps the ring clear of the element's own border. */
+  :focus-visible {
+    outline: 2px solid var(--c-signal);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Anything that opts out of the default ring must provide its own. */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::selection {
+    background-color: var(--c-signal);
+    color: var(--c-ground);
+  }
+
+  /* Honor the OS setting. Motion on this site is limited to one orchestrated
+     hero draw-in plus state transitions; under reduced-motion all of it
+     resolves instantly to the final state rather than being removed, so
+     nothing ends up invisible. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* --- Component primitives ------------------------------------------------*/
+
+@layer components {
+  /* Monospace annotation label, as used on a technical drawing. The tracking
+     and size are what make it read as a callout rather than as body text. */
+  .annotation {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-ink-muted);
+  }
+
+  /* Page shell. Padding steps up rather than scaling, so the 375px floor gets
+     real edge margin without the desktop view feeling cramped. */
+  .shell {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Skip link — visually hidden until focused, then pinned to the top-left. */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+  }
+
+  .skip-link:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    background-color: var(--c-surface);
+    color: var(--c-ink);
+    border: 1px solid var(--c-line);
+  }
+}

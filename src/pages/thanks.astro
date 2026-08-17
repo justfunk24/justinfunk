@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/site';
+
+// Where the Netlify form posts on success. Excluded from the sitemap and
+// marked noindex — it has no value in search results.
+---
+
+<Base title="Message sent" noindex>
+  <div class="shell grid min-h-[50vh] content-center py-20">
+    <p class="annotation">Sent</p>
+    <h1 class="font-display mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">
+      Got it. I'll come back to you shortly.
+    </h1>
+    <p class="text-ink-muted max-w-measure mt-4">
+      If it's urgent, <a
+        href={`mailto:${site.email}`}
+        class="text-signal underline underline-offset-4">{site.email}</a
+      > reaches me directly.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/"
+        class="border-line hover:border-signal hover:text-signal border px-5 py-2.5 text-sm transition-colors"
+      >
+        Back home
+      </a>
+      <a
+        href="/work"
+        class="border-line hover:border-signal hover:text-signal border px-5 py-2.5 text-sm transition-colors"
+      >
+        Read the case studies
+      </a>
+    </div>
+  </div>
+</Base>

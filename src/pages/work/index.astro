@@ -1,0 +1,72 @@
+---
+import Base from '../../layouts/Base.astro';
+import Timeline from '../../components/Timeline.astro';
+import PatchPanel from '../../components/PatchPanel.astro';
+import { getCaseStudies } from '../../lib/content';
+
+const caseStudies = await getCaseStudies();
+---
+
+<Base
+  title="Work"
+  description="Ten years across AT&T, RingCentral, Cloud Elements, Twilio, Northwestern Mutual, and Matrice — with an honest accounting of which platforms Justin Funk has built on and which he has only evaluated."
+>
+  <div class="shell pt-14 pb-16 sm:pt-20">
+    <p class="annotation">Work</p>
+    <h1 class="font-display mt-3 max-w-3xl text-3xl font-semibold sm:text-4xl">
+      The record, and the receipts behind it
+    </h1>
+    <p class="text-ink-muted max-w-measure mt-5">
+      Six companies, three of them twice or more. Below: the timeline you can refilter for the role
+      you're hiring, the platform matrix that says plainly what I've built on, and the case studies
+      that show the work.
+    </p>
+  </div>
+
+  <div class="shell pb-16 sm:pb-24">
+    <Timeline />
+  </div>
+
+  <PatchPanel />
+
+  <!-- Case study index -->
+  <section class="shell py-16 sm:py-24" aria-labelledby="studies-heading">
+    <p class="annotation">Case studies</p>
+    <h2 id="studies-heading" class="font-display mt-3 text-2xl font-semibold sm:text-3xl">
+      The depth layer behind the resume bullets
+    </h2>
+
+    <ul class="border-line mt-8 border-t">
+      {
+        caseStudies.map((study) => (
+          <li class="border-line border-b">
+            <a
+              href={`/work/${study.id}`}
+              class="hover:bg-signal-wash group grid gap-4 py-6 transition-colors sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-8 sm:px-2"
+            >
+              <div>
+                <span class="font-display group-hover:text-copper block text-2xl font-semibold tracking-tight transition-colors">
+                  {study.data.metric.value}
+                </span>
+                <span class="annotation mt-1 block normal-case">{study.data.metric.label}</span>
+              </div>
+
+              <div>
+                <div class="flex flex-wrap items-baseline gap-x-3">
+                  <h3 class="font-display group-hover:text-signal text-lg font-semibold transition-colors">
+                    {study.data.title}
+                  </h3>
+                  {study.data.draft && <span class="annotation text-copper">Draft</span>}
+                </div>
+                <p class="annotation mt-1.5">
+                  {study.data.company} · {study.data.period}
+                </p>
+                <p class="text-ink-muted mt-3 text-sm leading-relaxed">{study.data.summary}</p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

@@ -1,0 +1,191 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/site';
+
+/**
+ * Netlify Forms with a honeypot, plus Justin's email printed in plain text.
+ *
+ * Both paths are offered on purpose: the form captures the structured detail,
+ * and a senior reader who'd rather just email gets to do that without hunting.
+ *
+ * Job search leads here — it's the first and larger option — but the consulting
+ * path is named explicitly rather than hidden, because someone arriving from
+ * the Matrice case study is asking a different question.
+ */
+---
+
+<Base
+  title="Contact"
+  description={`Get in touch with ${site.name} about a CX, contact center, or applied-AI role — or about an agentic contact center build.`}
+>
+  <div class="shell pt-14 pb-20 sm:pt-20">
+    <p class="annotation">Contact</p>
+    <h1 class="font-display mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">
+      Two reasons people usually land here
+    </h1>
+
+    <div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
+      <!-- The form -->
+      <div>
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="company-website"
+          action="/thanks"
+          class="grid gap-6"
+        >
+          {/* Netlify needs the form name echoed back in the POST body. */}
+          <input type="hidden" name="form-name" value="contact" />
+
+          {
+            /* Honeypot. Real people never see or fill this; bots fill everything.
+              aria-hidden and tabindex keep it out of the accessibility tree and
+              the tab order, so it costs a screen-reader user nothing. */
+          }
+          <p class="hidden" aria-hidden="true">
+            <label>
+              Don't fill this out if you're human: <input
+                name="company-website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </label>
+          </p>
+
+          <div class="grid gap-2">
+            <label for="name" class="text-sm font-medium">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              autocomplete="name"
+              class="border-line bg-surface focus:border-signal border px-3 py-2.5 text-sm transition-colors outline-none"
+            />
+          </div>
+
+          <div class="grid gap-2">
+            <label for="email" class="text-sm font-medium">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              autocomplete="email"
+              class="border-line bg-surface focus:border-signal border px-3 py-2.5 text-sm transition-colors outline-none"
+            />
+          </div>
+
+          <div class="grid gap-2">
+            <label for="reason" class="text-sm font-medium">What's this about?</label>
+            <select
+              id="reason"
+              name="reason"
+              class="border-line bg-surface focus:border-signal border px-3 py-2.5 text-sm transition-colors outline-none"
+            >
+              <option value="role">A role you're hiring for</option>
+              <option value="consulting">An agentic contact center build</option>
+              <option value="speaking">Speaking or a podcast</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+
+          <div class="grid gap-2">
+            <label for="message" class="text-sm font-medium">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              class="border-line bg-surface focus:border-signal border px-3 py-2.5 text-sm transition-colors outline-none"
+            ></textarea>
+            <p id="message-hint" class="text-ink-muted text-xs">
+              The most useful opening is what your contact center is actually struggling with.
+            </p>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              class="bg-ink text-ground hover:bg-signal px-5 py-2.5 text-sm font-medium transition-colors"
+            >
+              Send it
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- The direct paths -->
+      <aside class="grid content-start gap-8">
+        <div>
+          <h2 class="annotation">Or just email</h2>
+          <p class="mt-2">
+            <a
+              href={`mailto:${site.email}`}
+              class="text-signal text-sm underline underline-offset-4"
+            >
+              {site.email}
+            </a>
+          </p>
+          <p class="text-ink-muted mt-2 text-xs">
+            Goes to the same place. No form, no autoresponder.
+          </p>
+        </div>
+
+        {
+          site.scheduling && (
+            <div>
+              <h2 class="annotation">Or book time</h2>
+              <p class="mt-2">
+                <a
+                  href={site.scheduling}
+                  class="text-signal text-sm underline underline-offset-4"
+                  rel="noopener"
+                >
+                  Find a slot
+                </a>
+              </p>
+            </div>
+          )
+        }
+
+        <div>
+          <h2 class="annotation">Elsewhere</h2>
+          <ul class="mt-2 grid gap-1.5 text-sm">
+            <li>
+              <a
+                href={site.linkedin}
+                rel="me noopener"
+                class="text-ink-muted hover:text-ink transition-colors"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.github}
+                rel="me noopener"
+                class="text-ink-muted hover:text-ink transition-colors"
+              >
+                GitHub
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="border-line border-t pt-6">
+          <p class="text-ink-muted text-sm">
+            Hiring? The <a href="/resume" class="text-signal underline underline-offset-4">resume</a
+            >
+            has the full record, and <a
+              href="/work"
+              class="text-signal underline underline-offset-4">the work page</a
+            >
+            has the case studies behind it.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,80 @@
+---
+import { site } from '../lib/site';
+
+const year = new Date().getFullYear();
+
+/** The footer CTA is persistent per the brief, but it steps aside on /contact
+ *  itself — asking someone to go to the page they're already on is noise. */
+const onContactPage = Astro.url.pathname === '/contact';
+---
+
+<footer class="border-line mt-24 border-t">
+  {
+    !onContactPage && (
+      <div class="border-line border-b">
+        <div class="shell py-14 sm:py-20">
+          <p class="annotation">Contact</p>
+          <h2 class="font-display mt-3 max-w-2xl text-2xl leading-tight font-semibold sm:text-3xl">
+            If you're hiring for CX, contact center, or applied AI, I'd like to hear about it.
+          </h2>
+          <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a
+              href="/contact"
+              class="bg-ink text-ground hover:bg-signal inline-block px-5 py-2.5 text-sm font-medium transition-colors"
+            >
+              Let's talk about a role
+            </a>
+            <a
+              href={`mailto:${site.email}`}
+              class="text-ink-muted hover:text-ink text-sm underline underline-offset-4 transition-colors"
+            >
+              or email {site.email}
+            </a>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  <div class="shell flex flex-col gap-6 py-10 sm:flex-row sm:items-start sm:justify-between">
+    <div>
+      <p class="font-display text-sm font-semibold">{site.name}</p>
+      <p class="text-ink-muted mt-1 text-sm">
+        {site.role} · {site.location.city}, {site.location.region}
+      </p>
+      <p class="text-ink-muted mt-4 text-xs">
+        © {year}
+        {site.name}. Built with Astro. <a
+          href="/projects/justinfunk-ai"
+          class="hover:text-ink underline underline-offset-2 transition-colors"
+          >How this site works</a
+        >.
+      </p>
+    </div>
+
+    <nav aria-label="Elsewhere">
+      <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+        <li>
+          <a
+            href={site.linkedin}
+            rel="me noopener"
+            class="text-ink-muted hover:text-ink transition-colors">LinkedIn</a
+          >
+        </li>
+        <li>
+          <a
+            href={site.github}
+            rel="me noopener"
+            class="text-ink-muted hover:text-ink transition-colors">GitHub</a
+          >
+        </li>
+        <li>
+          <a href="/now" class="text-ink-muted hover:text-ink transition-colors">Now</a>
+        </li>
+        <li>
+          <a href="/llms.txt" class="text-ink-muted hover:text-ink transition-colors">llms.txt</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</footer>

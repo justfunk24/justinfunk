@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate } from '../../lib/content';
+
+const posts = await getPosts();
+---
+
+<Base
+  title="Injection of Funk"
+  description="Writing on customer experience, contact center platforms, and putting AI to work in enterprise engagement — by Justin Funk."
+>
+  <div class="shell pt-14 pb-20 sm:pt-20">
+    <p class="annotation">Injection of Funk</p>
+    <h1 class="font-display mt-3 max-w-3xl text-3xl font-semibold sm:text-4xl">
+      Opinions about contact centers, with the data underneath
+    </h1>
+    <p class="text-ink-muted max-w-measure mt-5">
+      Everything here lives here first. LinkedIn gets a copy — this is the original, and the comment
+      threads worth reading are linked from each post.
+    </p>
+
+    {
+      posts.length > 0 ? (
+        <ul class="border-line mt-12 border-t">
+          {posts.map((post) => (
+            <li class="border-line border-b">
+              <article class="py-8 sm:px-2">
+                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span class="annotation">{formatDate(post.data.date)}</span>
+                  {post.data.draft && <span class="annotation text-copper">Draft</span>}
+                </div>
+
+                <h2 class="font-display mt-2 text-xl font-semibold">
+                  <a href={`/writing/${post.id}`} class="hover:text-signal transition-colors">
+                    {post.data.title}
+                  </a>
+                </h2>
+
+                <p class="text-ink-muted max-w-measure mt-3 leading-relaxed">{post.data.hook}</p>
+
+                <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+                  {post.data.tags.length > 0 && (
+                    <ul class="flex flex-wrap gap-1.5" aria-label="Tags">
+                      {post.data.tags.map((tag) => (
+                        <li class="border-line text-ink-muted border px-2 py-0.5 font-mono text-[0.6875rem]">
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <a
+                    href={`/writing/${post.id}`}
+                    class="text-signal text-sm underline underline-offset-4"
+                  >
+                    Read →
+                  </a>
+
+                  {post.data.linkedinUrl && (
+                    <a
+                      href={post.data.linkedinUrl}
+                      rel="noopener"
+                      class="text-ink-muted hover:text-ink text-sm transition-colors"
+                    >
+                      Discuss on LinkedIn →
+                    </a>
+                  )}
+                </div>
+
+                {post.data.question && (
+                  <p class="border-line text-ink-muted mt-5 border-l-2 pl-4 text-sm italic">
+                    {post.data.question}
+                  </p>
+                )}
+              </article>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-ink-muted border-line mt-12 border border-dashed p-6 text-sm">
+          Nothing published yet.
+        </p>
+      )
+    }
+  </div>
+</Base>

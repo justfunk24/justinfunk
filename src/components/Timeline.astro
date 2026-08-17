@@ -1,0 +1,356 @@
+---
+import { LENSES, LENS_LABELS } from '../content.config';
+import { getCareer, getPublishedCaseStudyPaths, formatRange, formatDuration } from '../lib/content';
+
+/**
+ * CAREER TIMELINE, FILTERABLE BY LENS
+ *
+ * The problem this solves is real: Justin's background reads differently
+ * depending on which role is evaluating it. A CX hiring manager and an
+ * enablement hiring manager are looking for different threads through the same
+ * ten years, and a flat reverse-chronological list buries both.
+ *
+ * Filtering highlights the matching roles and DIMS the rest rather than
+ * hiding them. That distinction matters: hiding would let the site imply a
+ * different career depending on who's looking, which is the exact dishonesty
+ * the rest of the site is built against. Dimming reframes without editing.
+ *
+ * Without JavaScript the filter controls don't render at all and every role
+ * shows at full weight — the honest default.
+ */
+
+const career = await getCareer();
+const published = await getPublishedCaseStudyPaths();
+
+// Only surface a lens filter if at least one role actually carries that lens.
+const activeLenses = LENSES.filter((lens) => career.some((job) => job.data.lenses.includes(lens)));
+
+const isDev = import.meta.env.DEV;
+---
+
+<section aria-labelledby="timeline-heading" data-timeline>
+  <div class="max-w-measure">
+    <p class="annotation">Career</p>
+    <h2 id="timeline-heading" class="font-display mt-3 text-2xl font-semibold sm:text-3xl">
+      Ten years of it, depending on which thread you're following
+    </h2>
+    <p class="text-ink-muted mt-4">
+      Filter by the lens you're hiring for. Nothing gets hidden — the roles that don't match just
+      step back.
+    </p>
+  </div>
+
+  <!-- Filters. Rendered hidden and revealed by the script, so a no-JS reader
+       never sees controls that wouldn't do anything. -->
+  <div class="filters" data-filters hidden>
+    <fieldset>
+      <legend class="annotation">Filter by lens</legend>
+      <div class="filter-row">
+        <button type="button" class="filter" data-lens="all" aria-pressed="true">
+          All roles
+        </button>
+        {
+          activeLenses.map((lens) => (
+            <button type="button" class="filter" data-lens={lens} aria-pressed="false">
+              {LENS_LABELS[lens]}
+            </button>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    {/* Announces the result of a filter change to screen readers. */}
+    <p class="sr-only" role="status" data-filter-status></p>
+  </div>
+
+  <ol class="track">
+    {
+      career.map((job) => {
+        const { data } = job;
+        const current = data.end === null;
+        const caseStudyPath = data.caseStudy ? `/work/${data.caseStudy.id}` : null;
+        const hasCaseStudy = caseStudyPath !== null && published.has(caseStudyPath);
+
+        return (
+          <li
+            class="node"
+            id={data.id}
+            data-lenses={data.lenses.join(' ')}
+            data-current={current ? 'true' : 'false'}
+          >
+            <div class="node-head">
+              <span class="annotation node-dates">
+                {formatRange(data.start, data.end)}
+                <span class="node-duration"> · {formatDuration(data.start, data.end)}</span>
+              </span>
+              {current && <span class="annotation node-now">Current</span>}
+            </div>
+
+            <h3 class="font-display mt-1.5 text-lg font-semibold sm:text-xl">
+              {data.role}
+              <span class="node-company"> · {data.company}</span>
+            </h3>
+
+            <p class="annotation mt-1">{data.location}</p>
+
+            <p class="text-ink-muted mt-3 text-sm leading-relaxed sm:text-base">{data.summary}</p>
+
+            <ul class="highlights">
+              {data.highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+
+            <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <ul class="lens-tags" aria-label="Lenses">
+                {data.lenses.map((lens) => (
+                  <li class="lens-tag">{LENS_LABELS[lens]}</li>
+                ))}
+              </ul>
+              {hasCaseStudy && (
+                <a href={caseStudyPath} class="text-signal text-sm underline underline-offset-4">
+                  Case study →
+                </a>
+              )}
+            </div>
+
+            {/* Dev-only reminder of what still needs Justin's confirmation.
+                Stripped from production builds entirely. */}
+            {isDev && data.unverified.length > 0 && (
+              <p class="unverified">Unconfirmed: {data.unverified.join(', ')}</p>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>
+
+<style>
+  /* --- Filters -----------------------------------------------------------*/
+
+  .filters {
+    margin-top: 2rem;
+  }
+
+  .filters[hidden] {
+    display: none;
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .filter-row {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .filter {
+    padding: 0.4375rem 0.875rem;
+    font-size: 0.875rem;
+    border: 1px solid var(--c-line);
+    background: transparent;
+    color: var(--c-ink-muted);
+    cursor: pointer;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      background-color 160ms ease;
+  }
+
+  .filter:hover {
+    color: var(--c-ink);
+    border-color: var(--c-ink-muted);
+  }
+
+  .filter[aria-pressed='true'] {
+    color: var(--c-ground);
+    background: var(--c-ink);
+    border-color: var(--c-ink);
+  }
+
+  /* --- Track -------------------------------------------------------------*/
+
+  .track {
+    margin-top: 2.5rem;
+    position: relative;
+    padding-left: 1.75rem;
+    list-style: none;
+  }
+
+  /* The trunk running the length of the career. */
+  .track::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--c-line);
+  }
+
+  .node {
+    position: relative;
+    padding-block: 1.75rem;
+    border-bottom: 1px solid var(--c-line);
+    transition:
+      opacity 260ms ease,
+      filter 260ms ease;
+  }
+
+  .node:last-child {
+    border-bottom: 0;
+  }
+
+  /* The port where each role meets the trunk. */
+  .node::before {
+    content: '';
+    position: absolute;
+    left: -1.75rem;
+    top: 2.25rem;
+    width: 1.75rem;
+    height: 1px;
+    background: var(--c-line);
+  }
+
+  .node::after {
+    content: '';
+    position: absolute;
+    left: -0.3125rem;
+    top: 2rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border: 1px solid var(--c-line);
+    border-radius: 50%;
+    background: var(--c-ground);
+  }
+
+  /* Current role is the only node that gets copper — the same scarcity accent
+     the patch panel uses for "patched". */
+  .node[data-current='true']::after {
+    border-color: var(--c-copper);
+    background: var(--c-copper);
+  }
+
+  /* Dimmed state, applied by the filter. Roles stay fully readable and remain
+     in the accessibility tree — this is de-emphasis, not removal. */
+  .node[data-dimmed='true'] {
+    opacity: 0.38;
+  }
+
+  .node-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .node-duration {
+    opacity: 0.75;
+  }
+
+  .node-now {
+    color: var(--c-copper);
+  }
+
+  .node-company {
+    color: var(--c-ink-muted);
+    font-weight: 500;
+  }
+
+  .highlights {
+    margin-top: 0.875rem;
+    display: grid;
+    gap: 0.5rem;
+    list-style: none;
+  }
+
+  .highlights li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  /* A right-angle tick rather than a bullet, matching the schematic language. */
+  .highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6875rem;
+    width: 0.4375rem;
+    height: 1px;
+    background: var(--c-signal);
+  }
+
+  .lens-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    list-style: none;
+  }
+
+  .lens-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    padding: 0.1875rem 0.5rem;
+    border: 1px solid var(--c-line);
+    color: var(--c-ink-muted);
+  }
+
+  .unverified {
+    margin-top: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    border-left: 3px solid var(--c-copper);
+    background: var(--c-copper-wash);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--c-ink);
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-timeline]');
+
+  if (root) {
+    const filterBar = root.querySelector<HTMLElement>('[data-filters]');
+    const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('.filter'));
+    const nodes = Array.from(root.querySelectorAll<HTMLElement>('.node'));
+    const status = root.querySelector<HTMLElement>('[data-filter-status]');
+
+    // The controls only exist once we know they'll work.
+    filterBar?.removeAttribute('hidden');
+
+    function apply(lens: string) {
+      let matches = 0;
+
+      nodes.forEach((node) => {
+        const lenses = (node.dataset.lenses ?? '').split(' ');
+        const isMatch = lens === 'all' || lenses.includes(lens);
+        // Dim rather than hide, so the full career is always present.
+        node.dataset.dimmed = String(!isMatch);
+        if (isMatch) matches += 1;
+      });
+
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lens === lens)));
+
+      if (status) {
+        const label = buttons.find((b) => b.dataset.lens === lens)?.textContent?.trim() ?? '';
+        status.textContent =
+          lens === 'all'
+            ? `Showing all ${nodes.length} roles.`
+            : `Highlighting ${matches} of ${nodes.length} roles for ${label}. The rest remain visible.`;
+      }
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => apply(button.dataset.lens ?? 'all'));
+    });
+  }
+</script>

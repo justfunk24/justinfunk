@@ -1,0 +1,124 @@
+---
+import '../styles/global.css';
+import { site, analytics } from '../lib/site';
+import { ogPathFor } from '../lib/og';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Overrides the generated social card. Normally left unset — each page's
+   *  card is built at /og/<route>.png by src/pages/og/[...route].png.ts. */
+  ogImage?: string;
+  /** 'article' for case studies, projects, and posts; 'website' elsewhere. */
+  ogType?: 'website' | 'article';
+  /** Set on a page that should not be indexed (e.g. the form thank-you). */
+  noindex?: boolean;
+  /** Rendered into <head> as JSON-LD. Pages pass their own schema object. */
+  schema?: Record<string, unknown>;
+  /** Overrides the canonical URL. Only needed for cross-posted writing. */
+  canonical?: string;
+}
+
+const {
+  title,
+  description = site.tagline,
+  ogImage,
+  ogType = 'website',
+  noindex = false,
+  schema,
+  canonical,
+} = Astro.props;
+
+// Astro.site comes from `site` in astro.config.mjs, which Netlify overrides
+// per deploy context so previews don't emit production canonicals.
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = new URL(ogImage ?? ogPathFor(Astro.url.pathname), Astro.site).href;
+
+// The homepage title stands alone; every other page gets the name suffix.
+const fullTitle = Astro.url.pathname === '/' ? title : `${title} · ${site.name}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    {
+      /* Only the two above-the-fold faces are preloaded. Mono loads normally —
+        it's used for small labels where a swap is imperceptible. */
+    }
+    <link
+      rel="preload"
+      href="/fonts/archivo-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/plex-sans-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={site.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
+
+    {
+      /* Theme resolution has to happen before first paint, or a dark-mode
+        visitor gets a white flash. This is the one blocking inline script on
+        the page; it reads a stored choice and falls back to the OS setting.
+        `is:inline` keeps Astro from bundling and deferring it. */
+    }
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.setAttribute('data-theme', stored);
+          }
+        } catch {
+          /* Private mode or blocked storage — the CSS media query still
+             handles light and dark correctly on its own. */
+        }
+      })();
+    </script>
+
+    {
+      /* Analytics only renders when both env vars are set, so it never runs in
+         development and never needs a cookie banner. */
+      analytics.domain && analytics.src && (
+        <script is:inline defer data-domain={analytics.domain} src={analytics.src} />
+      )
+    }
+  </head>
+
+  <body class="bg-ground text-ink min-h-screen antialiased">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

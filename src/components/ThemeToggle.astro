@@ -1,0 +1,107 @@
+---
+/**
+ * Three-state theme control rendered as a single button that cycles
+ * system -> light -> dark -> system.
+ *
+ * Both themes are designed rather than one being an inversion, so the toggle
+ * is a real choice rather than an accessibility afterthought. The button
+ * reports its current state through aria-label, and the icon swap is driven
+ * by data-theme so it stays correct when the OS preference changes underneath.
+ */
+---
+
+<button
+  type="button"
+  id="theme-toggle"
+  class="border-line hover:border-signal focus-visible:border-signal text-ink-muted hover:text-ink grid h-9 w-9 place-items-center border transition-colors"
+  aria-label="Change color theme"
+>
+  {/* Only one of these is visible at a time; CSS below picks by data-theme. */}
+  <svg
+    class="icon-system h-4 w-4"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.4"
+    aria-hidden="true"
+  >
+    <rect x="1.5" y="2.5" width="13" height="9" rx="1"></rect>
+    <path d="M5.5 13.5h5"></path>
+  </svg>
+  <svg
+    class="icon-light h-4 w-4"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.4"
+    aria-hidden="true"
+  >
+    <circle cx="8" cy="8" r="3.25"></circle>
+    <path
+      d="M8 1v1.5M8 13.5V15M15 8h-1.5M2.5 8H1M12.95 3.05l-1.06 1.06M4.11 11.89l-1.06 1.06M12.95 12.95l-1.06-1.06M4.11 4.11L3.05 3.05"
+    ></path>
+  </svg>
+  <svg
+    class="icon-dark h-4 w-4"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.4"
+    aria-hidden="true"
+  >
+    <path d="M13.5 9.5A5.75 5.75 0 016.5 2.6a5.75 5.75 0 107 6.9z"></path>
+  </svg>
+</button>
+
+<style>
+  /* Default (no explicit choice stored) shows the "system" icon. */
+  #theme-toggle .icon-light,
+  #theme-toggle .icon-dark {
+    display: none;
+  }
+  :global(html[data-theme='light']) #theme-toggle .icon-system,
+  :global(html[data-theme='light']) #theme-toggle .icon-dark {
+    display: none;
+  }
+  :global(html[data-theme='light']) #theme-toggle .icon-light {
+    display: block;
+  }
+  :global(html[data-theme='dark']) #theme-toggle .icon-system,
+  :global(html[data-theme='dark']) #theme-toggle .icon-light {
+    display: none;
+  }
+  :global(html[data-theme='dark']) #theme-toggle .icon-dark {
+    display: block;
+  }
+</style>
+
+<script>
+  const button = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  /** system -> light -> dark -> system */
+  const NEXT = { system: 'light', light: 'dark', dark: 'system' } as const;
+  type Theme = keyof typeof NEXT;
+
+  const current = (): Theme => (root.getAttribute('data-theme') as Theme) ?? 'system';
+
+  function describe(theme: Theme): string {
+    if (theme === 'system') return 'Color theme: following system. Activate to switch to light.';
+    if (theme === 'light') return 'Color theme: light. Activate to switch to dark.';
+    return 'Color theme: dark. Activate to follow your system setting.';
+  }
+
+  function apply(theme: Theme) {
+    if (theme === 'system') {
+      root.removeAttribute('data-theme');
+      localStorage.removeItem('theme');
+    } else {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+    button?.setAttribute('aria-label', describe(theme));
+  }
+
+  button?.setAttribute('aria-label', describe(current()));
+  button?.addEventListener('click', () => apply(NEXT[current()]));
+</script>

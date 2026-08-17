@@ -1,0 +1,148 @@
+---
+/**
+ * Long-form typography for anything rendered from Markdown.
+ *
+ * Tailwind's typography plugin isn't installed — these rules are short enough
+ * to own outright, and owning them keeps the prose on the same token system as
+ * the rest of the site instead of a parallel one.
+ *
+ * The measure is set on the container rather than the page so a case study can
+ * still break out a full-width element if it ever needs to.
+ */
+---
+
+<div class="prose-shell">
+  <div class="prose">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .prose-shell {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    .prose-shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  .prose {
+    max-width: var(--container-measure);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .prose :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin-top: 2.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--c-line);
+  }
+
+  .prose :global(h2:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .prose :global(h3) {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 2rem;
+  }
+
+  .prose :global(p) {
+    margin-top: 1.125rem;
+  }
+
+  /* Bold lead-ins open most "What I did" paragraphs, so they carry a little
+     extra weight and the display face to read as sub-points while skimming. */
+  .prose :global(p > strong:first-child) {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin-top: 1.125rem;
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .prose :global(ul) {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .prose :global(ul > li) {
+    position: relative;
+    padding-left: 1.125rem;
+  }
+
+  .prose :global(ul > li)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.8125rem;
+    width: 0.5rem;
+    height: 1px;
+    background: var(--c-signal);
+  }
+
+  .prose :global(a) {
+    color: var(--c-signal);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .prose :global(blockquote) {
+    margin-top: 1.5rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--c-line);
+    color: var(--c-ink-muted);
+  }
+
+  .prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    padding: 0.125em 0.3em;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+  }
+
+  .prose :global(pre) {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    overflow-x: auto;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+  }
+
+  .prose :global(pre code) {
+    padding: 0;
+    background: none;
+    border: 0;
+  }
+
+  .prose :global(img) {
+    margin-top: 1.75rem;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .prose :global(hr) {
+    margin-block: 2.5rem;
+    border: 0;
+    border-top: 1px solid var(--c-line);
+  }
+</style>

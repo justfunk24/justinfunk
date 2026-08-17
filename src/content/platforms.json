@@ -1,0 +1,105 @@
+[
+  {
+    "id": "zoom",
+    "name": "Zoom",
+    "tier": "hands-on",
+    "category": "ccaas",
+    "detail": "Builds agentic contact center environments on Zoom Contact Center at Matrice — routing design, agent desktop configuration, and the API integrations behind them.",
+    "evidence": { "label": "Matrice case study", "href": "/work/matrice" },
+    "unverified": []
+  },
+  {
+    "id": "dialpad",
+    "name": "Dialpad",
+    "tier": "hands-on",
+    "category": "ccaas",
+    "detail": "Dialpad Agentic Delivery Partner certified. Delivers agentic AI contact center builds, including the integration work that connects them to customer systems of record.",
+    "evidence": { "label": "Matrice case study", "href": "/work/matrice" },
+    "unverified": []
+  },
+  {
+    "id": "ringcentral",
+    "name": "RingCentral",
+    "tier": "hands-on",
+    "category": "ucaas",
+    "detail": "Three tenures across UCaaS and Contact Center. Ran structured discovery and adoption for 40+ enterprise accounts and was elected to the Customer Success Advisory Board.",
+    "evidence": { "label": "RingCentral case study", "href": "/work/ringcentral" },
+    "unverified": []
+  },
+  {
+    "id": "twilio",
+    "name": "Twilio",
+    "tier": "hands-on",
+    "category": "ccaas",
+    "detail": "Owned sales enablement programs for 400+ sellers across Twilio's communications and contact center portfolio.",
+    "evidence": { "label": "Twilio case study", "href": "/work/twilio" },
+    "unverified": []
+  },
+  {
+    "id": "highspot",
+    "name": "Highspot",
+    "tier": "hands-on",
+    "category": "enablement",
+    "detail": "Program owner at Twilio. Rebuilt content architecture and governance to the point that compensation support tickets fell 60% year over year.",
+    "evidence": { "label": "Twilio case study", "href": "/work/twilio" },
+    "unverified": []
+  },
+  {
+    "id": "salesforce",
+    "name": "Salesforce",
+    "tier": "hands-on",
+    "category": "crm",
+    "detail": "Administered Salesforce as the revenue team's system of record at Cloud Elements — objects, reporting, and the process design around them.",
+    "evidence": { "label": "Cloud Elements case study", "href": "/work/cloud-elements" },
+    "unverified": []
+  },
+  {
+    "id": "docebo",
+    "name": "Docebo",
+    "tier": "hands-on",
+    "category": "enablement",
+    "detail": "Built the onboarding and certification program for Cloud Elements sellers in Docebo. Presented the program at Docebo Inspire 2019.",
+    "evidence": { "label": "Cloud Elements case study", "href": "/work/cloud-elements" },
+    "unverified": []
+  },
+  {
+    "id": "gong",
+    "name": "Gong",
+    "tier": "hands-on",
+    "category": "enablement",
+    "detail": "PLACEHOLDER — one or two sentences on what you actually did in Gong, and which role it was in. Keep it specific enough to survive a follow-up question.",
+    "unverified": ["detail", "evidence"]
+  },
+  {
+    "id": "nice",
+    "name": "NICE",
+    "tier": "familiarity",
+    "category": "ccaas",
+    "detail": "Can evaluate and position NICE CXone against the platforms he builds on, and holds a platform certification in progress. Has not delivered a NICE implementation.",
+    "unverified": []
+  },
+  {
+    "id": "five9",
+    "name": "Five9",
+    "tier": "familiarity",
+    "category": "ccaas",
+    "detail": "Knows the product's shape and where it wins in competitive evaluations. Has not built on it.",
+    "unverified": []
+  },
+  {
+    "id": "genesys",
+    "name": "Genesys",
+    "tier": "familiarity",
+    "category": "ccaas",
+    "detail": "Landscape familiarity from competitive and migration conversations. Has not configured a Genesys Cloud environment.",
+    "unverified": []
+  },
+  {
+    "id": "cisco",
+    "name": "Cisco",
+    "tier": "familiarity",
+    "category": "ucaas",
+    "detail": "Encountered most often as the incumbent in UCaaS displacement work. Familiar with the migration questions, not with administering it.",
+    "unverified": []
+  }
+]

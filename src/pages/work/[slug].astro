@@ -1,0 +1,79 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Prose from '../../components/Prose.astro';
+import { site } from '../../lib/site';
+import { getCaseStudies } from '../../lib/content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const studies = await getCaseStudies();
+  return studies.map((study) => ({
+    params: { slug: study.id },
+    props: { study },
+  }));
+}) satisfies GetStaticPaths;
+
+const { study } = Astro.props;
+const { Content } = await render(study);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: study.data.title,
+  headline: study.data.title,
+  abstract: study.data.summary,
+  about: study.data.company,
+  author: { '@type': 'Person', name: site.name, url: site.url },
+  url: new URL(`/work/${study.id}`, site.url).href,
+  ...(study.data.updated && { dateModified: study.data.updated.toISOString().slice(0, 10) }),
+};
+---
+
+<Base title={study.data.title} description={study.data.summary} ogType="article" schema={schema}>
+  <article>
+    <header class="shell pt-12 pb-10 sm:pt-16">
+      <a href="/work" class="annotation hover:text-signal transition-colors">
+        <span aria-hidden="true">←</span> All work
+      </a>
+
+      <p class="annotation mt-8">{study.data.company} · {study.data.period}</p>
+
+      <h1 class="font-display mt-3 max-w-3xl text-3xl font-semibold sm:text-4xl">
+        {study.data.title}
+      </h1>
+
+      <!-- The metric is the headline of the page, not a stat buried in prose. -->
+      <div class="border-line mt-8 flex flex-wrap items-baseline gap-x-4 gap-y-1 border-l-2 pl-5">
+        <span class="font-display text-copper text-4xl font-semibold tracking-tight sm:text-5xl">
+          {study.data.metric.value}
+        </span>
+        <span class="text-ink-muted text-sm">{study.data.metric.label}</span>
+      </div>
+
+      {
+        study.data.draft && (
+          <p class="border-copper bg-copper-wash mt-8 border-l-4 p-4 text-sm">
+            <strong class="font-semibold">Draft.</strong> The structure is in place; the copy is
+            still Justin's to write. This page is visible in development only.
+          </p>
+        )
+      }
+    </header>
+
+    <Prose>
+      <Content />
+    </Prose>
+
+    <footer class="shell mt-14">
+      <div class="border-line flex flex-wrap items-center justify-between gap-4 border-t pt-8">
+        <a href="/work" class="text-signal text-sm underline underline-offset-4">
+          Back to all work
+        </a>
+        <a href="/contact" class="text-ink-muted hover:text-ink text-sm transition-colors">
+          Questions about this one? Get in touch →
+        </a>
+      </div>
+    </footer>
+  </article>
+</Base>

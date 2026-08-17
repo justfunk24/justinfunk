@@ -1,0 +1,68 @@
+---
+import { home } from '../lib/site';
+import { getPublishedCaseStudyPaths } from '../lib/content';
+
+/**
+ * Five hard numbers, each linking to the case study that substantiates it.
+ *
+ * The one rule enforced here: a number never links somewhere that doesn't
+ * exist. Case studies still in draft are stripped from production builds, so
+ * their proof points render as plain text instead of a 404. On a site whose
+ * entire argument is "every claim is verifiable," a dead verification link
+ * would be the worst possible bug.
+ */
+
+const published = await getPublishedCaseStudyPaths();
+
+const points = home.proof.map((p) => ({
+  ...p,
+  // Only keep the link if its destination is really in this build.
+  href: p.href && published.has(p.href) ? p.href : null,
+}));
+---
+
+<section class="border-line border-y" aria-labelledby="proof-heading">
+  <h2 id="proof-heading" class="sr-only">Track record</h2>
+
+  <ul class="shell grid grid-cols-2 lg:grid-cols-5">
+    {
+      points.map((point, i) => {
+        // A single element type either way, so the markup stays identical
+        // whether or not the destination exists.
+        const Tag = point.href ? 'a' : 'div';
+        return (
+          <li
+            class:list={[
+              'border-line -mx-px border-b py-6 pr-4 lg:border-b-0',
+              // Vertical rules between cells, but not before the first in a row.
+              i % 2 === 1 ? 'border-l pl-4' : '',
+              'lg:border-l lg:pl-4',
+              i === 0 ? 'lg:border-l-0 lg:pl-0' : '',
+              i >= points.length - 2 ? 'border-b-0' : '',
+            ]}
+          >
+            <Tag
+              href={point.href ?? undefined}
+              class:list={['group block h-full', point.href ? 'transition-colors' : '']}
+            >
+              <span
+                class:list={[
+                  'font-display block text-2xl font-semibold tracking-tight sm:text-3xl',
+                  point.href ? 'group-hover:text-signal transition-colors' : '',
+                ]}
+              >
+                {point.value}
+              </span>
+              <span class="text-ink-muted mt-1.5 block text-sm leading-snug">{point.label}</span>
+              {point.href && (
+                <span class="annotation text-signal mt-2 block opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                  Read the case study →
+                </span>
+              )}
+            </Tag>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>

@@ -1,0 +1,175 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getProjects } from '../../lib/content';
+
+const projects = await getProjects();
+
+// Every stack tag that actually appears, for the filter row.
+const tags = [...new Set(projects.flatMap((p) => p.data.stack))].sort();
+
+const STATUS_LABELS: Record<string, string> = {
+  shipped: 'Shipped',
+  'in-progress': 'In progress',
+  experiment: 'Experiment',
+};
+---
+
+<Base
+  title="Projects"
+  description="Build log — code and AI projects from Justin Funk, including work still in progress."
+>
+  <div class="shell pt-14 pb-20 sm:pt-20">
+    <p class="annotation">Build log</p>
+    <h1 class="font-display mt-3 max-w-3xl text-3xl font-semibold sm:text-4xl">
+      What I've built, including the parts that aren't finished
+    </h1>
+    <p class="text-ink-muted max-w-measure mt-5">
+      Status is on every entry. Work in progress goes up as work in progress — waiting for polish is
+      how a build log quietly dies.
+    </p>
+
+    <!-- Tag filter. Hidden without JS, same as the timeline. -->
+    {
+      tags.length > 1 && (
+        <div class="mt-10" data-project-filters hidden>
+          <fieldset class="border-0 p-0">
+            <legend class="annotation">Filter by stack</legend>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <button
+                type="button"
+                class="border-line border px-3.5 py-1.5 text-sm filter"
+                data-tag="all"
+                aria-pressed="true"
+              >
+                All
+              </button>
+              {tags.map((tag) => (
+                <button
+                  type="button"
+                  class="border-line border px-3.5 py-1.5 text-sm filter"
+                  data-tag={tag}
+                  aria-pressed="false"
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+          <p class="sr-only" role="status" data-project-status />
+        </div>
+      )
+    }
+
+    <ul class="border-line mt-10 border-t" data-project-list>
+      {
+        projects.map((project) => (
+          <li class="border-line border-b" data-stack={project.data.stack.join('|')}>
+            <a
+              href={`/projects/${project.id}`}
+              class="hover:bg-signal-wash group block py-6 transition-colors sm:px-2"
+            >
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h2 class="font-display group-hover:text-signal text-lg font-semibold transition-colors">
+                  {project.data.title}
+                </h2>
+                <span
+                  class:list={[
+                    'annotation',
+                    project.data.status === 'shipped' ? 'text-copper' : 'text-ink-muted',
+                  ]}
+                >
+                  {STATUS_LABELS[project.data.status]}
+                </span>
+              </div>
+
+              <p class="text-ink-muted max-w-measure mt-2 text-sm leading-relaxed">
+                {project.data.summary}
+              </p>
+
+              <ul class="mt-3 flex flex-wrap gap-1.5" aria-label="Stack">
+                {project.data.stack.map((tech) => (
+                  <li class="border-line text-ink-muted border px-2 py-0.5 font-mono text-[0.6875rem]">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      projects.length === 0 && (
+        <p class="text-ink-muted border-line mt-10 border border-dashed p-6 text-sm">
+          Nothing published yet.
+        </p>
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .filter {
+    color: var(--c-ink-muted);
+    background: transparent;
+    cursor: pointer;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      background-color 160ms ease;
+  }
+
+  .filter:hover {
+    color: var(--c-ink);
+    border-color: var(--c-ink-muted);
+  }
+
+  .filter[aria-pressed='true'] {
+    color: var(--c-ground);
+    background: var(--c-ink);
+    border-color: var(--c-ink);
+  }
+
+  [data-hidden='true'] {
+    display: none;
+  }
+</style>
+
+<script>
+  const filters = document.querySelector<HTMLElement>('[data-project-filters]');
+  const list = document.querySelector<HTMLElement>('[data-project-list]');
+
+  if (filters && list) {
+    const buttons = Array.from(filters.querySelectorAll<HTMLButtonElement>('.filter'));
+    const items = Array.from(list.querySelectorAll<HTMLElement>('li'));
+    const status = filters.querySelector<HTMLElement>('[data-project-status]');
+
+    filters.removeAttribute('hidden');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const tag = button.dataset.tag ?? 'all';
+        let shown = 0;
+
+        items.forEach((item) => {
+          const stack = (item.dataset.stack ?? '').split('|');
+          const match = tag === 'all' || stack.includes(tag);
+          // Projects genuinely filter out here, unlike the career timeline —
+          // there's no honesty cost to hiding a project that doesn't use React.
+          item.dataset.hidden = String(!match);
+          if (match) shown += 1;
+        });
+
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tag === tag)));
+
+        if (status) {
+          status.textContent =
+            tag === 'all'
+              ? `Showing all ${items.length} projects.`
+              : `Showing ${shown} of ${items.length} projects using ${tag}.`;
+        }
+      });
+    });
+  }
+</script>

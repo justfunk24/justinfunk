@@ -1,0 +1,149 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/site';
+import { getRecommendations } from '../lib/content';
+
+// Only quotes with `permission: true` come back. Until Justin confirms written
+// permission from each colleague, this is empty and the section says so
+// plainly rather than showing placeholder testimonials.
+const recommendations = await getRecommendations();
+---
+
+<Base
+  title="About"
+  description={`${site.name} — MBA, University of Denver. Enterprise CX and contact center practitioner in Denver, now building agentic AI environments.`}
+>
+  <div class="shell pt-14 pb-20 sm:pt-20">
+    <p class="annotation">About</p>
+    <h1 class="font-display mt-3 max-w-3xl text-3xl font-semibold sm:text-4xl">
+      A decade of watching good technology fail for non-technical reasons
+    </h1>
+
+    <div class="mt-12 grid gap-14 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
+      <div class="max-w-measure">
+        <div class="text-[1.0625rem] leading-relaxed">
+          <p>
+            I've spent my career in and around contact centers — carrying a $30M+ portfolio at
+            AT&amp;T, running customer success across three tenures at RingCentral, building an
+            enablement function from scratch at Cloud Elements, and owning the Highspot program for
+            400+ sellers at Twilio.
+          </p>
+          <p class="mt-5">
+            The pattern that shows up everywhere: the platform was almost never the problem. Someone
+            bought good software and then nobody used it the way it was meant to be used, or the
+            rollout skipped the part where you find out what people actually do all day. Fixing that
+            is unglamorous and it's most of the job.
+          </p>
+          <p class="mt-5">
+            At Northwestern Mutual I rolled out an internal GPT knowledge system to a research team
+            of ten, working across internal knowledge bases and compliance documentation. That was
+            the first time I saw the same adoption problem play out with AI, and it moved faster and
+            cost more when it went wrong.
+          </p>
+          <p class="mt-5">
+            Now at Matrice IT Advisors I build agentic contact center environments on Zoom and
+            Dialpad — routing design, API integrations, and the handoff between an agent and a
+            human, which is where these deployments are actually judged. I'm Dialpad Agentic
+            Delivery Partner certified, and I'm working through Python 3 certification because I'd
+            rather read the integration code than be briefed on it.
+          </p>
+          <p class="mt-5">
+            I'm in Denver. I earned my MBA at the University of Denver while working full time,
+            which is a slower way to do it and taught me more about prioritization than any of the
+            coursework did.
+          </p>
+        </div>
+
+        <!-- Recommendations -->
+        <section class="mt-16" aria-labelledby="recommendations">
+          <h2 id="recommendations" class="annotation border-line border-b pb-2">
+            What colleagues say
+          </h2>
+
+          {
+            recommendations.length > 0 ? (
+              <ul class="mt-8 grid gap-8">
+                {recommendations.map((rec) => (
+                  <li>
+                    <blockquote class="border-line border-l-2 pl-5">
+                      <p class="text-[1.0625rem] leading-relaxed">{rec.data.quote}</p>
+                      <footer class="text-ink-muted mt-3 text-sm">
+                        <cite class="not-italic">
+                          <span class="text-ink font-medium">{rec.data.name}</span> —{' '}
+                          {rec.data.title}, {rec.data.company}
+                        </cite>
+                      </footer>
+                    </blockquote>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="text-ink-muted border-line mt-6 border border-dashed p-4 text-sm">
+                Nothing here yet. Quotes only appear on this page once the person who wrote them has
+                given written permission to publish — the same standard as every other claim on this
+                site.
+              </p>
+            )
+          }
+        </section>
+      </div>
+
+      <!-- Credentials sidebar -->
+      <aside class="grid content-start gap-10">
+        <div>
+          <h2 class="annotation border-line border-b pb-2">Education</h2>
+          <ul class="mt-4 grid gap-3 text-sm">
+            <li>
+              <p class="font-medium">MBA</p>
+              <p class="text-ink-muted">University of Denver</p>
+            </li>
+            <li>
+              <p class="font-medium">BA</p>
+              <p class="text-ink-muted">University of Oklahoma</p>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="annotation border-line border-b pb-2">Certifications</h2>
+          <ul class="mt-4 grid gap-3 text-sm">
+            <li>
+              <p class="font-medium">Dialpad Agentic Delivery Partner</p>
+              <p class="text-copper text-xs">Certified</p>
+            </li>
+            <li>
+              <p class="font-medium">Python 3</p>
+              <p class="text-ink-muted text-xs">In progress</p>
+            </li>
+            <li>
+              <p class="font-medium">RingCentral platform</p>
+              <p class="text-ink-muted text-xs">In progress</p>
+            </li>
+            <li>
+              <p class="font-medium">NICE platform</p>
+              <p class="text-ink-muted text-xs">In progress</p>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="annotation border-line border-b pb-2">Speaking</h2>
+          <ul class="mt-4 grid gap-3 text-sm">
+            <li>
+              <p class="font-medium">Docebo Inspire 2019</p>
+              <p class="text-ink-muted">
+                On the seller onboarding and certification program built at Cloud Elements.
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="border-line border-t pt-6">
+          <a href="/resume" class="text-signal text-sm underline underline-offset-4">
+            Full resume →
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Base>
