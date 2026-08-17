@@ -36,13 +36,6 @@ export async function getProjects(): Promise<CollectionEntry<'projects'>[]> {
   return projects.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 
-/* --- Writing -------------------------------------------------------------*/
-
-export async function getPosts(): Promise<CollectionEntry<'writing'>[]> {
-  const posts = await getCollection('writing', isPublished);
-  return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-}
-
 /* --- Career --------------------------------------------------------------*/
 
 export async function getCareer(): Promise<CollectionEntry<'career'>[]> {

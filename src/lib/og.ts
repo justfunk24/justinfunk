@@ -1,4 +1,4 @@
-import { getCaseStudies, getProjects, getPosts } from './content';
+import { getCaseStudies, getProjects } from './content';
 
 /**
  * The authoritative list of social cards to generate.
@@ -28,28 +28,18 @@ const STATIC_PAGES: OgPage[] = [
     title: "What I've built, including the parts that aren't finished",
   },
   {
-    route: 'writing',
-    eyebrow: 'Injection of Funk',
-    title: 'Opinions about contact centers, with the data underneath',
-  },
-  {
     route: 'about',
     eyebrow: 'About',
     title: 'A decade of watching good technology fail for non-technical reasons',
   },
   { route: 'resume', eyebrow: 'Resume', title: 'Justin Funk' },
   { route: 'contact', eyebrow: 'Contact', title: 'Two reasons people usually land here' },
-  { route: 'now', eyebrow: 'Now', title: "What I'm actually doing this month" },
   // Noindex, but Base still emits an og:image for it, so it needs a card.
   { route: 'thanks', eyebrow: 'Sent', title: "Got it. I'll come back to you shortly." },
 ];
 
 export async function getOgPages(): Promise<OgPage[]> {
-  const [studies, projects, posts] = await Promise.all([
-    getCaseStudies(),
-    getProjects(),
-    getPosts(),
-  ]);
+  const [studies, projects] = await Promise.all([getCaseStudies(), getProjects()]);
 
   return [
     ...STATIC_PAGES,
@@ -61,11 +51,6 @@ export async function getOgPages(): Promise<OgPage[]> {
     ...projects.map((p) => ({
       route: `projects/${p.id}`,
       eyebrow: `Build log · ${p.data.stack.slice(0, 3).join(' · ')}`,
-      title: p.data.title,
-    })),
-    ...posts.map((p) => ({
-      route: `writing/${p.id}`,
-      eyebrow: 'Injection of Funk',
       title: p.data.title,
     })),
   ];

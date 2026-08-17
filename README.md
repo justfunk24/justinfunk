@@ -4,6 +4,14 @@ Personal site and professional portfolio for Justin Funk — enterprise CX, CCaa
 
 Built with [Astro](https://astro.build), Tailwind CSS 4, and TypeScript. Deployed on Netlify from `main`.
 
+## Scope
+
+Four pages in the nav — **Work, Projects, About, Resume** — plus `/contact`, the case study pages under `/work/`, and the build log entries under `/projects/`.
+
+Deliberately not here: a writing section and a `/now` page. Both existed and were removed to keep the site small enough to actually maintain. They're in git history if either ever earns its place back.
+
+**This site costs nothing to run.** It's static files on Netlify's free tier, fonts are self-hosted, and analytics is off unless you set the two env vars below. The only recurring cost is the domain you already own.
+
 ---
 
 ## The one rule
@@ -57,32 +65,6 @@ That checks formatting, lints, type-checks the content schemas, and does a produ
 
 ## How to add things
 
-### Add a writing post
-
-1. Copy an existing file in `src/content/writing/` to a new name. The filename becomes the URL: `the-line-nobody-draws.md` → `/writing/the-line-nobody-draws`.
-2. Edit the frontmatter at the top:
-
-```yaml
----
-title: Your title
-date: 2026-08-20
-hook: The opening line. Leads with an opinion or a scene, never a statistic.
-tags:
-  - ccaas
-question: The question you end on.
-linkedinUrl: https://www.linkedin.com/posts/... # optional
-linkedinEmbedId: '7012345678901234567' # optional, see below
-draft: false # set true to hide it
----
-```
-
-3. Write the post below the frontmatter in Markdown.
-4. Commit and push. Netlify deploys in about a minute.
-
-**About `linkedinEmbedId`:** only use it when the LinkedIn thread itself is worth showing — a good comment section. It's the long number from the post's URL. The embed is lazy-loaded and the page reads fine without it.
-
-**The RSS feed** at `/writing/rss.xml` updates itself from published posts — drafts are excluded automatically. It's what makes "owned-first" real: people can follow the writing without going through a platform that can change its reach whenever it likes.
-
 ### Add a project
 
 Copy a file in `src/content/projects/`. Required frontmatter: `title`, `summary`, `problem`, `stack` (a list), `status` (`shipped`, `in-progress`, or `experiment`), and `date`. Optional: `repo`, `demo`, `cover` + `coverAlt`.
@@ -119,10 +101,6 @@ Only do that when it's true. The honesty of that line is the most valuable thing
 
 Edit `src/content/recommendations.json`. **A quote only renders when `permission: true`.** Until the person has actually said yes in writing, leave it `false` and it stays invisible.
 
-### Update /now
-
-Edit `src/pages/now.astro`. It's the one page where the copy lives in the page file, because it's three short lists and a date. **Update the `updated` date whenever you change it** — a stale `/now` page is worse than none.
-
 ---
 
 ## Things that still need you
@@ -138,8 +116,7 @@ These are marked `PLACEHOLDER` in the files and will show up if you search the r
 - [ ] **GitHub username and LinkedIn URL** in `src/lib/site.ts`.
 - [ ] **Resume PDF** at `public/justin-funk-resume.pdf`.
 - [ ] **Recommendation quotes** and written permission for each.
-- [ ] **Real projects.** The build log has this site plus two scaffolds (`agentic-routing-sandbox`, `python-cert-work`), both `draft: true`. Fill them in or delete them — an empty build log is more honest than a padded one. The Python one is worth actually building: "working through Python 3 certification" is a claim on `/about`, and a build log entry with real scripts in it is evidence.
-- [ ] **Writing.** Three example posts, all `draft: true`, written in your conventions so you can see the shape. Rewrite in your voice before publishing — these are templates, not your opinions.
+- [ ] **Real projects.** The build log has this site and nothing else. Add entries as you build things — an empty-ish build log is more honest than a padded one.
 - [ ] **A headshot** and any Matrice build screenshots or architecture diagrams.
 - [ ] **Scheduling link** — set `scheduling` in `src/lib/site.ts` and the option appears on `/contact` automatically.
 
@@ -155,7 +132,6 @@ src/
     recommendations.json
     case-studies/
     projects/
-    writing/
   content.config.ts   ← the schemas. Strict on purpose: a missing field
                         fails the build and tells you which file.
   components/         ← the interactive pieces
@@ -193,7 +169,7 @@ The other three follow the same pattern — see the paths in `src/styles/global.
 
 ### Social cards
 
-Generated per page at build time by `src/pages/og/[...route].png.ts` using satori. New case studies, projects, and posts get one automatically. Fixed pages are listed in `src/lib/og.ts` — **if you add a new fixed page, add it there too**, or its Open Graph tag will point at a 404.
+Generated per page at build time by `src/pages/og/[...route].png.ts` using satori. New case studies and projects get one automatically. Fixed pages are listed in `src/lib/og.ts` — **if you add a new fixed page, add it there too**, or its Open Graph tag will point at a 404.
 
 ---
 
@@ -236,7 +212,6 @@ Lighthouse, run against a production build. All four categories, five pages:
 | `/resume`       | 100         | 100           | 100            | 100 |
 | `/contact`      | 100         | 100           | 100            | 100 |
 | `/about`        | 100         | 100           | 100            | 100 |
-| `/writing`      | 100         | 100           | 100            | 100 |
 | `/projects`     | 100         | 100           | 100            | 100 |
 
 Contrast ratios for every token pair in both themes are in [docs/contrast.md](docs/contrast.md) — all pass AA, tightest is 4.61:1.

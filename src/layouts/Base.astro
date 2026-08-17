@@ -11,13 +11,13 @@ interface Props {
   /** Overrides the generated social card. Normally left unset — each page's
    *  card is built at /og/<route>.png by src/pages/og/[...route].png.ts. */
   ogImage?: string;
-  /** 'article' for case studies, projects, and posts; 'website' elsewhere. */
+  /** 'article' for case studies and projects; 'website' elsewhere. */
   ogType?: 'website' | 'article';
   /** Set on a page that should not be indexed (e.g. the form thank-you). */
   noindex?: boolean;
   /** Rendered into <head> as JSON-LD. Pages pass their own schema object. */
   schema?: Record<string, unknown>;
-  /** Overrides the canonical URL. Only needed for cross-posted writing. */
+  /** Overrides the canonical URL. Only needed if a page is republished elsewhere. */
   canonical?: string;
 }
 
@@ -51,14 +51,6 @@ const fullTitle = Astro.url.pathname === '/' ? title : `${title} · ${site.name}
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-
-    {/* Feed autodiscovery — lets a reader subscribe from any page. */}
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="Injection of Funk"
-      href="/writing/rss.xml"
-    />
 
     {
       /* Only the two above-the-fold faces are preloaded. Mono loads normally —

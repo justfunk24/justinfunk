@@ -1,12 +1,10 @@
 ---
 title: justinfunk.ai
-summary: This site. An Astro build where every claim is a content file, and the platform matrix draws an honest line between what I've built on and what I've only evaluated.
+summary: This site. Built with Astro so that every job, platform, and case study is a content file rather than something buried in code.
 problem: >-
-  Most portfolio sites in enterprise CX make claims that can't be checked, and
-  most of them conflate "I've seen this platform" with "I've built on it." I
-  wanted a site where the second click always lands on evidence, and where the
-  distinction between hands-on and familiar is a visible design element rather
-  than a footnote nobody reads.
+  I wanted a site I could actually maintain — where updating a job title or
+  adding a case study is a one-file edit, and where the resume and the timeline
+  can't drift apart because they read from the same data.
 stack:
   - Astro
   - TypeScript
@@ -18,22 +16,22 @@ date: 2026-08-16
 draft: false
 ---
 
-## Why build it this way
+## How it's built
 
-The constraint I set was that I should never have to open a component file to change what the site says. Every job, platform, case study, and post is a typed content file — JSON for career and platform data, Markdown for anything with prose. If I misspell a field or forget a required one, the build fails and tells me which file and which field. That's what makes editing content directly safe rather than nerve-racking.
+Everything the site says lives in `src/content/` — JSON for career and platform data, Markdown for case studies. The page templates read from those files, so changing what the site says never means editing a component. If a required field is missing, the build fails and names the file, which makes editing content directly a safe thing to do rather than a nervous one.
 
-The career data has a second job. The `/work` timeline and the `/resume` page both read the same JSON, so the two can't drift apart. Updating a role in one place updates it everywhere it appears.
+The career data does double duty: the `/work` timeline and the `/resume` page both read the same JSON, so they can't disagree with each other.
 
 ## The platform matrix
 
-The piece I care most about is the fluency matrix, built as a patch panel. Platforms I've actually built on show as ports with a cable seated. Platforms I know well enough to evaluate but haven't delivered show as empty ports. It's the literal hardware of the industry doing the work of an honest disclaimer.
+The piece I'd point at is the fluency matrix on the work page. Platforms I've built on show as ports with a cable plugged in; platforms I know well enough to evaluate but haven't delivered on show as empty sockets.
 
-Almost everyone in this space blurs that line. Drawing it myself costs me a few impressive-looking logos and buys back something worth more.
+That distinction usually gets blurred into one long list. Drawing it costs a few impressive-looking logos and makes the rest of the list worth more.
 
-## What's still open
+## Status
 
-The build log is honest about its own status, which is why this entry is marked in progress rather than shipped. Still to come: the remaining case studies, a longer run of writing, and a small retrieval-grounded assistant over my own career data — a working version of the thing everyone in this market claims on a resume.
+Marked in progress because it is. The case studies still need my numbers in them, and the career dates need a pass.
 
 <!-- PLACEHOLDER — Justin: replace the repo URL above with your real GitHub
-     username, and add a screenshot once the design is settled. Drop the image
-     in src/assets/ and add `cover:` and `coverAlt:` to the frontmatter. -->
+     username. Add a screenshot when you want one: drop the image in
+     src/assets/ and add `cover:` and `coverAlt:` to the frontmatter. -->

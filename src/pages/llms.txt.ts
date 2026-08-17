@@ -1,13 +1,6 @@
 import type { APIRoute } from 'astro';
 import { site } from '../lib/site';
-import {
-  getCareer,
-  getCaseStudies,
-  getPlatforms,
-  getProjects,
-  getPosts,
-  formatRange,
-} from '../lib/content';
+import { getCareer, getCaseStudies, getPlatforms, getProjects, formatRange } from '../lib/content';
 
 /**
  * /llms.txt — a plain-language summary of who Justin is and what this site
@@ -23,12 +16,11 @@ import {
  * honest line the site's design is built around.
  */
 export const GET: APIRoute = async () => {
-  const [career, studies, platforms, projects, posts] = await Promise.all([
+  const [career, studies, platforms, projects] = await Promise.all([
     getCareer(),
     getCaseStudies(),
     getPlatforms(),
     getProjects(),
-    getPosts(),
   ]);
 
   const handsOn = platforms.filter((p) => p.data.tier === 'hands-on').map((p) => p.data.name);
@@ -81,25 +73,13 @@ ${studies.map((s) => `- [${s.data.title}](${site.url}/work/${s.id}) — ${s.data
 
 ${projects.map((p) => `- [${p.data.title}](${site.url}/projects/${p.id}) — ${p.data.summary} (${p.data.status})`).join('\n')}
 
-## Writing
-
-${
-  posts.length > 0
-    ? posts
-        .map((p) => `- [${p.data.title}](${site.url}/writing/${p.id}) — ${p.data.hook}`)
-        .join('\n')
-    : '- No posts published yet.'
-}
-
 ## Pages
 
 - [Home](${site.url}/)
 - [Work](${site.url}/work) — career timeline filterable by lens, platform fluency matrix, case study index
 - [Projects](${site.url}/projects) — build log
-- [Writing](${site.url}/writing) — Injection of Funk
 - [About](${site.url}/about) — bio, credentials, certifications, speaking
 - [Resume](${site.url}/resume) — web-native resume, generated from the same data as the timeline
-- [Now](${site.url}/now) — what he's building and learning this month
 - [Contact](${site.url}/contact)
 `;
 

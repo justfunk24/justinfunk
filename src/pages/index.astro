@@ -3,14 +3,13 @@ import Base from '../layouts/Base.astro';
 import RoutingHero from '../components/RoutingHero.astro';
 import ProofStrip from '../components/ProofStrip.astro';
 import { site } from '../lib/site';
-import { getCaseStudies, getProjects, getPosts, formatDate } from '../lib/content';
+import { getCaseStudies, getProjects } from '../lib/content';
 
 const caseStudies = await getCaseStudies();
 const projects = await getProjects();
-const posts = await getPosts();
 
-// The three lanes each surface their single strongest or most recent item, so
-// the newest thing in each is one click from home rather than two.
+// Each lane surfaces its single strongest or most recent item, so the newest
+// thing in each is one click from home rather than two.
 const lanes = [
   {
     label: 'Work',
@@ -37,20 +36,16 @@ const lanes = [
       : null,
   },
   {
-    label: 'Writing',
-    href: '/writing',
-    blurb: 'Injection of Funk — opinions with the data behind them.',
-    item: posts[0]
-      ? {
-          title: posts[0].data.title,
-          href: `/writing/${posts[0].id}`,
-          meta: formatDate(posts[0].data.date),
-        }
-      : null,
+    label: 'About',
+    href: '/about',
+    blurb: 'Background, credentials, and certifications.',
+    item: {
+      title: 'A decade of watching good technology fail for non-technical reasons',
+      href: '/about',
+      meta: 'MBA, University of Denver',
+    },
   },
 ];
-
-const latestPosts = posts.slice(0, 3);
 
 /* JSON-LD Person. This is the block an AI screening tool or a chatbot reads
    when someone asks about Justin, so it states the same things the page does
@@ -119,36 +114,6 @@ const schema = {
       }
     </div>
   </section>
-
-  <!-- Latest writing -->
-  {
-    latestPosts.length > 0 && (
-      <section class="shell pb-16 sm:pb-24" aria-labelledby="writing-heading">
-        <div class="border-line flex items-baseline justify-between gap-4 border-t pt-10">
-          <h2 id="writing-heading" class="font-display text-2xl font-semibold sm:text-3xl">
-            Latest writing
-          </h2>
-          <a href="/writing" class="annotation hover:text-signal transition-colors">
-            All posts →
-          </a>
-        </div>
-
-        <ul class="mt-8 grid gap-px sm:grid-cols-3">
-          {latestPosts.map((post) => (
-            <li>
-              <a href={`/writing/${post.id}`} class="group block">
-                <span class="annotation">{formatDate(post.data.date)}</span>
-                <h3 class="font-display group-hover:text-signal mt-2 text-base font-semibold transition-colors">
-                  {post.data.title}
-                </h3>
-                <p class="text-ink-muted mt-2 text-sm leading-relaxed">{post.data.hook}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
 
   <!-- Closing CTA. One primary action, one secondary. -->
   <section class="shell pb-8">

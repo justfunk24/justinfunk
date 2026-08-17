@@ -172,34 +172,6 @@ const projects = defineCollection({
       }),
 });
 
-/* --- Writing --------------------------------------------------------------
-   Injection of Funk. Owned-first: this site is canonical, LinkedIn is
-   distribution. No API, no aggregator, no vendor.
-   -------------------------------------------------------------------------*/
-
-const writing = defineCollection({
-  loader: glob({ base: 'src/content/writing', pattern: '**/*.{md,mdx}' }),
-  schema: z.object({
-    title: z.string(),
-    date: z.date(),
-    /** The opening line, used on the index card. Per Justin's conventions this
-     *  leads with an opinion or a scene — never with a statistic. */
-    hook: z.string(),
-    tags: z.array(z.string()).default([]),
-    /** Where to send readers who want the comment thread. Optional. */
-    linkedinUrl: z.string().optional(),
-    /** Only for posts where the LinkedIn thread itself is the artifact. The
-     *  numeric share id from the post URL — the embed is lazy-loaded and the
-     *  page never depends on it rendering. */
-    linkedinEmbedId: z.string().optional(),
-    /** Set only if the piece was first published elsewhere. */
-    canonical: z.string().optional(),
-    /** The closing question. Justin's posts end with one. */
-    question: z.string().optional(),
-    draft: z.boolean().default(false),
-  }),
-});
-
 /* --- Recommendations ------------------------------------------------------
    Short quotes from named colleagues. `permission` is required and must be
    true to render — a quote cannot ship until someone has actually said yes.
@@ -225,6 +197,5 @@ export const collections = {
   platforms,
   caseStudies,
   projects,
-  writing,
   recommendations,
 };

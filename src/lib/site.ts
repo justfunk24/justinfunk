@@ -101,9 +101,9 @@ export const home = {
       detail: 'Agentic builds on Zoom and Dialpad, plus what I write in code.',
     },
     {
-      label: 'Enablement & Revenue',
-      href: '/writing',
-      detail: 'How I think about adoption, and why most rollouts stall.',
+      label: 'Background',
+      href: '/about',
+      detail: 'Credentials, certifications, and how I got here.',
     },
   ],
 } as const;
@@ -112,7 +112,6 @@ export const home = {
 export const nav = [
   { href: '/work', label: 'Work' },
   { href: '/projects', label: 'Projects' },
-  { href: '/writing', label: 'Writing' },
   { href: '/about', label: 'About' },
   { href: '/resume', label: 'Resume' },
 ] as const;
