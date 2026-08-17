@@ -1,0 +1,103 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { splitQuote } from '../lib/content';
+
+interface Props {
+  rec: CollectionEntry<'recommendations'>;
+}
+
+const { rec } = Astro.props;
+const { preview, rest } = splitQuote(rec.data.quote);
+
+const written = rec.data.date.toLocaleDateString('en-US', {
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+{
+  /*
+  Long recommendations open with a couple of sentences and hide the remainder
+  behind a native <details>. Two reasons it's <details> rather than a JS toggle:
+  it works with JavaScript off, and the browser handles the keyboard and
+  screen-reader semantics (role, expanded state, Enter/Space) correctly without
+  us hand-rolling aria-expanded.
+
+  The preview lives inside <summary>, which is always visible whether the
+  disclosure is open or closed — so the text is never duplicated in the DOM and
+  a screen reader never reads the opening sentences twice.
+*/
+}
+
+<figure class="border-line border-l-2 pl-5">
+  <blockquote class="text-[1.0625rem] leading-relaxed">
+    {
+      rest.length === 0 ? (
+        <p>{preview}</p>
+      ) : (
+        <details class="rec">
+          <summary>
+            <span>{preview}</span>{' '}
+            <span class="rec-toggle" data-open="Show less" data-closed="Read more" />
+          </summary>
+          <div class="mt-4 grid gap-4">
+            {rest.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        </details>
+      )
+    }
+  </blockquote>
+
+  <figcaption class="text-ink-muted mt-4 text-sm">
+    <cite class="text-ink block font-medium not-italic">{rec.data.name}</cite>
+    <span class="mt-0.5 block">{rec.data.headline}</span>
+    {
+      /* The relationship is the credibility signal — a line from a direct
+        manager carries different weight than one from a peer, and the reader
+        should not have to guess which this is. */
+    }
+    <span class="mt-1 block text-[0.8125rem]">
+      {rec.data.relationship} · {written}
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  /* Strip the native disclosure triangle in both engines. */
+  .rec > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  .rec > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* The toggle label is a pseudo-element fed by data attributes so the open
+     and closed states can't drift out of sync with each other. */
+  .rec-toggle::after {
+    content: attr(data-closed);
+    color: var(--color-signal);
+    font-size: 0.875rem;
+    white-space: nowrap;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .rec[open] .rec-toggle::after {
+    content: attr(data-open);
+  }
+
+  /* Keyboard users get a visible ring on the whole summary row. */
+  .rec > summary:focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 4px;
+  }
+
+  @media (hover: hover) {
+    .rec > summary:hover .rec-toggle::after {
+      color: var(--color-ink);
+    }
+  }
+</style>

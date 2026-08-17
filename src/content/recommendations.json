@@ -1,27 +1,82 @@
 [
   {
-    "id": "placeholder-1",
-    "quote": "PLACEHOLDER — paste the quote here exactly as written. Two or three sentences reads best; a full paragraph gets skimmed.",
-    "name": "Colleague Name",
-    "title": "Their Title",
-    "company": "Their Company",
-    "permission": false,
-    "source": "LinkedIn recommendation"
+    "id": "alex-gousinov",
+    "order": 1,
+    "name": "Alex Gousinov",
+    "headline": "Go-to-market / Sales strategy, planning, operations and compensation executive",
+    "relationship": "Managed Justin directly",
+    "date": "2023-02-14",
+    "permission": true,
+    "quote": "Justin contributed a lot to the Twilio Sales Compensation, building and leading and conceptually new Comp. Enablement and Communication function globally. Justin's relentless focus on the customers, communicating to them in their language, made complex things a lot easier for the Sales team to digest. His innovative ideas, leadership capabilities and passion to deliver great results were key ingredients for his success."
   },
   {
-    "id": "placeholder-2",
-    "quote": "PLACEHOLDER — a second quote, ideally from a different company and a different lens than the first.",
-    "name": "Colleague Name",
-    "title": "Their Title",
-    "company": "Their Company",
-    "permission": false
+    "id": "cade-olson",
+    "order": 2,
+    "name": "Cade Olson",
+    "headline": "GTM Economics & Operating Models | Director, Sales Compensation & Policy @ Veeam",
+    "relationship": "Was senior to Justin but didn't manage Justin directly",
+    "date": "2023-02-14",
+    "permission": true,
+    "quote": "Justin has been a sensational partner in my time @ Twilio. As a complete end-to-end owner of our sales compensation field enablement function, he developed and evangelized a scalable, effective, and empowering program which proved to be of tremendous value to both our sales team and internal GTM Operations groups. Justin prioritizes not only setting his customers and peers up for success - he leads by prioritizing \"training the trainer\", giving sales leadership the confidence to effectively coach and guide their teams through any policy, process, or tool we deployed.\n\nEqually, if not more valuable, was Justin's emphasis on the scoping, design and facilitation of an internal knowledge base. This provided tremendous value in our pursuit of optimizing internal efficiencies, cross-training, deduplication of efforts, and change management to ensure our team was equally armed with relevant and current guidance it required to be effective.\n\nMost recently, Justin shifted his focus to how Twilio could best transform its Sales Enablement function at an enterprise level - developing an effective operational model for a centralized Enablement team. This included a simple, yet effective framework for the intake, refinement, prioritization, and negotiation of how and where resources should be deployed for optimal effectiveness and impact.\n\nBeyond Justin's core areas of ownership, he consistently leads by example, stretching himself and others to contribute in meaningful ways outside of their function. Justin volunteered for a leadership position on our Employee Engagement Council, emphasizing population-level, feedback-driven identification and prioritization of high-value and impact areas to build enduring cohesiveness across a rapidly scaling GTM organization. He also created and drove recurring cross-functional Coffee Talk sessions - bringing in function and thought leaders from across the organization to tell their stories, bringing transparency to their initiatives, career journeys, and wisdom to build a more informed, connected and inspired department.\n\nAnd finally, Justin has been a trusted and valued partner as a coach, mentor, confidant, and sounding board to me and many here @ Twilio, regardless of level, role, or function. His ability to build authentic and deep relationships across multiple value streams has shown that Justin is precisely the type of leader any organization would be positively impacted by having lead its Enablement function as it looks to scale and take this capability to the next level."
   },
   {
-    "id": "placeholder-3",
-    "quote": "PLACEHOLDER — a third. Three is enough; more starts to read as padding.",
-    "name": "Colleague Name",
-    "title": "Their Title",
-    "company": "Their Company",
-    "permission": false
+    "id": "michelle-wright",
+    "order": 3,
+    "name": "Michelle Wright",
+    "headline": "If everyone is moving forward together, then success takes care of itself \u2014 Henry Ford",
+    "relationship": "Managed Justin directly",
+    "date": "2020-03-06",
+    "permission": true,
+    "quote": "Justin reported to me as a Customer Success Manager at RingCentral. As a Customer Success Manager, his role is to ensure that customers realize the value of the services provided. His customer enjoy working with him because of his outgoing nature and his ability to build relationships quickly. Justin is enthusiastic and ambitious. He is often raising his hand to participate in special projects that would greater benefit the team. He thrives in a team environment where he can share his ideas and support his colleagues. Justin is a capable and confident person who takes great pride in his work! Justin is completing his Masters in which he is looking to showcase his leadership skills into a Management position. I am happy to be a part of his journey thus far and have no doubts that he will excel in anything he sets his mind to."
+  },
+  {
+    "id": "ken-hulse",
+    "order": 4,
+    "name": "Ken Hulse",
+    "headline": "Learning & Development | Sales Enablement | Communications | Employee Engagement",
+    "relationship": "Managed Justin directly",
+    "date": "2020-02-17",
+    "permission": true,
+    "quote": "I first worked with Justin when he was in a department that I supported and he was great as a learner in my trainings. He was adept at applying the learning to his work and would often take the practical back to his team. When it came time to expand the learning and development team it was an easy decision to pursue Justin, the hard part was taking him from his managers.\n\nJustin was easy to manage in that he did not need management at all. He is a self starter and worked well with little supervision. We could determine a path and Justin was able to figure out how to execute at a high level often improving on the concept to better the learning experience.\n\nJustin posses high work ethic that makes him excel at his duties. He also has the analytic skills that allow him to diagnose a situation and devise a solution quickly. He remains calm during times of high stress and manages crisis effectively. I can recommend Justin with out reservation and believe him to be an asset to any organization."
+  },
+  {
+    "id": "renee-mann",
+    "order": 5,
+    "name": "Renee Mann",
+    "headline": "Corporate Trainer at AireSpring",
+    "relationship": "Worked with Justin on the same team",
+    "date": "2023-02-24",
+    "permission": true,
+    "quote": "I had the pleasure of working with Justin during his tenure at RingCentral. Justin proved himself to be a dynamic and results-driven leader, exceeding performance expectations and delivering exceptional internal and external customer experiences. We worked together in cross-functional planning, content creation and design where he demonstrated an innate ability to connect and support his team and customers. Justin's delivery of learning content, including onboarding new employees, was exceptional. His passion for sales enablement made him a key team member who provided insight and knowledge as an expert for our learning program. Because of his drive and confidence to succeed, he consistently demonstrated his ability to deliver results. I highly recommend Justin as he would be an asset to any organization."
+  },
+  {
+    "id": "jason-simpson",
+    "order": 6,
+    "name": "Jason Simpson",
+    "headline": "Data & Insights Manager at Twilio",
+    "relationship": "Worked with Justin on the same team",
+    "date": "2023-02-15",
+    "permission": true,
+    "quote": "Justin created environments for people to thrive around him - taking leadership outside his role for education and development within our team, driving clear expectations to all stakeholders. He created and delivered content for enablement on a predictable schedule and was always available to respond and adapt to changes.\n\nJustin's ability to communicate with positive attitude, consistent follow-up, and solid teamwork make him a joy to work with and an asset to any team."
+  },
+  {
+    "id": "rachel-van-dissel",
+    "order": 7,
+    "name": "Rachel (Hinman) van Dissel, PMP",
+    "headline": "Sales Compensation at EDB",
+    "relationship": "Worked with Justin on the same team",
+    "date": "2023-02-19",
+    "permission": true,
+    "quote": "Justin is an enablement and communications guru. He makes it a priority to become a subject matter expert on the topics he's enabling so that he can create the most useful and easy to digest content for his audiences. Justin is also an amazing team player who is highly collaborative, willing to listen, and incorporate others' feedback. He is always happy to jump in to help teammates. Lastly, Justin is a culture champion. He truly enjoys seeing others succeed and is consistent in offering peer feedback and recognition."
+  },
+  {
+    "id": "tara-torkelson",
+    "order": 8,
+    "name": "Tara Torkelson",
+    "headline": "Retired from Full Time Corporate Life",
+    "relationship": "Worked with Justin but on different teams",
+    "date": "2023-03-11",
+    "permission": true,
+    "quote": "I had the honor to work with Justin on several joint efforts to develop and train the field on a complex compensation model. He is not only an expert on making the complex simple but he is a world class collaborator. Justin developed engaging and innovative multi-faceted approaches to drive new and ongoing initiatives forward."
   }
 ]

@@ -181,14 +181,31 @@ const recommendations = defineCollection({
   loader: file('src/content/recommendations.json'),
   schema: z.object({
     id: z.string(),
+    /** Verbatim. Paragraph breaks as "\n\n" — the component splits the opening
+     *  sentences into a preview and hides the remainder behind a disclosure,
+     *  so the full text lives here in one piece and is never edited to fit. */
     quote: z.string(),
     name: z.string(),
-    title: z.string(),
-    company: z.string(),
-    /** Written permission to publish. The /about page filters on this, so a
-     *  quote sitting in the file without permission simply does not render. */
+    /** Their LinkedIn headline as written. Often carries no company (several
+     *  are retired or use a slogan), which is why there is no company field. */
+    headline: z.string(),
+    /** LinkedIn's own relationship line, verbatim — "managed Justin directly",
+     *  "worked with Justin on the same team". This is the load-bearing detail:
+     *  a quote from a direct manager reads differently than one from a peer,
+     *  and the reader deserves to know which they are looking at. */
+    relationship: z.string(),
+    /** When it was written, ISO ("2023-02-14"). Coerced rather than `z.date()`
+     *  because the JSON file loader hands over a raw string — unlike Markdown
+     *  frontmatter, where the YAML parser has already built a Date. Rendered
+     *  as month + year, formatted in UTC so an early-month date can't shift
+     *  backwards into the previous month. */
+    date: z.coerce.date(),
+    /** Publication permission. The /about page filters on this, so a quote
+     *  sitting in the file without it simply does not render. */
     permission: z.boolean(),
-    source: z.string().optional(),
+    /** Ordering, lowest first. Set by hand — these are not chronological, they
+     *  are sequenced so the strongest and most senior sources lead. */
+    order: z.number(),
   }),
 });
 

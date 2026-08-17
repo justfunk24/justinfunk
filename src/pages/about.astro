@@ -2,10 +2,10 @@
 import Base from '../layouts/Base.astro';
 import { site } from '../lib/site';
 import { getRecommendations } from '../lib/content';
+import Recommendation from '../components/Recommendation.astro';
 
-// Only quotes with `permission: true` come back. Until Justin confirms written
-// permission from each colleague, this is empty and the section says so
-// plainly rather than showing placeholder testimonials.
+// Only quotes with `permission: true` come back. All eight are Justin's own
+// LinkedIn recommendations, reproduced verbatim and published at his request.
 const recommendations = await getRecommendations();
 ---
 
@@ -64,18 +64,10 @@ const recommendations = await getRecommendations();
 
           {
             recommendations.length > 0 ? (
-              <ul class="mt-8 grid gap-8">
+              <ul class="mt-8 grid gap-10">
                 {recommendations.map((rec) => (
                   <li>
-                    <blockquote class="border-line border-l-2 pl-5">
-                      <p class="text-[1.0625rem] leading-relaxed">{rec.data.quote}</p>
-                      <footer class="text-ink-muted mt-3 text-sm">
-                        <cite class="not-italic">
-                          <span class="text-ink font-medium">{rec.data.name}</span> —{' '}
-                          {rec.data.title}, {rec.data.company}
-                        </cite>
-                      </footer>
-                    </blockquote>
+                    <Recommendation rec={rec} />
                   </li>
                 ))}
               </ul>

@@ -63,10 +63,54 @@ export async function getPlatforms(): Promise<CollectionEntry<'platforms'>[]> {
 
 /* --- Recommendations -----------------------------------------------------*/
 
+/** Split a quote into an opening preview and the remainder, so a long
+ *  recommendation can lead with a couple of sentences and hide the rest
+ *  behind a disclosure.
+ *
+ *  The split lands on a sentence boundary rather than a character count, so
+ *  the preview never ends mid-clause. Quotes shorter than `floor` are returned
+ *  whole with an empty remainder — collapsing three sentences behind a "read
+ *  more" costs the reader a click and saves nothing.
+ */
+export function splitQuote(
+  quote: string,
+  { target = 190, floor = 330 } = {},
+): { preview: string; rest: string[] } {
+  const paragraphs = quote
+    .split('\n\n')
+    .map((p) => p.trim())
+    .filter(Boolean);
+
+  if (quote.length <= floor) return { preview: paragraphs.join(' '), rest: [] };
+
+  const [first, ...others] = paragraphs;
+  // Keep the delimiter attached to the sentence it ends.
+  const sentences = first.split(/(?<=[.!?])\s+/);
+
+  const taken: string[] = [];
+  let length = 0;
+  for (const sentence of sentences) {
+    // Stop once we're past target — but always take at least one sentence,
+    // or a quote opening with a very long first sentence would preview empty.
+    if (length >= target && taken.length > 0) break;
+    taken.push(sentence);
+    length += sentence.length;
+  }
+
+  const remainder = sentences.slice(taken.length).join(' ').trim();
+  const rest = [remainder, ...others].filter(Boolean);
+
+  // If the split left nothing meaningful behind, don't render a disclosure.
+  if (rest.join(' ').length < 60) return { preview: paragraphs.join(' '), rest: [] };
+
+  return { preview: taken.join(' '), rest };
+}
+
 /** Only quotes with explicit written permission are ever returned. A quote
  *  sitting in the JSON without `permission: true` simply doesn't render. */
 export async function getRecommendations() {
-  return getCollection('recommendations', ({ data }) => data.permission === true);
+  const recs = await getCollection('recommendations', ({ data }) => data.permission === true);
+  return recs.sort((a, b) => a.data.order - b.data.order);
 }
 
 /* --- Formatting ----------------------------------------------------------*/
