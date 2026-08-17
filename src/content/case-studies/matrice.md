@@ -3,9 +3,9 @@ title: Building agentic contact centers that survive contact with a real support
 company: Matrice IT Advisors
 metric:
   value: Certified
-  label: Dialpad Agentic Delivery Partner
-summary: Agentic AI contact center builds on Zoom and Dialpad, where the hard part is never the model — it's the routing, the integrations, and the handoff to a human.
-period: 2025 — present
+  label: Dialpad Contact Center & Agentic Delivery Partner
+summary: Full contact center environments on Zoom and Dialpad — agentic voice and chat agents, quality and workforce management, and the guardrails that decide whether any of it holds up in production.
+period: 2026 — present
 lenses:
   - applied-ai
   - cx-customer-success
@@ -20,32 +20,31 @@ unverified: []
 
 ## Situation
 
-Every contact center vendor now ships an agentic product, and every one of them demos beautifully. A prospect asks a clean question, the agent resolves it, the room nods. Then it goes into production against a real support org — with a knowledge base that hasn't been pruned since 2019, four systems of record that disagree about who the customer is, and a queue where a third of the volume is people who already tried the bot and want a human.
+Every contact center vendor now ships an agentic product, and every one of them demos beautifully. A prospect asks a clean question, the agent resolves it, the room nods. Then it goes into production against a real support org — with a knowledge base nobody has pruned in years, several systems of record that disagree about who the customer is, and a queue where a good share of the volume is people who already tried the bot and want a human.
 
-That gap is where I work. Matrice delivers agentic contact center environments on Zoom and Dialpad, and the engagements that succeed are the ones where somebody takes the deployment seriously as an integration and change-management problem rather than a configuration exercise.
+That gap is where I work. The engagements that succeed are the ones where somebody treats the deployment as an integration and change-management problem rather than a configuration exercise.
 
 ## What I did
 
-**Designed the routing before the agent.** An agentic layer is a routing decision that happens earlier, not a replacement for routing. So the first artifact on every build is a flow diagram covering what the agent handles, what it must never attempt, and what the escalation path looks like when it's wrong. Containment targets get set against that diagram, not against a vendor slide.
+**Build the whole environment, not just the agent.** In Zoom I build contact center environments from the ground up — agentic voice and chat agents, quality management, workforce management, and AI expert assist. The agentic layer is one component in a system that also has to handle staffing, scoring, and supervisor tooling. Teams that buy only the agent discover the rest later, at a worse moment.
 
-**Built the integrations that make the agent useful.** An agent that can't see the order, the ticket history, or the entitlement is a search box with better manners. Most of the delivery work is API integration — connecting the agentic layer to the CRM and ticketing systems behind it, deciding what it's allowed to write back, and handling the cases where the source system is slow or down without stranding the customer.
+**Route on intent, then hand off to real systems.** The builds use intent-based skill paths that pass the conversation to connected tools and APIs. That's the difference between an agent that answers and an agent that resolves: without a path to the order, the ticket, or the entitlement, it's a search box with better manners.
 
-**Earned the Dialpad Agentic Delivery Partner certification.** It's a real credential with a real scope, and it means Dialpad's own delivery standards are the baseline I work to rather than something I assembled myself.
+**Design the guardrails alongside the workflow.** In Dialpad I build the agents themselves — the workflows, the skills, and the guardrails behind a natural, reliable experience. Human-in-the-loop escalation is specified as part of the design rather than bolted on when something goes wrong, because the moment a customer moves from the agent to a person is where the whole deployment gets judged.
 
-**Wrote the handoff.** The moment a customer moves from the agent to a person is where the whole thing is judged. Context has to travel — what was asked, what was attempted, what failed — or the customer repeats themselves and the deflection you counted becomes a worse experience than no agent at all. That transcript-and-context handoff gets specified and tested on every build.
+**Earned the Dialpad Contact Center & Agentic Delivery Partner certification.** A real credential with a real scope — it means Dialpad's own delivery standards are the baseline I work to rather than something I assembled myself.
 
-**Made the measurement honest.** Containment rate is the number everyone reports and the easiest one to flatter. A resolved conversation and an abandoned one both look like containment if you count them carelessly. I set up the reporting so that abandonment, repeat contacts within a window, and post-handoff resolution are visible next to it.
+**Advise the partner side too.** I work with reseller and partner teams on aligning CCaaS and UCaaS solutions to CX outcomes across RingCentral, Twilio, Zoom, and Dialpad, with enough landscape fluency across NICE, Five9, Genesys, and Cisco to say plainly when something else is the better fit. I also build the enablement content that gets partner teams certified and sales-ready — the same work I did at Cloud Elements and Twilio, pointed at a new problem.
 
 ## Outcome
 
-<!-- PLACEHOLDER — Justin: this section needs your real numbers. Deflection or
-     containment rate, handle-time change, time-to-deploy, or number of
-     environments delivered. One or two hard figures, with the client named
-     only where you have permission. Everything above this line is safe to
-     publish as written; this section is the one that has to be yours. -->
+<!-- PLACEHOLDER — Justin: this section needs a number or two. Environments
+     delivered, containment or deflection rate, handle-time change, or
+     time-to-deploy. Name clients only where you have permission. Everything
+     above this line is drawn from your resume and is safe to publish. -->
 
-Currently delivering agentic contact center environments on both Zoom and Dialpad, with the Dialpad Agentic Delivery Partner certification behind the delivery work.
+Currently delivering agentic contact center environments on both Zoom and Dialpad, with the Dialpad Contact Center & Agentic Delivery Partner certification behind the work.
 
-The through-line from more than a decade in this industry is that the technology was rarely the constraint. Adoption was. The same is true of agentic AI, just faster and more expensively — a badly deployed agent damages the customer relationship at machine speed. Knowing where the routing breaks and where the human has to catch it is the part that takes the background.
+The through-line from more than a decade in this industry is that the technology was rarely the constraint. Adoption was. The same is true of agentic AI, just faster and more expensively — a badly deployed agent damages the customer relationship at machine speed. Knowing where the routing breaks and where a human has to catch it is the part that takes the background.
 
 If you're evaluating an agentic build and want a second opinion on the deployment plan before you commit to it, [that's a conversation worth having](/contact).

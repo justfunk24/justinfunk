@@ -4,8 +4,8 @@ company: RingCentral
 metric:
   value: 108%
   label: of MBO, at 9.7 NPS
-summary: Structured discovery and adoption across UCaaS and Contact Center — and what it means that I went back twice.
-period: 2016 — 2025, across three tenures
+summary: Three roles across two stints — accounts, then enablement, then enterprise customer success — and one of the first RingCentral Contact Center deployments in North America.
+period: 2015 — 2020, across three roles
 lenses:
   - cx-customer-success
   - revenue-ownership
@@ -13,48 +13,38 @@ platforms:
   - ringcentral
 order: 3
 draft: true
-unverified:
-  - body
-  - period
+unverified: []
 ---
 
 <!-- ==========================================================================
-     DRAFT — written from the brief. The 40+ accounts, 108% MBO, 9.7 NPS, and
-     the Advisory Board election are yours. The method below is my
-     reconstruction; correct it, then set draft: false.
-
-     Note the period in the frontmatter spans all three tenures and is marked
-     unverified — fix the dates in career.json first and mirror them here.
+     DRAFT — every fact here comes from your resume. The connective prose is
+     my reconstruction; correct it, then set draft: false.
      ======================================================================= -->
 
 ## Situation
 
-A book of 40+ enterprise accounts across UCaaS and Contact Center, which is more than anyone can manage by responsiveness alone. At that size you either build a system for deciding where your attention goes, or the loudest customer gets it and the quiet one churns without warning.
+I was at RingCentral three separate times, and the shape of it matters more than the count.
 
-The harder half was Contact Center. A UCaaS rollout is mostly a deployment problem — the phones work or they don't. Contact Center adoption is an operations problem: queues, routing, reporting, and a supervisor population whose day gets harder before it gets easier. Customers who bought both usually succeeded at the first and stalled on the second.
+First as a Signature Accounts Manager, carrying 500+ accounts and about $1M ARR — high volume, full lifecycle, learning the product by being responsible for whether customers actually used it. Then as a Sales Enablement Manager, building the onboarding that got new sellers ready across every segment from SOHO to Enterprise. I left for Cloud Elements to build an enablement function from scratch, and came back in 2019 to run enterprise customer success.
+
+That last role is where the numbers are: 40+ enterprise accounts, $5M+ ARR, UCaaS and Contact Center.
 
 ## What I did
 
-**Made discovery structured instead of conversational.** The same questions, asked in the same order, of every account — what the queues actually look like, who touches reporting, which workflows have shadow processes around them. Consistency is what makes discovery comparable across a book that size. Without it you have forty anecdotes and no way to rank them.
+**Made discovery structured rather than conversational.** At forty-plus accounts you either build a system for deciding where attention goes, or the loudest customer gets it and the quiet one churns without warning. The same questions, in the same order, of every account — what the queues actually look like, who touches reporting, which workflows have shadow processes around them. Consistency is what makes discovery comparable across a book that size.
 
-**Watched for the stall, not the complaint.** The accounts that churn rarely complain first; they go quiet, and usage flattens. Adoption data was more predictive than sentiment, and it showed up earlier.
+**Sold Contact Center before it was the obvious motion.** One of the first RingCentral Contact Center deployments in North America, partnered with NICE, into a major enterprise account. Selling a contact center is not selling phones — the buying committee is different, the risk is operational rather than technical, and the questions are about queues and reporting rather than handsets.
 
-**Treated the supervisor as the real customer.** In Contact Center, the person whose job changes most is the supervisor, and their buy-in decides whether a deployment sticks. An executive sponsor signs; a supervisor determines whether anyone actually uses the reporting.
+**Owned the full lifecycle.** Implementations, migrations, and operational requests, as primary contact across IT, operations, and executive stakeholders. Ran adoption campaigns that aligned feature rollouts to actual customer workflows, and used usage analytics with Sales to surface expansion.
+
+**Watched for the stall, not the complaint.** Accounts that churn rarely complain first. They go quiet and usage flattens. Adoption data was more predictive than sentiment, and it showed up earlier.
 
 ## Outcome
 
-**108% of MBO** at a **9.7 NPS**, and election by peers to the Customer Success Advisory Board.
+**108% of MBO** at a **9.7 NPS**, across 40+ enterprise accounts and $5M+ ARR — and election by peers to RingCentral's Customer Success Advisory Board.
 
-<!-- PLACEHOLDER — one sentence on what the Advisory Board actually did and
-     what you pushed for on it. "Elected by peers" is good; "elected by peers
-     and argued successfully for X" is much better. -->
+<!-- PLACEHOLDER — Justin: one or two sentences on what the Advisory Board
+     actually did and what you pushed for on it. "Elected by peers" is good;
+     "elected by peers, and argued successfully for X" is much better. -->
 
-## Why three tenures
-
-A reader will notice that RingCentral appears three times on my timeline, so it's worth answering directly rather than letting it sit there.
-
-<!-- PLACEHOLDER — this section is the most valuable one on the page and only
-     you can write it. The honest version of why you left and why you went
-     back turns the obvious question into evidence of judgment. If one of the
-     departures was a layoff or a reorg, say so plainly; readers assume worse
-     when a gap goes unexplained. -->
+The pattern that stuck with me: the customers who struggled with Contact Center weren't struggling with the software. They were struggling because the supervisor's job changed and nobody had built that into the rollout. That's the same problem I now design around in agentic deployments, where the stakes are higher and the failure is faster.

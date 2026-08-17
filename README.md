@@ -105,20 +105,23 @@ Edit `src/content/recommendations.json`. **A quote only renders when `permission
 
 ## Things that still need you
 
-These are marked `PLACEHOLDER` in the files and will show up if you search the repo for that word.
+Career data, platforms, education, and certifications are now taken from your July 2026 resume — every `unverified` flag is cleared. What's left:
 
-- [ ] **Career dates and titles.** Every entry in `career.json` has an `unverified` list. The dates and job titles are my best inference from the brief and are almost certainly wrong in places — the _achievements_ are from your brief and should be right.
-- [ ] **The RingCentral tenures.** I guessed at the sequence and what each one covered. Two of the three are mostly placeholder.
-- [ ] **Case study copy — read these carefully.** All five are written. Four (Twilio, RingCentral, Cloud Elements, Northwestern Mutual) are **drafts I wrote from the brief, not from your account of the work.** The headline numbers are yours; the methods described between them are my reconstruction of how that result probably happened. Read each one the way a hostile interviewer would and cut anything you can't defend in a follow-up question. They're all `draft: true` and won't ship until you flip them.
-- [ ] **The "why three tenures" section** in the RingCentral study. It's the most valuable paragraph on that page and only you can write it — a reader will notice RingCentral three times and assume the worst if it goes unexplained.
-- [ ] **Matrice Outcome numbers.** Everything above that section is safe to publish as written; the Outcome is the part that has to be yours.
-- [ ] **Gong.** It's listed as hands-on with a placeholder description. Either fill it in or move it to familiarity.
-- [ ] **GitHub username and LinkedIn URL** in `src/lib/site.ts`.
-- [ ] **Resume PDF** at `public/justin-funk-resume.pdf`.
-- [ ] **Recommendation quotes** and written permission for each.
-- [ ] **Real projects.** The build log has this site and nothing else. Add entries as you build things — an empty-ish build log is more honest than a padded one.
-- [ ] **A headshot** and any Matrice build screenshots or architecture diagrams.
+- [ ] **Case study bodies.** All five have accurate frontmatter now. Matrice is publishable as written except its Outcome. The other four are `draft: true` — the facts come from your resume, but the connective prose between them is mine. Read each one and cut anything you can't defend, then flip the flag.
+- [ ] **Matrice Outcome numbers.** Environments delivered, containment or deflection rate, handle-time change, time-to-deploy. Everything above that section is safe to publish.
+- [ ] **The Advisory Board line** in the RingCentral study — one sentence on what the board did and what you pushed for.
+- [ ] **GitHub username** in `src/lib/site.ts`. It's the last link on the site pointing nowhere.
+- [ ] **Resume PDF** at `public/justin-funk-resume.pdf` — export the Word original and drop it in with that filename. There's a placeholder there now.
+- [ ] **Recommendation quotes** and written permission for each. Nothing renders until `permission: true`.
+- [ ] **Real projects.** The build log has this site and nothing else. Add entries as you build things.
+- [ ] **A headshot**, and any Matrice architecture diagrams you're allowed to publish.
 - [ ] **Scheduling link** — set `scheduling` in `src/lib/site.ts` and the option appears on `/contact` automatically.
+
+### Two things worth a decision
+
+**Employment gaps.** The timeline shows May 2014 – Feb 2015 (~9 months) and Dec 2018 – May 2019 (~5 months). The site doesn't explain them, which is fine — but a recruiter will ask, so have the answer ready.
+
+**Phone number.** Your resume lists one; the site doesn't. That's deliberate — a phone number on a public page gets scraped. Add it to `src/lib/site.ts` if you want it there anyway.
 
 ---
 

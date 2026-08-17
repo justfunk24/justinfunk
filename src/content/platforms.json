@@ -4,7 +4,7 @@
     "name": "Zoom",
     "tier": "hands-on",
     "category": "ccaas",
-    "detail": "Builds agentic contact center environments on Zoom Contact Center at Matrice — routing design, agent desktop configuration, and the API integrations behind them.",
+    "detail": "Builds full contact center environments from the ground up at Matrice — agentic voice and chat agents, quality management, workforce management, AI expert assist, and intent-based skill paths that hand off to connected tools and APIs.",
     "evidence": { "label": "Matrice case study", "href": "/work/matrice" },
     "unverified": []
   },
@@ -13,7 +13,7 @@
     "name": "Dialpad",
     "tier": "hands-on",
     "category": "ccaas",
-    "detail": "Dialpad Agentic Delivery Partner certified. Delivers agentic AI contact center builds, including the integration work that connects them to customer systems of record.",
+    "detail": "Dialpad Contact Center & Agentic Delivery Partner certified. Designs and builds agentic AI agents — the workflows, skills, and guardrails behind a reliable experience, including human-in-the-loop escalation.",
     "evidence": { "label": "Matrice case study", "href": "/work/matrice" },
     "unverified": []
   },
@@ -22,17 +22,8 @@
     "name": "RingCentral",
     "tier": "hands-on",
     "category": "ucaas",
-    "detail": "Three tenures across UCaaS and Contact Center. Ran structured discovery and adoption for 40+ enterprise accounts and was elected to the Customer Success Advisory Board.",
+    "detail": "Three roles across two stints — accounts, enablement, and enterprise customer success. Drove UCaaS and Contact Center adoption for 40+ enterprise accounts and sold one of the first RingCentral Contact Center deployments in North America.",
     "evidence": { "label": "RingCentral case study", "href": "/work/ringcentral" },
-    "unverified": []
-  },
-  {
-    "id": "twilio",
-    "name": "Twilio",
-    "tier": "hands-on",
-    "category": "ccaas",
-    "detail": "Owned sales enablement programs for 400+ sellers across Twilio's communications and contact center portfolio.",
-    "evidence": { "label": "Twilio case study", "href": "/work/twilio" },
     "unverified": []
   },
   {
@@ -40,7 +31,7 @@
     "name": "Highspot",
     "tier": "hands-on",
     "category": "enablement",
-    "detail": "Program owner at Twilio. Rebuilt content architecture and governance to the point that compensation support tickets fell 60% year over year.",
+    "detail": "Built and owned Twilio's most-used enablement resource. Rebuilt content architecture and governance to the point that compensation support tickets fell 60% year over year.",
     "evidence": { "label": "Twilio case study", "href": "/work/twilio" },
     "unverified": []
   },
@@ -49,7 +40,7 @@
     "name": "Salesforce",
     "tier": "hands-on",
     "category": "crm",
-    "detail": "Administered Salesforce as the revenue team's system of record at Cloud Elements — objects, reporting, and the process design around them.",
+    "detail": "Administered as the revenue team's system of record at Cloud Elements — built the Sales Ops ticketing process, plus dashboards and reports for pipeline visibility.",
     "evidence": { "label": "Cloud Elements case study", "href": "/work/cloud-elements" },
     "unverified": []
   },
@@ -58,7 +49,7 @@
     "name": "Docebo",
     "tier": "hands-on",
     "category": "enablement",
-    "detail": "Built the onboarding and certification program for Cloud Elements sellers in Docebo. Presented the program at Docebo Inspire 2019.",
+    "detail": "Built the sales onboarding and certification program at Cloud Elements on the enterprise LMS — e-learning, instructor-led training, role-plays, and 30/60/90 plans. Invited to speak at the Docebo user conference in Toronto on the strength of the build.",
     "evidence": { "label": "Cloud Elements case study", "href": "/work/cloud-elements" },
     "unverified": []
   },
@@ -67,15 +58,35 @@
     "name": "Gong",
     "tier": "hands-on",
     "category": "enablement",
-    "detail": "PLACEHOLDER — one or two sentences on what you actually did in Gong, and which role it was in. Keep it specific enough to survive a follow-up question.",
-    "unverified": ["detail", "evidence"]
+    "detail": "Owned as administrator at Cloud Elements as part of the sales tech stack, alongside Docebo, LinkedIn Learning, Confluence, and Atlassian.",
+    "evidence": { "label": "Cloud Elements case study", "href": "/work/cloud-elements" },
+    "unverified": []
+  },
+  {
+    "id": "atlassian",
+    "name": "Atlassian",
+    "tier": "hands-on",
+    "category": "enablement",
+    "detail": "Built the compensation knowledge wiki at Twilio that gave 400+ sellers a self-serve source of truth, and administered Confluence as part of the Cloud Elements sales tech stack.",
+    "evidence": { "label": "Twilio case study", "href": "/work/twilio" },
+    "unverified": []
+  },
+  {
+    "id": "twilio",
+    "name": "Twilio",
+    "tier": "familiarity",
+    "category": "ccaas",
+    "detail": "Spent two and a half years inside Twilio on the sales compensation side, so the portfolio and how it sells are familiar territory. Has not built on the platform itself.",
+    "evidence": { "label": "Twilio case study", "href": "/work/twilio" },
+    "unverified": []
   },
   {
     "id": "nice",
     "name": "NICE",
     "tier": "familiarity",
     "category": "ccaas",
-    "detail": "Can evaluate and position NICE CXone against the platforms he builds on, and holds a platform certification in progress. Has not delivered a NICE implementation.",
+    "detail": "Partnered with NICE on one of the first RingCentral Contact Center deployments in North America, and can position CXone against the platforms he builds on. Has not delivered a NICE implementation independently.",
+    "evidence": { "label": "RingCentral case study", "href": "/work/ringcentral" },
     "unverified": []
   },
   {
@@ -83,7 +94,7 @@
     "name": "Five9",
     "tier": "familiarity",
     "category": "ccaas",
-    "detail": "Knows the product's shape and where it wins in competitive evaluations. Has not built on it.",
+    "detail": "Advises partner teams on where Five9 fits in a competitive evaluation. Has not built on it.",
     "unverified": []
   },
   {

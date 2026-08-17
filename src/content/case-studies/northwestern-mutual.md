@@ -1,59 +1,57 @@
 ---
-title: An internal GPT knowledge system, and the ten people who had to trust it
-company: Northwestern Mutual
+title: The advisor who championed the AI rollout
+company: Northwestern Mutual / Inverness Wealth Management
 metric:
   value: '10'
-  label: person research team, onboarded to internal GPT
-summary: The first applied-AI credential, and a reminder that rollout in a regulated environment is an adoption problem long before it's a model problem.
-period: 2023 — 2024
+  label: person team onboarded to an internal GPT knowledge system
+summary: Running the AI rollout wasn't my job — I was carrying a book. I championed it anyway, which is a large part of why it stuck.
+period: 2023 — 2025
 lenses:
   - applied-ai
-  - cx-customer-success
-  - sales-enablement
+  - revenue-ownership
 platforms: []
 order: 5
 draft: true
-unverified:
-  - body
+unverified: []
 ---
 
 <!-- ==========================================================================
-     DRAFT — written from the brief. The team of ten, the internal GPT
-     knowledge system, and the compliance context are yours.
+     DRAFT — the facts in the frontmatter and the framing below come from your
+     resume. The connective prose is mine; correct it, then set draft: false.
 
-     IMPORTANT: the framing below is deliberately adoption and change
-     management, NOT model work — per the brief, and because claiming
-     otherwise is the one kind of overstatement this whole site exists to
-     avoid. Please don't let an edit drift it toward "built the model."
-     Someone who knows the difference will trust everything else on this site
-     more because you drew the line here.
+     IMPORTANT: this is adoption and change management by a practitioner, not
+     model work. Please don't let an edit drift it toward "built the system."
+     The reason this reads well is that you weren't the AI person — you were
+     the advisor who made the AI worth using, which is harder and rarer.
      ======================================================================= -->
 
 ## Situation
 
-A research team of ten, working across internal knowledge bases and compliance documentation at a financial services firm. The research itself was slow in the way it always is when the answer definitely exists somewhere and finding it takes an afternoon.
+I spent nearly three years as a Lead Financial Advisor — full-cycle, multi-stakeholder sales in a regulated, high-trust environment, carrying my own book and exceeding production targets by more than 2×.
 
-An internal GPT knowledge system was the obvious fix, and the obvious fix in a regulated environment is never as obvious as it looks. Compliance doesn't object to the technology. It objects — correctly — to a system that can produce a confident, plausible, wrong answer that someone then acts on, with no record of where it came from.
+Somewhere in there, the firm stood up an internal GPT-based knowledge system for researching across internal knowledge bases and compliance documentation. Rolling it out was nobody's full-time job. That is the normal condition of most enterprise AI deployments, and it's why so many quietly fail: the tool arrives, a few people try it, the enthusiasm decays, and a year later it renews on usage nobody examines.
 
 ## What I did
 
-**Treated it as a rollout, not a launch.** The distinction is whether anyone changes what they do. Handing ten researchers a new tool and an announcement gets you a spike in usage for a week and nothing after. The work was in the weeks after the spike.
+**Championed it from inside the work, not above it.** I was one of the people whose day it was supposed to improve, which meant I could tell the difference between a demo that impressed and a workflow that actually got faster. That's a credibility a program manager has to borrow.
 
-**Got compliance in early, as a designer rather than an approver.** Bringing them in at the end means asking permission for something already built. Bringing them in at the start means their constraints shape the thing, and by review time they're evaluating something they helped specify. It's slower at the front and dramatically faster at the end.
+**Drove adoption hands-on.** Enablement, use-case development, and peer coaching across a team of ten. The mechanics were unglamorous — sitting with people, finding the question they were actually trying to answer, and showing them where the tool was strong and where it would confidently mislead them.
 
-**Taught people where it fails.** The training that mattered wasn't how to prompt it. It was which questions it's genuinely good at, which ones it will answer confidently and wrongly, and how to check. A researcher who knows the failure modes uses the tool more, not less, because they know when they can trust it.
+**Used it daily myself.** Meeting-note capture, client follow-up synthesis, accelerated research. That's how you get workflow-level fluency rather than an opinion about the category.
 
-**Built the review path.** What gets checked, by whom, before anything derived from it goes anywhere. That's what made the whole thing defensible.
+<!-- PLACEHOLDER — Justin: if there's a compliance angle worth telling, it
+     belongs here. In a regulated firm the interesting constraint is usually
+     what you're allowed to do with the output, and how that shaped the
+     rollout. Only you know how that actually went. -->
 
 ## Outcome
 
-Adoption across the team of ten.
+Adoption across a team of ten, in an environment where a confident wrong answer carries real regulatory weight.
 
-<!-- PLACEHOLDER — your numbers. Research time saved per query, query volume
-     after the first month (the number that shows it stuck rather than
-     spiked), or how much faster compliance review got. Any one of these makes
-     this concrete. -->
+<!-- PLACEHOLDER — a number would strengthen this: research time saved, query
+     volume after the first month (the figure that shows it stuck rather than
+     spiked), or how many of the ten were still using it at the end. -->
 
-To be exact about what this was: I deployed and drove adoption of a system, and I did not build or fine-tune a model. That distinction matters and I'd rather state it than let it be inferred generously.
+To be exact about what this was: I drove adoption of a system. I did not build or fine-tune a model. That distinction matters, and I'd rather state it than let it be read generously.
 
-It's also the credential that made the rest of my work make sense. I'd spent a decade watching good contact center technology fail on adoption. This was the same failure mode with a faster clock — and the reason I now spend my time on agentic deployments where somebody has to care whether the thing actually gets used correctly.
+It's also the thing that made the rest of my career make sense. I'd spent a decade watching good contact center technology fail on adoption, and here was the same failure mode with a faster clock and a higher cost of being wrong. It's why I went from advising on this work to building it.

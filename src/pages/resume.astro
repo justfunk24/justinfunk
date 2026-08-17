@@ -122,39 +122,55 @@ const familiarity = platforms.filter((p) => p.data.tier === 'familiarity');
       </ul>
     </section>
 
+    <!-- Other systems -->
+    <section class="mt-14" aria-labelledby="systems">
+      <h2 id="systems" class="annotation border-line border-b pb-2">Systems &amp; tooling</h2>
+
+      <dl class="mt-6 grid gap-5 text-sm">
+        <div>
+          <dt class="font-display font-semibold">System administration</dt>
+          <dd class="text-ink-muted mt-1">{site.otherSystems.administration.join(' · ')}</dd>
+        </div>
+        <div>
+          <dt class="font-display font-semibold">Data &amp; project delivery</dt>
+          <dd class="text-ink-muted mt-1">{site.otherSystems.delivery.join(' · ')}</dd>
+        </div>
+        <div>
+          <dt class="font-display font-semibold">AI</dt>
+          <dd class="text-ink-muted mt-1">{site.otherSystems.ai.join(' · ')}</dd>
+        </div>
+      </dl>
+    </section>
+
     <!-- Education & certifications -->
     <section class="mt-14 grid gap-10 sm:grid-cols-2">
       <div>
         <h2 class="annotation border-line border-b pb-2">Education</h2>
         <ul class="mt-6 grid gap-4 text-sm">
-          <li>
-            <p class="font-display font-semibold">MBA</p>
-            <p class="text-ink-muted mt-0.5">
-              University of Denver — earned while working full time
-            </p>
-          </li>
-          <li>
-            <p class="font-display font-semibold">BA</p>
-            <p class="text-ink-muted mt-0.5">University of Oklahoma</p>
-          </li>
+          {
+            site.alumniOf.map((school) => (
+              <li>
+                <p class="font-display font-semibold">{school.credential}</p>
+                <p class="text-ink-muted mt-0.5">
+                  {school.name}, {school.year}
+                </p>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       <div>
         <h2 class="annotation border-line border-b pb-2">Certifications</h2>
         <ul class="mt-6 grid gap-4 text-sm">
-          <li>
-            <p class="font-display font-semibold">Dialpad Agentic Delivery Partner</p>
-            <p class="text-ink-muted mt-0.5">Certified</p>
-          </li>
-          <li>
-            <p class="font-display font-semibold">Python 3</p>
-            <p class="text-ink-muted mt-0.5">In progress</p>
-          </li>
-          <li>
-            <p class="font-display font-semibold">RingCentral &amp; NICE platform certifications</p>
-            <p class="text-ink-muted mt-0.5">In progress</p>
-          </li>
+          {
+            site.certifications.map((cert) => (
+              <li>
+                <p class="font-display font-semibold">{cert.name}</p>
+                <p class="text-ink-muted mt-0.5">{cert.status}</p>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </section>

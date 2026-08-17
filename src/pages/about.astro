@@ -23,10 +23,10 @@ const recommendations = await getRecommendations();
       <div class="max-w-measure">
         <div class="text-[1.0625rem] leading-relaxed">
           <p>
-            I've spent my career in and around contact centers — carrying a $30M+ portfolio at
-            AT&amp;T, running customer success across three tenures at RingCentral, building an
-            enablement function from scratch at Cloud Elements, and owning the Highspot program for
-            400+ sellers at Twilio.
+            I've spent more than a decade in and around cloud communications — carrying a $30M+
+            enterprise portfolio at AT&amp;T, three roles across two stints at RingCentral, building
+            an enablement and sales ops function from scratch at Cloud Elements, and owning the
+            compensation enablement program 400+ sellers relied on at Twilio.
           </p>
           <p class="mt-5">
             The pattern that shows up everywhere: the platform was almost never the problem. Someone
@@ -35,17 +35,19 @@ const recommendations = await getRecommendations();
             is unglamorous and it's most of the job.
           </p>
           <p class="mt-5">
-            At Northwestern Mutual I rolled out an internal GPT knowledge system to a research team
-            of ten, working across internal knowledge bases and compliance documentation. That was
-            the first time I saw the same adoption problem play out with AI, and it moved faster and
-            cost more when it went wrong.
+            Then I spent three years as a financial advisor, which sounds like a detour and wasn't.
+            It's where I championed the rollout of an internal GPT knowledge system to a team of ten
+            in a regulated environment — not as the AI person, but as one of the people whose day it
+            was supposed to improve. The same adoption problem I'd been watching for a decade, on a
+            much faster clock and with a much higher cost of being wrong.
           </p>
           <p class="mt-5">
-            Now at Matrice IT Advisors I build agentic contact center environments on Zoom and
-            Dialpad — routing design, API integrations, and the handoff between an agent and a
-            human, which is where these deployments are actually judged. I'm Dialpad Agentic
-            Delivery Partner certified, and I'm working through Python 3 certification because I'd
-            rather read the integration code than be briefed on it.
+            Now at Matrice IT Advisors I build full contact center environments on Zoom and Dialpad
+            — agentic voice and chat agents, quality and workforce management, intent-based skill
+            paths into connected APIs, and the guardrails and human handoff that decide whether any
+            of it survives production. I'm Dialpad Contact Center &amp; Agentic Delivery Partner
+            certified, and I'm working through Python 3 because I'd rather read the integration code
+            than be briefed on it.
           </p>
           <p class="mt-5">
             I'm in Denver. I earned my MBA at the University of Denver while working full time,
@@ -93,36 +95,37 @@ const recommendations = await getRecommendations();
         <div>
           <h2 class="annotation border-line border-b pb-2">Education</h2>
           <ul class="mt-4 grid gap-3 text-sm">
-            <li>
-              <p class="font-medium">MBA</p>
-              <p class="text-ink-muted">University of Denver</p>
-            </li>
-            <li>
-              <p class="font-medium">BA</p>
-              <p class="text-ink-muted">University of Oklahoma</p>
-            </li>
+            {
+              site.alumniOf.map((school) => (
+                <li>
+                  <p class="font-medium">{school.credential}</p>
+                  <p class="text-ink-muted">
+                    {school.name}, {school.year}
+                  </p>
+                </li>
+              ))
+            }
           </ul>
         </div>
 
         <div>
           <h2 class="annotation border-line border-b pb-2">Certifications</h2>
           <ul class="mt-4 grid gap-3 text-sm">
-            <li>
-              <p class="font-medium">Dialpad Agentic Delivery Partner</p>
-              <p class="text-copper text-xs">Certified</p>
-            </li>
-            <li>
-              <p class="font-medium">Python 3</p>
-              <p class="text-ink-muted text-xs">In progress</p>
-            </li>
-            <li>
-              <p class="font-medium">RingCentral platform</p>
-              <p class="text-ink-muted text-xs">In progress</p>
-            </li>
-            <li>
-              <p class="font-medium">NICE platform</p>
-              <p class="text-ink-muted text-xs">In progress</p>
-            </li>
+            {
+              site.certifications.map((cert) => (
+                <li>
+                  <p class="font-medium">{cert.name}</p>
+                  <p
+                    class:list={[
+                      'text-xs',
+                      cert.status === 'Certified' ? 'text-copper' : 'text-ink-muted',
+                    ]}
+                  >
+                    {cert.status}
+                  </p>
+                </li>
+              ))
+            }
           </ul>
         </div>
 
@@ -130,9 +133,10 @@ const recommendations = await getRecommendations();
           <h2 class="annotation border-line border-b pb-2">Speaking</h2>
           <ul class="mt-4 grid gap-3 text-sm">
             <li>
-              <p class="font-medium">Docebo Inspire 2019</p>
+              <p class="font-medium">Docebo user conference, Toronto</p>
               <p class="text-ink-muted">
-                On the seller onboarding and certification program built at Cloud Elements.
+                Invited to speak on the sales onboarding and certification program built at Cloud
+                Elements.
               </p>
             </li>
           </ul>

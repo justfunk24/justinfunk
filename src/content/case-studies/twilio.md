@@ -5,7 +5,7 @@ metric:
   value: 60%
   label: YoY reduction in compensation support tickets
 summary: Owning the Highspot program for a global sales org, and rebuilding it around what sellers were actually searching for instead of what the business wanted to publish.
-period: 2021 — 2023
+period: 2020 — 2023
 lenses:
   - sales-enablement
   - revenue-ownership
@@ -14,8 +14,7 @@ platforms:
   - twilio
 order: 2
 draft: true
-unverified:
-  - body
+unverified: []
 ---
 
 <!-- ==========================================================================

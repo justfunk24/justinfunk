@@ -5,7 +5,7 @@ metric:
   value: 0 → 1
   label: enablement function, built and run
 summary: No playbook existed, so the job was to write one — onboarding, certification, Salesforce administration, and the operating stack underneath a revenue team.
-period: 2018 — 2019
+period: 2017 — 2018
 lenses:
   - sales-enablement
   - revenue-ownership
@@ -14,8 +14,7 @@ platforms:
   - salesforce
 order: 4
 draft: true
-unverified:
-  - body
+unverified: []
 ---
 
 <!-- ==========================================================================

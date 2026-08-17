@@ -12,11 +12,15 @@ export const site = {
   url: 'https://justinfunk.ai',
 
   /** Used in the <title> suffix and the JSON-LD Person `jobTitle`. */
-  role: 'Enterprise CX, CCaaS & Applied AI',
+  role: 'Agentic AI & Enterprise CX',
+
+  /** The full positioning line, as it reads at the top of the resume. */
+  positioning:
+    'Agentic AI Deployment & Success · Enterprise CX, CCaaS & UCaaS · Contact Center AI Builder',
 
   /** The one-sentence version, used as the default meta description. */
   tagline:
-    'Enterprise CX and contact center practitioner in Denver, building agentic AI environments on Zoom and Dialpad.',
+    'Enterprise CX and cloud communications professional with 10+ years in UCaaS and CCaaS, now building and deploying agentic AI for the contact center on Zoom and Dialpad.',
 
   location: {
     city: 'Denver',
@@ -26,36 +30,63 @@ export const site = {
 
   email: 'justfunk24@gmail.com',
 
-  /** PLACEHOLDER — Justin: confirm these two. `sameAs` in the Person schema
-   *  points here, and it's one of the stronger signals for anyone (or
-   *  anything) trying to verify that this site is really yours. */
-  linkedin: 'https://www.linkedin.com/in/justinfunk',
+  linkedin: 'https://www.linkedin.com/in/funkjustin',
+
+  /** PLACEHOLDER — Justin: your GitHub username. This is the last link on the
+   *  site pointing nowhere. `sameAs` in the Person schema uses it, and it's a
+   *  strong signal for anyone verifying this site is really yours. */
   github: 'https://github.com/PLACEHOLDER',
 
   /** PLACEHOLDER — Calendly or similar. Leave null and /contact simply
    *  doesn't render the scheduling option. */
   scheduling: null as string | null,
 
-  /** Filename of the resume PDF in /public. Phase 1 keeps this
-   *  manually maintained; build-time generation is a Phase 3 item. */
+  /** Filename of the resume PDF in /public. Manually maintained — export from
+   *  the Word original and drop it in with this name. */
   resumePdf: '/justin-funk-resume.pdf',
 
   /** Feeds the JSON-LD `knowsAbout` array. These are the terms an AI screening
    *  tool is most likely to match against, so they're stated plainly. */
   knowsAbout: [
+    'Agentic AI Design & Deployment',
+    'Contact Center AI',
     'Customer Experience',
     'CCaaS',
     'UCaaS',
     'Contact Center Transformation',
+    'Customer Success & Adoption',
     'Sales Enablement',
-    'Applied AI',
-    'Agentic AI Deployment',
-    'Customer Success',
+    'Prompt Engineering',
   ],
 
   alumniOf: [
-    { name: 'University of Denver', credential: 'MBA' },
-    { name: 'University of Oklahoma', credential: 'BA' },
+    { name: 'University of Denver', credential: 'MBA', year: '2020' },
+    { name: 'University of Oklahoma', credential: 'BA, Communication', year: '2010' },
+  ],
+
+  /** Systems Justin has administered or delivered with that aren't CCaaS,
+   *  UCaaS, or enablement platforms — so they belong on the resume rather than
+   *  in the platform matrix, which is deliberately narrow. */
+  otherSystems: {
+    administration: [
+      'Salesforce',
+      'Gong',
+      'Highspot',
+      'Docebo',
+      'Atlassian',
+      'Airtable',
+      'Expandi',
+    ],
+    delivery: ['Tableau (dashboards & access management)', 'Asana (cross-functional coordination)'],
+    ai: ['Agentic AI development', 'LLM application', 'Prompt engineering', 'Python (in progress)'],
+  },
+
+  /** Certifications, in the order they should render. */
+  certifications: [
+    { name: 'Dialpad Contact Center & Agentic Delivery Partner', status: 'Certified' },
+    { name: 'Selling Through Curiosity', status: 'Certified' },
+    { name: 'Axiom Science of Consultative Selling', status: 'Certified' },
+    { name: 'Python 3, Codecademy', status: 'In progress' },
   ],
 } as const;
 
@@ -85,7 +116,11 @@ export const home = {
     { value: '400+', label: 'sellers enabled at Twilio', href: '/work/twilio' },
     { value: '60%', label: 'YoY support ticket reduction', href: '/work/twilio' },
     { value: '108%', label: 'MBO at 9.7 NPS, RingCentral', href: '/work/ringcentral' },
-    { value: 'Certified', label: 'Dialpad Agentic Delivery Partner', href: '/work/matrice' },
+    {
+      value: 'Certified',
+      label: 'Dialpad Contact Center & Agentic Delivery Partner',
+      href: '/work/matrice',
+    },
   ],
 
   /** The three routes. Each is a real destination in the nav. */
@@ -93,7 +128,7 @@ export const home = {
     {
       label: 'CX & Contact Center',
       href: '/work',
-      detail: 'Ten years, six companies, and the numbers behind each one.',
+      detail: 'A decade across six companies, and the numbers behind each one.',
     },
     {
       label: 'Applied AI',
