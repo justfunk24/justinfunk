@@ -1,0 +1,45 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Deploy previews and branch builds should not advertise themselves as the
+# canonical site. Astro reads SITE_URL in astro.config.mjs.
+[context.deploy-preview.environment]
+  SITE_URL = "${DEPLOY_PRIME_URL}"
+
+[context.branch-deploy.environment]
+  SITE_URL = "${DEPLOY_PRIME_URL}"
+
+# Keep non-production builds out of search results entirely.
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    X-Robots-Tag = "noindex"
+
+[[context.branch-deploy.headers]]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Opt out of Google's FLoC/Topics-style ad interest cohorts.
+    Permissions-Policy = "interest-cohort=(), geolocation=(), microphone=(), camera=()"
+
+# Self-hosted fonts are content-hashed by Astro's build, so they can be cached
+# indefinitely. Everything else is HTML and revalidates normally.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
