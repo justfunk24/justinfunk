@@ -32,10 +32,9 @@ export const site = {
 
   linkedin: 'https://www.linkedin.com/in/funkjustin',
 
-  /** PLACEHOLDER — Justin: your GitHub username. This is the last link on the
-   *  site pointing nowhere. `sameAs` in the Person schema uses it, and it's a
-   *  strong signal for anyone verifying this site is really yours. */
-  github: 'https://github.com/PLACEHOLDER',
+  /** Also feeds `sameAs` in the Person schema, which is how a search engine
+   *  or an AI tool confirms this site and that profile are the same person. */
+  github: 'https://github.com/justfunk24',
 
   /** PLACEHOLDER — Calendly or similar. Leave null and /contact simply
    *  doesn't render the scheduling option. */
