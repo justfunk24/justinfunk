@@ -3,14 +3,20 @@ import { site } from '../lib/site';
 
 const year = new Date().getFullYear();
 
-/** The footer CTA is persistent per the brief, but it steps aside on /contact
- *  itself — asking someone to go to the page they're already on is noise. */
-const onContactPage = Astro.url.pathname === '/contact';
+/** The footer CTA is persistent, but it steps aside on the two pages that
+ *  already close with one of their own:
+ *  - /contact — asking someone to go to the page they're already on is noise.
+ *  - / — the homepage has its own closing CTA, which is more specific (it
+ *    states what he's looking for and links the resume). Rendering both meant
+ *    two near-identical "if you're hiring" blocks stacked back to back.
+ *  Everywhere else, this is the only contact prompt on the page. */
+const path = Astro.url.pathname;
+const hasOwnCta = path === '/contact' || path === '/';
 ---
 
 <footer class="border-line mt-24 border-t">
   {
-    !onContactPage && (
+    !hasOwnCta && (
       <div class="border-line border-b">
         <div class="shell py-14 sm:py-20">
           <p class="annotation">Contact</p>

@@ -139,6 +139,20 @@ const schema = {
           Read the resume
         </a>
       </div>
+
+      {
+        /* The footer CTA is suppressed on this page, so the direct email lives
+          here instead — otherwise the homepage would be the only page without
+          a plain address on it. */
+      }
+      <p class="mt-5">
+        <a
+          href={`mailto:${site.email}`}
+          class="text-ink-muted hover:text-ink text-sm underline underline-offset-4 transition-colors"
+        >
+          Or email {site.email}
+        </a>
+      </p>
     </div>
   </section>
 </Base>

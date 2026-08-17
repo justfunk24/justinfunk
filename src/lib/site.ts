@@ -78,7 +78,7 @@ export const site = {
       'Expandi',
     ],
     delivery: ['Tableau (dashboards & access management)', 'Asana (cross-functional coordination)'],
-    ai: ['Agentic AI development', 'LLM application', 'Prompt engineering', 'Python (in progress)'],
+    ai: ['Agentic AI development', 'LLM application', 'Prompt engineering', 'Python'],
   },
 
   /** Certifications, in the order they should render. */
@@ -86,7 +86,7 @@ export const site = {
     { name: 'Dialpad Contact Center & Agentic Delivery Partner', status: 'Certified' },
     { name: 'Selling Through Curiosity', status: 'Certified' },
     { name: 'Axiom Science of Consultative Selling', status: 'Certified' },
-    { name: 'Python 3, Codecademy', status: 'In progress' },
+    { name: 'Python 3, Codecademy', status: 'Certified' },
   ],
 } as const;
 
