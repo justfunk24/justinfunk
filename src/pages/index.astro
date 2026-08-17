@@ -4,6 +4,7 @@ import RoutingHero from '../components/RoutingHero.astro';
 import ProofStrip from '../components/ProofStrip.astro';
 import { site } from '../lib/site';
 import { getCaseStudies, getProjects } from '../lib/content';
+import headshot from '../assets/justin-funk.jpeg';
 
 const caseStudies = await getCaseStudies();
 const projects = await getProjects();
@@ -58,6 +59,9 @@ const schema = {
   description: site.tagline,
   url: site.url,
   email: `mailto:${site.email}`,
+  // Absolute URL — schema.org consumers won't resolve a site-relative path,
+  // and this is the image a search result or an AI screening tool shows.
+  image: new URL(headshot.src, site.url).href,
   address: {
     '@type': 'PostalAddress',
     addressLocality: site.location.city,

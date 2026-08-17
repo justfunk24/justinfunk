@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro';
 import { site } from '../lib/site';
 import { getRecommendations } from '../lib/content';
 import Recommendation from '../components/Recommendation.astro';
+import { Image } from 'astro:assets';
+import headshot from '../assets/justin-funk.jpeg';
 
 // Only quotes with `permission: true` come back. All eight are Justin's own
 // LinkedIn recommendations, reproduced verbatim and published at his request.
@@ -84,6 +86,25 @@ const recommendations = await getRecommendations();
 
       <!-- Credentials sidebar -->
       <aside class="grid content-start gap-10">
+        {
+          /* Square crop of a portrait original, capped at the sidebar's own
+            18rem. Without the cap it fills the column when the grid collapses
+            below `lg`, and an 800px headshot dominates the page. Two widths so
+            retina gets a 2x file; `sizes` is fixed because the rendered box is
+            288px at every breakpoint. `eager` since it sits near the top of
+            the sidebar, where lazy-loading only buys a visible pop-in. */
+        }
+        <figure class="max-w-72">
+          <Image
+            src={headshot}
+            alt={`${site.name}, ${site.role}`}
+            widths={[288, 576]}
+            sizes="288px"
+            loading="eager"
+            class="border-line aspect-square w-full border object-cover object-top"
+          />
+        </figure>
+
         <div>
           <h2 class="annotation border-line border-b pb-2">Education</h2>
           <ul class="mt-4 grid gap-3 text-sm">
