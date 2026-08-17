@@ -1,0 +1,130 @@
+---
+import Base from '../layouts/Base.astro';
+
+/**
+ * 404, drawn in the site's own language: a call that didn't route.
+ *
+ * The job of this page is to not be a dead end. Someone who mistypes a URL or
+ * follows a stale link from LinkedIn should land somewhere that offers the
+ * three things they were most likely looking for, rather than a shrug.
+ */
+
+const destinations = [
+  {
+    href: '/work',
+    label: 'Work',
+    detail: 'Case studies, the career timeline, and the platform matrix.',
+  },
+  { href: '/projects', label: 'Projects', detail: 'The build log.' },
+  { href: '/writing', label: 'Writing', detail: 'Injection of Funk.' },
+];
+---
+
+<Base title="Not found" description="That page doesn't exist." noindex>
+  <div class="shell pt-16 pb-24 sm:pt-24">
+    <p class="annotation">404 · No route</p>
+
+    <h1 class="font-display mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">
+      That call didn't route anywhere
+    </h1>
+
+    <p class="text-ink-muted max-w-measure mt-5">
+      The page you asked for doesn't exist — either the link is stale or the URL has a typo in it.
+      Here's the queue.
+    </p>
+
+    <ul class="routes mt-12">
+      {
+        destinations.map((d) => (
+          <li class="route">
+            <a href={d.href} class="route-link group block">
+              <span class="font-display group-hover:text-signal text-lg font-semibold transition-colors">
+                {d.label}
+              </span>
+              <span class="text-ink-muted mt-1 block text-sm">{d.detail}</span>
+              <span class="annotation group-hover:text-signal mt-2 block transition-colors">
+                {d.href}
+                <span aria-hidden="true"> →</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="text-ink-muted mt-12 text-sm">
+      Landed here from a link that should work?
+      <a href="/contact" class="text-signal underline underline-offset-4">Tell me</a> and I'll fix it.
+    </p>
+  </div>
+</Base>
+
+<style>
+  /* Same trunk-and-branch treatment as the hero, at a smaller scale. Reusing
+     the language here is what keeps a 404 feeling like part of the site
+     rather than a default error screen. */
+  .routes {
+    position: relative;
+    padding-left: 1.75rem;
+    max-width: 34rem;
+  }
+
+  .routes::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--c-line);
+  }
+
+  .route {
+    position: relative;
+  }
+
+  .route::before {
+    content: '';
+    position: absolute;
+    left: -1.75rem;
+    top: 1.75rem;
+    width: 1.75rem;
+    height: 1px;
+    background: var(--c-line);
+  }
+
+  .route::after {
+    content: '';
+    position: absolute;
+    left: -2.0625rem;
+    top: 1.5rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border: 1px solid var(--c-line);
+    border-radius: 50%;
+    background: var(--c-ground);
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .route:hover::after,
+  .route:focus-within::after {
+    background: var(--c-signal);
+    border-color: var(--c-signal);
+  }
+
+  .route-link {
+    padding: 1.125rem 0 1.125rem 1.25rem;
+    border-bottom: 1px solid var(--c-line);
+    transition: background-color 160ms ease;
+  }
+
+  .route:last-child .route-link {
+    border-bottom: 0;
+  }
+
+  .route-link:hover {
+    background: var(--c-signal-wash);
+  }
+</style>

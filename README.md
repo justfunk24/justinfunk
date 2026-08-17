@@ -81,6 +81,8 @@ draft: false # set true to hide it
 
 **About `linkedinEmbedId`:** only use it when the LinkedIn thread itself is worth showing — a good comment section. It's the long number from the post's URL. The embed is lazy-loaded and the page reads fine without it.
 
+**The RSS feed** at `/writing/rss.xml` updates itself from published posts — drafts are excluded automatically. It's what makes "owned-first" real: people can follow the writing without going through a platform that can change its reach whenever it likes.
+
 ### Add a project
 
 Copy a file in `src/content/projects/`. Required frontmatter: `title`, `summary`, `problem`, `stack` (a list), `status` (`shipped`, `in-progress`, or `experiment`), and `date`. Optional: `repo`, `demo`, `cover` + `coverAlt`.
@@ -129,11 +131,15 @@ These are marked `PLACEHOLDER` in the files and will show up if you search the r
 
 - [ ] **Career dates and titles.** Every entry in `career.json` has an `unverified` list. The dates and job titles are my best inference from the brief and are almost certainly wrong in places — the _achievements_ are from your brief and should be right.
 - [ ] **The RingCentral tenures.** I guessed at the sequence and what each one covered. Two of the three are mostly placeholder.
-- [ ] **Case study copy.** Four of five are stubs marked `draft: true`. Matrice is written in full as the pattern — but its **Outcome** section still needs your real numbers.
+- [ ] **Case study copy — read these carefully.** All five are written. Four (Twilio, RingCentral, Cloud Elements, Northwestern Mutual) are **drafts I wrote from the brief, not from your account of the work.** The headline numbers are yours; the methods described between them are my reconstruction of how that result probably happened. Read each one the way a hostile interviewer would and cut anything you can't defend in a follow-up question. They're all `draft: true` and won't ship until you flip them.
+- [ ] **The "why three tenures" section** in the RingCentral study. It's the most valuable paragraph on that page and only you can write it — a reader will notice RingCentral three times and assume the worst if it goes unexplained.
+- [ ] **Matrice Outcome numbers.** Everything above that section is safe to publish as written; the Outcome is the part that has to be yours.
 - [ ] **Gong.** It's listed as hands-on with a placeholder description. Either fill it in or move it to familiarity.
 - [ ] **GitHub username and LinkedIn URL** in `src/lib/site.ts`.
 - [ ] **Resume PDF** at `public/justin-funk-resume.pdf`.
 - [ ] **Recommendation quotes** and written permission for each.
+- [ ] **Real projects.** The build log has this site plus two scaffolds (`agentic-routing-sandbox`, `python-cert-work`), both `draft: true`. Fill them in or delete them — an empty build log is more honest than a padded one. The Python one is worth actually building: "working through Python 3 certification" is a claim on `/about`, and a build log entry with real scripts in it is evidence.
+- [ ] **Writing.** Three example posts, all `draft: true`, written in your conventions so you can see the shape. Rewrite in your voice before publishing — these are templates, not your opinions.
 - [ ] **A headshot** and any Matrice build screenshots or architecture diagrams.
 - [ ] **Scheduling link** — set `scheduling` in `src/lib/site.ts` and the option appears on `/contact` automatically.
 
@@ -230,6 +236,8 @@ Lighthouse, run against a production build. All four categories, five pages:
 | `/resume`       | 100         | 100           | 100            | 100 |
 | `/contact`      | 100         | 100           | 100            | 100 |
 | `/about`        | 100         | 100           | 100            | 100 |
+| `/writing`      | 100         | 100           | 100            | 100 |
+| `/projects`     | 100         | 100           | 100            | 100 |
 
 Contrast ratios for every token pair in both themes are in [docs/contrast.md](docs/contrast.md) — all pass AA, tightest is 4.61:1.
 

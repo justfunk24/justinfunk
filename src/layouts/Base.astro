@@ -52,6 +52,14 @@ const fullTitle = Astro.url.pathname === '/' ? title : `${title} · ${site.name}
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
+    {/* Feed autodiscovery — lets a reader subscribe from any page. */}
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Injection of Funk"
+      href="/writing/rss.xml"
+    />
+
     {
       /* Only the two above-the-fold faces are preloaded. Mono loads normally —
         it's used for small labels where a swap is imperceptible. */

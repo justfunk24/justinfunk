@@ -142,7 +142,10 @@ const STATUS_LABELS: Record<string, string> = {
 
   if (filters && list) {
     const buttons = Array.from(filters.querySelectorAll<HTMLButtonElement>('.filter'));
-    const items = Array.from(list.querySelectorAll<HTMLElement>('li'));
+    // `:scope >` matters here. Each project row contains its own <li> stack
+    // tags, so a bare 'li' selector would match those too and hide them along
+    // with the rows.
+    const items = Array.from(list.querySelectorAll<HTMLElement>(':scope > li'));
     const status = filters.querySelector<HTMLElement>('[data-project-status]');
 
     filters.removeAttribute('hidden');
