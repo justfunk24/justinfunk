@@ -13,19 +13,27 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
   <div class="shell flex h-16 items-center justify-between gap-4">
     <a
       href="/"
-      class="font-display hover:text-signal text-[0.9375rem] font-semibold tracking-tight transition-colors"
+      class="font-display hover:text-signal shrink-0 text-[0.9375rem] font-semibold tracking-tight whitespace-nowrap transition-colors"
       aria-label={`${site.name} — home`}
     >
       {site.name}
     </a>
 
-    <nav aria-label="Main" class="flex items-center gap-1">
+    {
+      /* min-w-0 on both the nav and the list is what actually lets the
+        overflow-x container shrink. A flex item defaults to min-width:auto,
+        so without it the strip refuses to compress and widens the whole
+        document instead of scrolling — a horizontal scrollbar on the page. */
+    }
+    <nav aria-label="Main" class="flex min-w-0 items-center gap-1">
       {
         /* The full nav collapses to a horizontally scrollable strip rather than
           a hamburger. Five short items fit on a 375px screen, and a menu that
           costs a tap is worse than a menu you can see. */
       }
-      <ul class="-mx-1 flex scrollbar-none items-center gap-0.5 overflow-x-auto px-1 sm:gap-1">
+      <ul
+        class="nav-strip -mx-1 flex min-w-0 scrollbar-none items-center gap-0.5 overflow-x-auto px-1 sm:gap-1"
+      >
         {
           nav.map((item) => (
             <li>
@@ -42,15 +50,23 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
             </li>
           ))
         }
+        {
+          /* Contact lives inside the scrolling strip so it's present at every
+            width. The brief calls for a nav contact button on every page, and
+            hiding it below 640px would have quietly dropped it on phones. */
+        }
+        <li class="pl-1">
+          <a
+            href="/contact"
+            aria-current={isCurrent('/contact') ? 'page' : undefined}
+            class="border-line hover:border-signal hover:text-signal block border px-3 py-1.5 text-sm whitespace-nowrap transition-colors"
+          >
+            Contact
+          </a>
+        </li>
       </ul>
 
-      <div class="ml-1 flex items-center gap-2 sm:ml-2">
-        <a
-          href="/contact"
-          class="border-line hover:border-signal hover:text-signal hidden border px-3 py-1.5 text-sm transition-colors sm:block"
-        >
-          Contact
-        </a>
+      <div class="ml-1 flex shrink-0 items-center sm:ml-2">
         <ThemeToggle />
       </div>
     </nav>
@@ -64,5 +80,15 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
   }
   .scrollbar-none::-webkit-scrollbar {
     display: none;
+  }
+
+  /* On narrow screens the six nav items don't fit, so the strip scrolls. A
+     hidden scrollbar makes that undiscoverable, so fade the trailing edge —
+     the clipped item reads as "there's more this way" rather than as a bug.
+     The mask lifts once everything fits. */
+  @media (max-width: 47.99rem) {
+    .nav-strip {
+      mask-image: linear-gradient(to right, black calc(100% - 1.5rem), transparent 100%);
+    }
   }
 </style>

@@ -242,6 +242,15 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+
+      /* Delays must be zeroed too, not just durations. The hero's routes are
+         staggered with animation-delay, and fill-mode `both` holds an element
+         at its FROM frame (opacity 0) for the length of the delay. Collapsing
+         only the duration would leave them invisible for up to half a second
+         and then pop in — which is worse for a motion-sensitive reader than
+         the animation itself. */
+      animation-delay: 0ms !important;
+      transition-delay: 0ms !important;
     }
   }
 }

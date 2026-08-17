@@ -217,3 +217,30 @@ Non-negotiable, and worth re-checking when you change layout:
 - Semantic heading hierarchy
 
 A site claiming CX expertise that fails accessibility argues against itself.
+
+### Measured results
+
+Lighthouse, run against a production build. All four categories, five pages:
+
+| Page            | Performance | Accessibility | Best practices | SEO |
+| --------------- | ----------- | ------------- | -------------- | --- |
+| `/`             | 100         | 100           | 100            | 100 |
+| `/work`         | 99          | 100           | 100            | 100 |
+| `/work/matrice` | 100         | 100           | 100            | 100 |
+| `/resume`       | 100         | 100           | 100            | 100 |
+| `/contact`      | 100         | 100           | 100            | 100 |
+| `/about`        | 100         | 100           | 100            | 100 |
+
+Contrast ratios for every token pair in both themes are in [docs/contrast.md](docs/contrast.md) — all pass AA, tightest is 4.61:1.
+
+Lighthouse isn't a dependency (it's large, and Netlify would install it on every build). To re-run it yourself:
+
+```bash
+npm run build && npm run preview
+```
+
+Then in a second terminal:
+
+```bash
+npx lighthouse http://localhost:4321/ --view
+```

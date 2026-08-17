@@ -24,27 +24,15 @@ const points = home.proof.map((p) => ({
 <section class="border-line border-y" aria-labelledby="proof-heading">
   <h2 id="proof-heading" class="sr-only">Track record</h2>
 
-  <ul class="shell grid grid-cols-2 lg:grid-cols-5">
+  <ul class="shell proof">
     {
-      points.map((point, i) => {
+      points.map((point) => {
         // A single element type either way, so the markup stays identical
         // whether or not the destination exists.
         const Tag = point.href ? 'a' : 'div';
         return (
-          <li
-            class:list={[
-              'border-line -mx-px border-b py-6 pr-4 lg:border-b-0',
-              // Vertical rules between cells, but not before the first in a row.
-              i % 2 === 1 ? 'border-l pl-4' : '',
-              'lg:border-l lg:pl-4',
-              i === 0 ? 'lg:border-l-0 lg:pl-0' : '',
-              i >= points.length - 2 ? 'border-b-0' : '',
-            ]}
-          >
-            <Tag
-              href={point.href ?? undefined}
-              class:list={['group block h-full', point.href ? 'transition-colors' : '']}
-            >
+          <li class="proof-cell">
+            <Tag href={point.href ?? undefined} class="group block h-full">
               <span
                 class:list={[
                   'font-display block text-2xl font-semibold tracking-tight sm:text-3xl',
@@ -66,3 +54,74 @@ const points = home.proof.map((p) => ({
     }
   </ul>
 </section>
+
+<style>
+  /* Dividers are done with nth-child rules rather than conditional classes in
+     the markup. With five items in a two-column grid, "is this cell first in
+     its row?" changes at every breakpoint, and class logic that assumed pairs
+     left the odd fifth item with mismatched borders. CSS knows the grid; the
+     template doesn't have to. */
+
+  .proof {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .proof-cell {
+    padding-block: 1.25rem;
+  }
+
+  /* Single column: a rule between every pair of rows. */
+  .proof-cell + .proof-cell {
+    border-top: 1px solid var(--c-line);
+  }
+
+  @media (min-width: 30rem) {
+    .proof {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .proof-cell {
+      padding-block: 1.5rem;
+      padding-right: 1.25rem;
+    }
+
+    /* Vertical rule on every cell in the right-hand column. */
+    .proof-cell:nth-child(2n) {
+      border-left: 1px solid var(--c-line);
+      padding-left: 1.25rem;
+    }
+
+    /* Horizontal rule above everything except the first row. */
+    .proof-cell + .proof-cell {
+      border-top: 0;
+    }
+
+    .proof-cell:nth-child(n + 3) {
+      border-top: 1px solid var(--c-line);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .proof {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .proof-cell {
+      padding-block: 1.75rem;
+      padding-left: 1.25rem;
+      border-top: 0;
+      border-left: 1px solid var(--c-line);
+    }
+
+    /* Reset the two-column rules, then rebuild for five across. */
+    .proof-cell:nth-child(n + 3) {
+      border-top: 0;
+    }
+
+    .proof-cell:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+</style>

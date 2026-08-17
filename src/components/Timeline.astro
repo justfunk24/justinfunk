@@ -218,10 +218,13 @@ const isDev = import.meta.env.DEV;
     background: var(--c-line);
   }
 
+  /* The port sits centered on the TRUNK (-1.75rem), not on the node's left
+     edge. Unlike the hero's routes, these nodes have no left padding, so a
+     port at the edge would sit on top of the date text. */
   .node::after {
     content: '';
     position: absolute;
-    left: -0.3125rem;
+    left: -2.0625rem;
     top: 2rem;
     width: 0.625rem;
     height: 0.625rem;
