@@ -8,7 +8,6 @@ summary: No playbook existed, so the job was to write one — onboarding, certif
 period: 2017 — 2018
 lenses:
   - sales-enablement
-  - revenue-ownership
 platforms:
   - docebo
   - salesforce

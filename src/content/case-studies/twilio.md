@@ -8,7 +8,6 @@ summary: Owning the Highspot program for a global sales org, and rebuilding it a
 period: 2020 — 2023
 lenses:
   - sales-enablement
-  - revenue-ownership
 platforms:
   - highspot
   - twilio

@@ -46,6 +46,8 @@ const fullTitle = Astro.url.pathname === '/' ? title : `${title} · ${site.name}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {/* Apple devices ignore SVG icons; this is the home-screen fallback. */}
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />

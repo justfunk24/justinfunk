@@ -1,11 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Justin Funk">
-  <!-- A patched port: the site's signature mark, reduced to its smallest
-       legible form. Copper fill matches the "hands-on" state in the platform
-       matrix. Colors are hardcoded rather than themed because favicons render
-       outside the page's CSS. -->
-  <rect width="32" height="32" fill="#0B1017" />
-  <!-- Trunk and elbow, the routing-diagram language from the hero. -->
-  <path d="M7 6 v14 h8" stroke="#93A1B2" stroke-width="2" fill="none" stroke-linecap="square" />
-  <!-- The jack, seated. -->
-  <circle cx="21" cy="20" r="5" fill="#F0A94C" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Justin Funk">
+  <!-- JF ligature: a single vertical stroke serves as both the stem of the J
+       and the spine of the F. The F's two arms extend right from it; the J's
+       hook falls left off the bottom of the same stroke.
+
+       Geometry is balanced around the box rather than around the stem — the
+       arms reach 21 units right and the hook 13.5 left, so the stem sits left
+       of centre to compensate. Stroke weight is set so the counter between the
+       two arms stays open at 16px, which is the size that actually matters.
+
+       Colours are hardcoded rather than themed: a favicon renders outside the
+       page's CSS and cannot read its custom properties. -->
+  <rect width="64" height="64" rx="12" fill="#0B1017" />
+  <g stroke="#F0A94C" stroke-width="6.5" fill="none" stroke-linecap="square">
+    <path d="M29 15 V40 C29 48.5 22 51.5 15.5 47" />
+    <path d="M29 15 H50" />
+    <path d="M29 30.5 H44" />
+  </g>
 </svg>

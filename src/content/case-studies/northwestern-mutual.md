@@ -7,6 +7,7 @@ metric:
 summary: Running the AI rollout wasn't my job — I was carrying a book. I championed it anyway, which is a large part of why it stuck.
 period: 2023 — 2025
 lenses:
+  - customer-success
   - applied-ai
   - revenue-ownership
 platforms: []

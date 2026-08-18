@@ -6,13 +6,13 @@
     "location": "Atlanta, GA & Denver, CO",
     "start": "2012-10",
     "end": "2014-05",
-    "lenses": ["revenue-ownership", "cx-customer-success"],
+    "lenses": ["cx-contact-center", "customer-success", "revenue-ownership"],
     "summary": "Enterprise telecom and network solutions across a 30+ account portfolio. This is where the contact center and connectivity vocabulary became native rather than learned.",
     "highlights": [
       "Managed a 30+ enterprise account portfolio representing $30M+ ARR, exceeding growth, expansion, and new-logo quotas",
-      "Selected for AT&T's Business Sales Leadership Development Program — a rotational track admitting roughly 1 in 100 applicants — then placed on an accelerated path into enterprise account management",
+      "Selected for AT&T's Business Sales Leadership Development Program \u2014 a rotational track admitting roughly 1 in 100 applicants \u2014 then placed on an accelerated path into enterprise account management",
       "Built executive-level relationships driving renewals, retention, and expansion, including full new-logo responsibility during a partner's leave",
-      "Developed technical fluency across wireline infrastructure — MPLS VPN, T1/T3, hosted services, BVoIP"
+      "Developed technical fluency across wireline infrastructure \u2014 MPLS VPN, T1/T3, hosted services, BVoIP"
     ],
     "unverified": []
   },
@@ -23,7 +23,7 @@
     "location": "Denver, CO",
     "start": "2015-02",
     "end": "2016-02",
-    "lenses": ["revenue-ownership", "cx-customer-success"],
+    "lenses": ["cx-contact-center", "customer-success", "revenue-ownership"],
     "summary": "First RingCentral role. High-volume account management across the full customer relationship, from onboarding through expansion.",
     "highlights": [
       "Managed 500+ accounts totaling ~$1M ARR, exceeding 100% quota for both new bookings and recurring revenue retention across the full year",
@@ -41,7 +41,7 @@
     "start": "2016-02",
     "end": "2017-10",
     "lenses": ["sales-enablement"],
-    "summary": "Moved from carrying accounts to building the programs that got sellers ready to carry them — onboarding across every segment, SOHO through Enterprise.",
+    "summary": "Moved from carrying accounts to building the programs that got sellers ready to carry them \u2014 onboarding across every segment, SOHO through Enterprise.",
     "highlights": [
       "Designed and delivered enterprise and mass-market sales onboarding across all segments, improving new-hire ramp speed and quota readiness",
       "Administered multiple enablement and training systems, keeping content delivery, certification tracking, and field education running at scale",
@@ -58,10 +58,10 @@
     "location": "Denver, CO",
     "start": "2017-11",
     "end": "2018-12",
-    "lenses": ["sales-enablement", "revenue-ownership"],
+    "lenses": ["sales-enablement"],
     "summary": "Built the enablement and sales operations function from nothing in a hyper-growth environment. No playbook existed, so the job was to write one and then run it.",
     "highlights": [
-      "Built a full sales onboarding and certification program from scratch — e-learning, instructor-led training, role-plays, and 30/60/90 plans — on an enterprise LMS built for scalable delivery and tracking",
+      "Built a full sales onboarding and certification program from scratch \u2014 e-learning, instructor-led training, role-plays, and 30/60/90 plans \u2014 on an enterprise LMS built for scalable delivery and tracking",
       "Owned the sales tech stack as administrator across Gong, Docebo, LinkedIn Learning, Confluence, and Atlassian, introducing new tools through vendor research and negotiation",
       "Built a Sales Ops ticketing process in Salesforce, plus dashboards and reports for pipeline visibility and leadership decision-making",
       "Facilitated pipeline reviews and QBRs, and planned and executed the annual Sales Kickoff",
@@ -77,11 +77,11 @@
     "location": "Denver, CO",
     "start": "2019-05",
     "end": "2020-09",
-    "lenses": ["cx-customer-success", "revenue-ownership"],
-    "summary": "Returned to RingCentral to run enterprise customer success across UCaaS and Contact Center — the role where the adoption problem became the thing I understood best.",
+    "lenses": ["cx-contact-center", "customer-success", "revenue-ownership"],
+    "summary": "Returned to RingCentral to run enterprise customer success across UCaaS and Contact Center \u2014 the role where the adoption problem became the thing I understood best.",
     "highlights": [
       "Managed and grew 40+ enterprise accounts totaling $5M+ ARR, driving adoption across UCaaS and Contact Center to 108% MBO attainment and a 9.7 NPS",
-      "Sold one of the first RingCentral Contact Center deployments in North America — partnered with NICE — to a major enterprise account",
+      "Sold one of the first RingCentral Contact Center deployments in North America \u2014 partnered with NICE \u2014 to a major enterprise account",
       "Owned the full customer lifecycle as primary contact across IT, operations, and executive stakeholders: implementations, migrations, and operational requests",
       "Ran adoption campaigns aligning feature rollouts to customer workflows, and surfaced expansion through usage analytics in partnership with Sales",
       "Elected to RingCentral's Customer Success Advisory Board to represent the CS team and help shape the function"
@@ -96,8 +96,8 @@
     "location": "Denver, CO",
     "start": "2020-09",
     "end": "2023-02",
-    "lenses": ["sales-enablement", "revenue-ownership"],
-    "summary": "Owned enablement and communications for the sales compensation function — the resource 400+ sellers actually opened, rather than the one that existed.",
+    "lenses": ["sales-enablement"],
+    "summary": "Owned enablement and communications for the sales compensation function \u2014 the resource 400+ sellers actually opened, rather than the one that existed.",
     "highlights": [
       "Built and owned Twilio's most-used enablement resource on Highspot, plus a compensation knowledge wiki in Atlassian, giving 400+ sellers and managers a single self-serve source of truth",
       "Cut compensation-related support tickets 60% year over year",
@@ -116,13 +116,13 @@
     "location": "Denver, CO",
     "start": "2023-03",
     "end": "2025-12",
-    "lenses": ["applied-ai", "revenue-ownership"],
-    "summary": "Full-cycle advisory work in a regulated, high-trust environment — and the place where I first championed an AI rollout rather than just used one.",
+    "lenses": ["customer-success", "applied-ai", "revenue-ownership"],
+    "summary": "Full-cycle advisory work in a regulated, high-trust environment \u2014 and the place where I first championed an AI rollout rather than just used one.",
     "highlights": [
       "Championed the rollout of an internal GPT-based knowledge system, enabling a team of 10 to research across internal knowledge bases and compliance documentation",
-      "Drove adoption through hands-on enablement, use-case development, and peer coaching — the part that decided whether it stuck",
+      "Drove adoption through hands-on enablement, use-case development, and peer coaching \u2014 the part that decided whether it stuck",
       "Applied LLMs daily for meeting-note capture, client follow-up synthesis, and accelerated research, building workflow-level fluency with the tools",
-      "Ran full-cycle, multi-stakeholder solution sales in a regulated environment, acquiring and expanding $5M+ in assets and exceeding production targets by more than 2×",
+      "Ran full-cycle, multi-stakeholder solution sales in a regulated environment, acquiring and expanding $5M+ in assets and exceeding production targets by more than 2\u00d7",
       "Presented complex recommendations to executive stakeholders, translating technical detail into clear business outcomes across long, multi-decision-maker cycles"
     ],
     "caseStudy": "northwestern-mutual",
@@ -135,11 +135,11 @@
     "location": "Denver, CO",
     "start": "2026-01",
     "end": null,
-    "lenses": ["applied-ai", "cx-customer-success", "revenue-ownership"],
-    "summary": "Building full contact center environments and the agentic AI inside them, on Zoom and Dialpad — the deployment work, not the demo.",
+    "lenses": ["cx-contact-center", "customer-success", "applied-ai", "revenue-ownership"],
+    "summary": "Building full contact center environments and the agentic AI inside them, on Zoom and Dialpad \u2014 the deployment work, not the demo.",
     "highlights": [
       "Builds full contact center environments in Zoom from the ground up: agentic voice and chat agents, quality management, workforce management, and AI expert assist, with intent-based skill paths that hand off to connected tools and APIs",
-      "Designs and builds agentic AI agents in Dialpad — the workflows, skills, and guardrails behind a natural, reliable experience with human-in-the-loop escalation",
+      "Designs and builds agentic AI agents in Dialpad \u2014 the workflows, skills, and guardrails behind a natural, reliable experience with human-in-the-loop escalation",
       "Advises reseller and partner teams on aligning CCaaS and UCaaS solutions to CX outcomes across RingCentral, Twilio, Zoom, and Dialpad, with landscape fluency across NICE, Five9, Genesys, and Cisco",
       "Builds enablement content that accelerates partner certification and sales readiness",
       "Publishes CX and AI writing on LinkedIn several times weekly"

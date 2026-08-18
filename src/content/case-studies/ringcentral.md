@@ -7,7 +7,8 @@ metric:
 summary: Three roles across two stints — accounts, then enablement, then enterprise customer success — and one of the first RingCentral Contact Center deployments in North America.
 period: 2015 — 2020, across three roles
 lenses:
-  - cx-customer-success
+  - cx-contact-center
+  - customer-success
   - revenue-ownership
 platforms:
   - ringcentral

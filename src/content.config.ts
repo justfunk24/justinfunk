@@ -17,18 +17,20 @@ import { z } from 'astro/zod';
    content directly a reasonable thing to do.
    ========================================================================= */
 
-/** The four lenses a reader might evaluate Justin through. A role in any one
+/** The lenses a reader might evaluate Justin through. A role in any one
  *  of these should be able to see its own thread through his history, which is
  *  what the /work timeline filter does. Every career entry tags at least one. */
 export const LENSES = [
-  'cx-customer-success',
+  'cx-contact-center',
+  'customer-success',
   'sales-enablement',
   'applied-ai',
   'revenue-ownership',
 ] as const;
 
 export const LENS_LABELS: Record<(typeof LENSES)[number], string> = {
-  'cx-customer-success': 'CX & Customer Success',
+  'cx-contact-center': 'CX & Contact Center',
+  'customer-success': 'Customer Success',
   'sales-enablement': 'Sales Enablement',
   'applied-ai': 'Applied AI',
   'revenue-ownership': 'Revenue Ownership',

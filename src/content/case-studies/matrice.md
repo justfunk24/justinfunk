@@ -7,8 +7,9 @@ metric:
 summary: Full contact center environments on Zoom and Dialpad — agentic voice and chat agents, quality and workforce management, and the guardrails that decide whether any of it holds up in production.
 period: 2026 — present
 lenses:
+  - cx-contact-center
+  - customer-success
   - applied-ai
-  - cx-customer-success
   - revenue-ownership
 platforms:
   - zoom
