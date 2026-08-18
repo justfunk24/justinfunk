@@ -9,13 +9,35 @@ import headshot from '../assets/justin-funk.jpeg';
 const caseStudies = await getCaseStudies();
 const projects = await getProjects();
 
-// Each lane surfaces its single strongest or most recent item, so the newest
-// thing in each is one click from home rather than two.
+/* The three lanes.
+
+   Each carries its own badge and link label rather than a shared one. That
+   sounds fussy but it is the difference between a label that is true and one
+   that is merely plausible: case studies are ordered by editorial priority,
+   projects by date, and About has no feed at all — so a blanket "Most recent"
+   would have been accurate for exactly one of the three.
+
+   The link label names its destination ("All case studies") instead of a bare
+   "All", because the arrow sits at the right edge of a column and a reader
+   could reasonably read it as pointing at the next column rather than into
+   this one. */
+
+// The newest credential, which is what "recent" means for the About lane.
+// Certifications without a recorded date are skipped rather than assumed.
+const datedCerts = site.certifications.filter((c) => c.earned !== null);
+const latestCert = [...datedCerts].sort((a, b) =>
+  (b.earned ?? '').localeCompare(a.earned ?? ''),
+)[0];
+
 const lanes = [
   {
     label: 'Work',
     href: '/work',
+    linkLabel: 'All case studies',
     blurb: 'Case studies with the metric as the headline.',
+    // getCaseStudies sorts by `order`, so this is the featured study, not the
+    // newest one. Labelled for what it is.
+    badge: 'Featured',
     item: caseStudies[0]
       ? {
           title: caseStudies[0].data.title,
@@ -27,7 +49,10 @@ const lanes = [
   {
     label: 'Projects',
     href: '/projects',
+    linkLabel: 'All projects',
     blurb: 'The build log, including work still in progress.',
+    // getProjects sorts newest first, so this badge is literally true.
+    badge: 'Most recent',
     item: projects[0]
       ? {
           title: projects[0].data.title,
@@ -39,15 +64,12 @@ const lanes = [
   {
     label: 'About',
     href: '/about',
+    linkLabel: 'Full background',
     blurb: 'Background, credentials, and certifications.',
-    item: {
-      title: 'A decade of watching good technology fail for non-technical reasons',
-      href: '/about',
-      meta: 'MBA, University of Denver',
-    },
+    badge: 'Latest certification',
+    item: latestCert ? { title: latestCert.name, href: '/about', meta: latestCert.status } : null,
   },
 ];
-
 /* JSON-LD Person. This is the block an AI screening tool or a chatbot reads
    when someone asks about Justin, so it states the same things the page does
    rather than a marketing version of them. */
@@ -92,7 +114,7 @@ const schema = {
             <div class="flex items-baseline justify-between gap-3">
               <h3 class="font-display text-lg font-semibold">{lane.label}</h3>
               <a href={lane.href} class="annotation hover:text-signal transition-colors">
-                All →
+                {lane.linkLabel} →
               </a>
             </div>
             <p class="text-ink-muted mt-2 text-sm">{lane.blurb}</p>
@@ -102,7 +124,7 @@ const schema = {
                 href={lane.item.href}
                 class="border-line hover:border-signal hover:bg-signal-wash group mt-5 block flex-1 border p-4 transition-colors"
               >
-                <span class="annotation">Most recent</span>
+                <span class="annotation">{lane.badge}</span>
                 <span class="font-display group-hover:text-signal mt-2 block font-semibold transition-colors">
                   {lane.item.title}
                 </span>

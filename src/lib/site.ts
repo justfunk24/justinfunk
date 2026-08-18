@@ -80,12 +80,28 @@ export const site = {
     ai: ['Agentic AI development', 'LLM application', 'Prompt engineering', 'Python'],
   },
 
-  /** Certifications, in the order they should render. */
+  /** Certifications, in the order they should render — most significant first,
+   *  which is not the same as most recent.
+   *
+   *  `earned` is "YYYY-MM" and drives the "latest certification" card on the
+   *  homepage. It is deliberately separate from array position so the sidebar
+   *  can lead with the credential that matters most while the homepage shows
+   *  the newest one. null means the date isn't recorded yet — those are simply
+   *  skipped when working out which is latest, so filling them in later can
+   *  only improve the result, never break it. */
   certifications: [
-    { name: 'Dialpad Contact Center & Agentic Delivery Partner', status: 'Certified' },
-    { name: 'Selling Through Curiosity', status: 'Certified' },
-    { name: 'Axiom Science of Consultative Selling', status: 'Certified' },
-    { name: 'Python 3, Codecademy', status: 'Certified' },
+    {
+      name: 'Dialpad Contact Center & Agentic Delivery Partner',
+      status: 'Certified',
+      earned: null as string | null,
+    },
+    { name: 'Selling Through Curiosity', status: 'Certified', earned: null as string | null },
+    {
+      name: 'Axiom Science of Consultative Selling',
+      status: 'Certified',
+      earned: null as string | null,
+    },
+    { name: 'Python 3, Codecademy', status: 'Certified', earned: '2026-08' as string | null },
   ],
 } as const;
 
