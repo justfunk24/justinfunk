@@ -43,3 +43,22 @@
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# ----------------------------------------------------------------------------
+# Canonical host
+#
+# The site is reachable at its Netlify subdomain as well as justinfunk.ai, and
+# a second address that serves identical content is a liability: it can get
+# indexed, shared, or linked instead of the real one. Every page already
+# declares a canonical URL pointing at justinfunk.ai, which handles search
+# engines — this handles humans, by sending them to the real address before
+# they ever see a page.
+#
+# `force = true` is required: without it a matching static file wins and the
+# redirect never fires.
+# ----------------------------------------------------------------------------
+[[redirects]]
+  from = "https://splendorous-fairy-7e687d.netlify.app/*"
+  to = "https://justinfunk.ai/:splat"
+  status = 301
+  force = true
