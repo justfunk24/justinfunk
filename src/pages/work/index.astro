@@ -2,9 +2,48 @@
 import Base from '../../layouts/Base.astro';
 import Timeline from '../../components/Timeline.astro';
 import PatchPanel from '../../components/PatchPanel.astro';
-import { getCaseStudies } from '../../lib/content';
+import { getCaseStudies, getCareer } from '../../lib/content';
 
 const caseStudies = await getCaseStudies();
+const career = await getCareer();
+
+/* The intro sentence counts companies, roles, and return stints. These were
+   hardcoded and went stale: it claimed RingCentral three times, when three
+   RingCentral *roles* were actually two stints with Cloud Elements between
+   them. Deriving them means adding or moving a role can't leave the prose
+   quietly wrong.
+
+   A stint is a run of consecutive roles at one company. Walking the timeline
+   in order, a new stint begins whenever the previous role was somewhere else —
+   so two roles back to back at one employer count once, and a return after
+   time elsewhere counts again. */
+const chronological = [...career].sort((a, b) => a.data.start.localeCompare(b.data.start));
+
+const stints = new Map<string, number>();
+chronological.forEach((job, i) => {
+  const previous = chronological[i - 1];
+  if (!previous || previous.data.company !== job.data.company) {
+    stints.set(job.data.company, (stints.get(job.data.company) ?? 0) + 1);
+  }
+});
+
+const companyCount = stints.size;
+
+// The employer he returned to. Named explicitly because a repeat is the
+// interesting part of a timeline, not a thing to gloss over.
+const [returnedTo, returnCount] = [...stints.entries()].sort((a, b) => b[1] - a[1])[0];
+const rolesThere = career.filter((j) => j.data.company === returnedTo).length;
+
+/* Spelled out rather than rendered as digits: this is a sentence, and "6
+   companies" reads like a spreadsheet. Both lists fall back to the digit above
+   the range they cover, which no plausible career will reach. */
+const spell = (n: number) =>
+  ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'][n] ??
+  String(n);
+
+const times = (n: number) => ['never', 'once', 'twice', `${spell(n)} times`][n] ?? `${n} times`;
+
+const capitalise = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 ---
 
 <Base
@@ -17,9 +56,10 @@ const caseStudies = await getCaseStudies();
       The record, and the receipts behind it
     </h1>
     <p class="text-ink-muted max-w-measure mt-5">
-      Six companies across a decade, with RingCentral three times. Below: the timeline you can
-      refilter for the role you're hiring, the platform matrix that says plainly what I've built on,
-      and the case studies that show the work.
+      {capitalise(spell(companyCount))} companies across a decade, including {returnedTo}{' '}
+      {times(returnCount)} across {spell(rolesThere)} roles. Below: the timeline you can refilter for
+      the role you're hiring, the platform matrix that says plainly what I've built on, and the case studies
+      that show the work.
     </p>
   </div>
 
