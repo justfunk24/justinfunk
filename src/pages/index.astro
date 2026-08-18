@@ -107,7 +107,13 @@ const schema = {
   <section class="shell py-16 sm:py-24" aria-labelledby="lanes-heading">
     <h2 id="lanes-heading" class="sr-only">Explore</h2>
 
-    <div class="grid gap-px sm:grid-cols-3">
+    {
+      /* A real gutter, not the hairline gap-px this had: each lane ends in a
+          right-aligned link, and with columns effectively touching, that link
+          sat directly against the next lane's heading and read as pointing at
+          it. gap-y keeps the stacked mobile layout breathing too. */
+    }
+    <div class="grid gap-x-10 gap-y-12 sm:grid-cols-3">
       {
         lanes.map((lane) => (
           <div class="flex flex-col">

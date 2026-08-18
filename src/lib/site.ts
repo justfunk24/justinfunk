@@ -83,7 +83,9 @@ export const site = {
   /** Certifications, in the order they should render — most significant first,
    *  which is not the same as most recent.
    *
-   *  `earned` is "YYYY-MM" and drives the "latest certification" card on the
+   *  `earned` is "YYYY-MM", or bare "YYYY" where the month isn't known — both
+   *  sort correctly against each other as plain strings. It drives the "latest
+   *  certification" card on the
    *  homepage. It is deliberately separate from array position so the sidebar
    *  can lead with the credential that matters most while the homepage shows
    *  the newest one. null means the date isn't recorded yet — those are simply
@@ -93,13 +95,15 @@ export const site = {
     {
       name: 'Dialpad Contact Center & Agentic Delivery Partner',
       status: 'Certified',
-      earned: null as string | null,
+      earned: '2026-07' as string | null,
     },
-    { name: 'Selling Through Curiosity', status: 'Certified', earned: null as string | null },
+    { name: 'Selling Through Curiosity', status: 'Certified', earned: '2017-04' as string | null },
     {
       name: 'Axiom Science of Consultative Selling',
       status: 'Certified',
-      earned: null as string | null,
+      // Year only — the month isn't recorded, and asserting one would be a
+      // precision the source doesn't have.
+      earned: '2013' as string | null,
     },
     { name: 'Python 3, Codecademy', status: 'Certified', earned: '2026-08' as string | null },
   ],
