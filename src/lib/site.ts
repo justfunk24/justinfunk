@@ -124,15 +124,13 @@ export const site = {
    -------------------------------------------------------------------------*/
 
 export const home = {
-  /** The line under the name and role on the homepage.
+  /** The line under the name and role on the homepage. Justin's own wording.
    *
-   *  The role line above it already says "Agentic AI & Enterprise CX", so this
-   *  has to earn its place by adding what a job title can't: the combination
-   *  of a decade of CX domain depth and the hands-on skill to build the AI now
-   *  reshaping that field. Naming the platforms keeps it checkable — the
-   *  platform matrix backs it up. */
+   *  The role line above already says "Agentic AI & Enterprise CX", so this
+   *  earns its place by adding what a job title can't: that the AI work is a
+   *  new layer on the same domain, not a career change. */
   thesis:
-    'A decade in enterprise CX, now building the AI reshaping it — agentic contact center environments on Zoom and Dialpad.',
+    'Ten years in enterprise CX and UCaaS, now hands-on building contact center and agentic AI. Same domain, new layer.',
 
   /** The proof strip. Five hard numbers, each pointing at the thing that
    *  substantiates it. A number without an `href` renders as plain text —

@@ -6,11 +6,7 @@
     "location": "Atlanta, GA & Denver, CO",
     "start": "2012-10",
     "end": "2014-05",
-    "lenses": [
-      "cx-contact-center",
-      "customer-success",
-      "revenue-ownership"
-    ],
+    "lenses": ["cx-contact-center", "customer-success", "revenue-ownership"],
     "summary": "Enterprise telecom and network solutions across a 30+ account portfolio. This is where the contact center and connectivity vocabulary became native rather than learned.",
     "highlights": [
       "Managed a 30+ enterprise account portfolio representing $30M+ ARR, exceeding growth, expansion, and new-logo quotas",
@@ -27,11 +23,7 @@
     "location": "Denver, CO",
     "start": "2015-02",
     "end": "2016-02",
-    "lenses": [
-      "cx-contact-center",
-      "customer-success",
-      "revenue-ownership"
-    ],
+    "lenses": ["cx-contact-center", "customer-success", "revenue-ownership"],
     "summary": "First RingCentral role. High-volume account management across the full customer relationship, from onboarding through expansion.",
     "highlights": [
       "Managed 500+ accounts totaling ~$1M ARR, exceeding 100% quota for both new bookings and recurring revenue retention across the full year",
@@ -48,9 +40,7 @@
     "location": "Denver, CO",
     "start": "2016-02",
     "end": "2017-10",
-    "lenses": [
-      "sales-enablement"
-    ],
+    "lenses": ["sales-enablement"],
     "summary": "Moved from carrying accounts to building the programs that got sellers ready to carry them \u2014 onboarding across every segment, SOHO through Enterprise.",
     "highlights": [
       "Designed and delivered enterprise and mass-market sales onboarding across all segments, improving new-hire ramp speed and quota readiness",
@@ -68,9 +58,7 @@
     "location": "Denver, CO",
     "start": "2017-11",
     "end": "2018-12",
-    "lenses": [
-      "sales-enablement"
-    ],
+    "lenses": ["sales-enablement"],
     "summary": "Built the enablement and sales operations function from nothing in a hyper-growth environment. No playbook existed, so the job was to write one and then run it.",
     "highlights": [
       "Built a full sales onboarding and certification program from scratch \u2014 e-learning, instructor-led training, role-plays, and 30/60/90 plans \u2014 on an enterprise LMS built for scalable delivery and tracking",
@@ -89,11 +77,7 @@
     "location": "Denver, CO",
     "start": "2019-05",
     "end": "2020-09",
-    "lenses": [
-      "cx-contact-center",
-      "customer-success",
-      "revenue-ownership"
-    ],
+    "lenses": ["cx-contact-center", "customer-success", "revenue-ownership"],
     "summary": "Returned to RingCentral to run enterprise customer success across UCaaS and Contact Center \u2014 the role where the adoption problem became the thing I understood best.",
     "highlights": [
       "Managed and grew 40+ enterprise accounts totaling $5M+ ARR, driving adoption across UCaaS and Contact Center to 108% MBO attainment and a 9.7 NPS",
@@ -112,9 +96,7 @@
     "location": "Denver, CO",
     "start": "2020-09",
     "end": "2023-02",
-    "lenses": [
-      "sales-enablement"
-    ],
+    "lenses": ["sales-enablement"],
     "summary": "Owned enablement and communications for the sales compensation function \u2014 the resource 400+ sellers actually opened, rather than the one that existed.",
     "highlights": [
       "Built and owned Twilio's most-used enablement resource on Highspot, plus a compensation knowledge wiki in Atlassian, giving 400+ sellers and managers a single self-serve source of truth",
@@ -134,11 +116,7 @@
     "location": "Denver, CO",
     "start": "2023-03",
     "end": "2025-12",
-    "lenses": [
-      "customer-success",
-      "applied-ai",
-      "revenue-ownership"
-    ],
+    "lenses": ["customer-success", "applied-ai", "revenue-ownership"],
     "summary": "Full-cycle advisory work in a regulated, high-trust environment \u2014 and the place where I first championed an AI rollout rather than just used one.",
     "highlights": [
       "Championed the rollout of an internal GPT-based knowledge system, enabling a team of 10 to research across internal knowledge bases and compliance documentation",
@@ -157,12 +135,7 @@
     "location": "Denver, CO",
     "start": "2026-01",
     "end": null,
-    "lenses": [
-      "cx-contact-center",
-      "customer-success",
-      "applied-ai",
-      "revenue-ownership"
-    ],
+    "lenses": ["cx-contact-center", "customer-success", "applied-ai", "revenue-ownership"],
     "summary": "Building full contact center environments and the agentic AI inside them, on Zoom and Dialpad \u2014 the deployment work, not the demo.",
     "highlights": [
       "Builds full contact center environments in Zoom from the ground up: agentic voice and chat agents, quality management, workforce management, and AI expert assist, with intent-based skill paths that hand off to connected tools and APIs",
