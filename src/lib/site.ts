@@ -124,10 +124,15 @@ export const site = {
    -------------------------------------------------------------------------*/
 
 export const home = {
-  /** The thesis. Not a tagline — a claim the rest of the page has to support.
-   *  Opens with an opinion rather than a title, which is how Justin writes. */
+  /** The line under the name and role on the homepage.
+   *
+   *  The role line above it already says "Agentic AI & Enterprise CX", so this
+   *  has to earn its place by adding what a job title can't: the combination
+   *  of a decade of CX domain depth and the hands-on skill to build the AI now
+   *  reshaping that field. Naming the platforms keeps it checkable — the
+   *  platform matrix backs it up. */
   thesis:
-    'In contact centers, the technology is almost never what fails. Adoption is. I build agentic AI environments where that fact decides whether they work.',
+    'A decade in enterprise CX, now building the AI reshaping it — agentic contact center environments on Zoom and Dialpad.',
 
   /** The proof strip. Five hard numbers, each pointing at the thing that
    *  substantiates it. A number without an `href` renders as plain text —
