@@ -100,7 +100,7 @@ const fullTitle = Astro.url.pathname === '/' ? title : `${title} · ${site.name}
             document.documentElement.setAttribute('data-theme', stored);
           }
         } catch {
-          /* Private mode or blocked storage — the CSS media query still
+          /* Private mode or blocked storage. The CSS media query still
              handles light and dark correctly on its own. */
         }
       })();

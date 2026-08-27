@@ -4,8 +4,8 @@ company: Northwestern Mutual / Inverness Wealth Management
 metric:
   value: '10'
   label: person team onboarded to an internal GPT knowledge system
-summary: Running the AI rollout wasn't my job — I was carrying a book. I championed it anyway, which is a large part of why it stuck.
-period: 2023 — 2025
+summary: Running the AI rollout wasn't my job. I was carrying a book. I championed it anyway, which is a large part of why it stuck.
+period: 2023 to 2025
 lenses:
   - customer-success
   - applied-ai
@@ -17,18 +17,18 @@ unverified: []
 ---
 
 <!-- ==========================================================================
-     DRAFT — the facts in the frontmatter and the framing below come from your
+     DRAFT: the facts in the frontmatter and the framing below come from your
      resume. The connective prose is mine; correct it, then set draft: false.
 
      IMPORTANT: this is adoption and change management by a practitioner, not
      model work. Please don't let an edit drift it toward "built the system."
-     The reason this reads well is that you weren't the AI person — you were
+     The reason this reads well is that you weren't the AI person, you were
      the advisor who made the AI worth using, which is harder and rarer.
      ======================================================================= -->
 
 ## Situation
 
-I spent nearly three years as a Lead Financial Advisor — full-cycle, multi-stakeholder sales in a regulated, high-trust environment, carrying my own book and exceeding production targets by more than 2×.
+I spent nearly three years as a Lead Financial Advisor: full-cycle, multi-stakeholder sales in a regulated, high-trust environment, carrying my own book and exceeding production targets by more than 2×.
 
 Somewhere in there, the firm stood up an internal GPT-based knowledge system for researching across internal knowledge bases and compliance documentation. Rolling it out was nobody's full-time job. That is the normal condition of most enterprise AI deployments, and it's why so many quietly fail: the tool arrives, a few people try it, the enthusiasm decays, and a year later it renews on usage nobody examines.
 
@@ -36,11 +36,11 @@ Somewhere in there, the firm stood up an internal GPT-based knowledge system for
 
 **Championed it from inside the work, not above it.** I was one of the people whose day it was supposed to improve, which meant I could tell the difference between a demo that impressed and a workflow that actually got faster. That's a credibility a program manager has to borrow.
 
-**Drove adoption hands-on.** Enablement, use-case development, and peer coaching across a team of ten. The mechanics were unglamorous — sitting with people, finding the question they were actually trying to answer, and showing them where the tool was strong and where it would confidently mislead them.
+**Drove adoption hands-on.** Enablement, use-case development, and peer coaching across a team of ten. The mechanics were unglamorous: sitting with people, finding the question they were actually trying to answer, and showing them where the tool was strong and where it would confidently mislead them.
 
 **Used it daily myself.** Meeting-note capture, client follow-up synthesis, accelerated research. That's how you get workflow-level fluency rather than an opinion about the category.
 
-<!-- PLACEHOLDER — Justin: if there's a compliance angle worth telling, it
+<!-- PLACEHOLDER: if there's a compliance angle worth telling, it
      belongs here. In a regulated firm the interesting constraint is usually
      what you're allowed to do with the output, and how that shaped the
      rollout. Only you know how that actually went. -->
@@ -49,7 +49,7 @@ Somewhere in there, the firm stood up an internal GPT-based knowledge system for
 
 Adoption across a team of ten, in an environment where a confident wrong answer carries real regulatory weight.
 
-<!-- PLACEHOLDER — a number would strengthen this: research time saved, query
+<!-- PLACEHOLDER: a number would strengthen this: research time saved, query
      volume after the first month (the figure that shows it stuck rather than
      spiked), or how many of the ten were still using it at the end. -->
 

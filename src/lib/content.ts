@@ -126,7 +126,7 @@ export function formatYearMonth(value: string): string {
 
 /** "Apr 2019 — Present", as shown on the timeline and resume. */
 export function formatRange(start: string, end: string | null): string {
-  return `${formatYearMonth(start)} — ${end ? formatYearMonth(end) : 'Present'}`;
+  return `${formatYearMonth(start)} to ${end ? formatYearMonth(end) : 'Present'}`;
 }
 
 /** Whole months between two YYYY-MM values, inclusive of the start month. */

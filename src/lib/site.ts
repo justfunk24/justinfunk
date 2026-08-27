@@ -145,7 +145,7 @@ export const home = {
       value: '2',
       // Links to /about rather than a case study: that page lists both
       // certifications, and a claim should land where it can be checked.
-      label: 'platform AI delivery certifications — Zoom and Dialpad',
+      label: 'platform AI delivery certifications, Zoom and Dialpad',
       href: '/about',
     },
   ],

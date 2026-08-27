@@ -4,8 +4,11 @@
     "name": "Zoom",
     "tier": "hands-on",
     "category": "ccaas",
-    "detail": "Zoom ZCX/ZVA AI Deployment certified. Builds full contact center environments from the ground up at Matrice — agentic voice and chat agents, quality management, workforce management, AI expert assist, and intent-based skill paths that hand off to connected tools and APIs.",
-    "evidence": { "label": "Matrice case study", "href": "/work/matrice" },
+    "detail": "Zoom ZCX/ZVA AI Deployment certified. Builds full contact center environments from the ground up at Matrice: agentic voice and chat agents, quality management, workforce management, AI expert assist, and intent-based skill paths that hand off to connected tools and APIs.",
+    "evidence": {
+      "label": "Matrice case study",
+      "href": "/work/matrice"
+    },
     "unverified": []
   },
   {
@@ -13,8 +16,11 @@
     "name": "Dialpad",
     "tier": "hands-on",
     "category": "ccaas",
-    "detail": "Dialpad Contact Center & Agentic Delivery Partner certified. Designs and builds agentic AI agents — the workflows, skills, and guardrails behind a reliable experience, including human-in-the-loop escalation.",
-    "evidence": { "label": "Matrice case study", "href": "/work/matrice" },
+    "detail": "Dialpad Contact Center & Agentic Delivery Partner certified. Designs and builds agentic AI agents: the workflows, skills, and guardrails behind a reliable experience, including human-in-the-loop escalation.",
+    "evidence": {
+      "label": "Matrice case study",
+      "href": "/work/matrice"
+    },
     "unverified": []
   },
   {
@@ -22,8 +28,11 @@
     "name": "RingCentral",
     "tier": "hands-on",
     "category": "ucaas",
-    "detail": "Three roles across two stints — accounts, enablement, and enterprise customer success. Drove UCaaS and Contact Center adoption for 40+ enterprise accounts and sold one of the first RingCentral Contact Center deployments in North America.",
-    "evidence": { "label": "RingCentral case study", "href": "/work/ringcentral" },
+    "detail": "Three roles across two stints: accounts, enablement, and enterprise customer success. Drove UCaaS and Contact Center adoption for 40+ enterprise accounts and sold one of the first RingCentral Contact Center deployments in North America.",
+    "evidence": {
+      "label": "RingCentral case study",
+      "href": "/work/ringcentral"
+    },
     "unverified": []
   },
   {
@@ -32,7 +41,10 @@
     "tier": "hands-on",
     "category": "enablement",
     "detail": "Built and owned Twilio's most-used enablement resource. Rebuilt content architecture and governance to the point that compensation support tickets fell 60% year over year.",
-    "evidence": { "label": "Twilio case study", "href": "/work/twilio" },
+    "evidence": {
+      "label": "Twilio case study",
+      "href": "/work/twilio"
+    },
     "unverified": []
   },
   {
@@ -40,8 +52,11 @@
     "name": "Salesforce",
     "tier": "hands-on",
     "category": "crm",
-    "detail": "Administered as the revenue team's system of record at Cloud Elements — built the Sales Ops ticketing process, plus dashboards and reports for pipeline visibility.",
-    "evidence": { "label": "Cloud Elements case study", "href": "/work/cloud-elements" },
+    "detail": "Administered as the revenue team's system of record at Cloud Elements, where I built the Sales Ops ticketing process, plus dashboards and reports for pipeline visibility.",
+    "evidence": {
+      "label": "Cloud Elements case study",
+      "href": "/work/cloud-elements"
+    },
     "unverified": []
   },
   {
@@ -49,8 +64,11 @@
     "name": "Docebo",
     "tier": "hands-on",
     "category": "enablement",
-    "detail": "Built the sales onboarding and certification program at Cloud Elements on the enterprise LMS — e-learning, instructor-led training, role-plays, and 30/60/90 plans. Invited to speak at the Docebo user conference in Toronto on the strength of the build.",
-    "evidence": { "label": "Cloud Elements case study", "href": "/work/cloud-elements" },
+    "detail": "Built the sales onboarding and certification program at Cloud Elements on the enterprise LMS: e-learning, instructor-led training, role-plays, and 30/60/90 plans. Invited to speak at the Docebo user conference in Toronto on the strength of the build.",
+    "evidence": {
+      "label": "Cloud Elements case study",
+      "href": "/work/cloud-elements"
+    },
     "unverified": []
   },
   {
@@ -59,7 +77,10 @@
     "tier": "hands-on",
     "category": "enablement",
     "detail": "Owned as administrator at Cloud Elements as part of the sales tech stack, alongside Docebo, LinkedIn Learning, Confluence, and Atlassian.",
-    "evidence": { "label": "Cloud Elements case study", "href": "/work/cloud-elements" },
+    "evidence": {
+      "label": "Cloud Elements case study",
+      "href": "/work/cloud-elements"
+    },
     "unverified": []
   },
   {
@@ -68,7 +89,10 @@
     "tier": "hands-on",
     "category": "enablement",
     "detail": "Built the compensation knowledge wiki at Twilio that gave 400+ sellers a self-serve source of truth, and administered Confluence as part of the Cloud Elements sales tech stack.",
-    "evidence": { "label": "Twilio case study", "href": "/work/twilio" },
+    "evidence": {
+      "label": "Twilio case study",
+      "href": "/work/twilio"
+    },
     "unverified": []
   },
   {
@@ -77,7 +101,10 @@
     "tier": "familiarity",
     "category": "ccaas",
     "detail": "Spent two and a half years inside Twilio on the sales compensation side, so the portfolio and how it sells are familiar territory. Has not built on the platform itself.",
-    "evidence": { "label": "Twilio case study", "href": "/work/twilio" },
+    "evidence": {
+      "label": "Twilio case study",
+      "href": "/work/twilio"
+    },
     "unverified": []
   },
   {
@@ -86,7 +113,10 @@
     "tier": "familiarity",
     "category": "ccaas",
     "detail": "Partnered with NICE on one of the first RingCentral Contact Center deployments in North America, and can position CXone against the platforms he builds on. Has not delivered a NICE implementation independently.",
-    "evidence": { "label": "RingCentral case study", "href": "/work/ringcentral" },
+    "evidence": {
+      "label": "RingCentral case study",
+      "href": "/work/ringcentral"
+    },
     "unverified": []
   },
   {

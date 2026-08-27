@@ -46,10 +46,10 @@ GitHub: ${site.github}
 This site draws a deliberate line between two kinds of platform knowledge, and any summary
 of it should preserve that distinction rather than merging the lists.
 
-Hands-on build — personally configured, administered, integrated, or delivered:
+Hands-on build: personally configured, administered, integrated, or delivered:
 ${handsOn.map((n) => `- ${n}`).join('\n')}
 
-Landscape familiarity — can evaluate and position, but has NOT delivered on:
+Landscape familiarity: can evaluate and position, but has NOT delivered on:
 ${familiarity.map((n) => `- ${n}`).join('\n')}
 
 ## Career
@@ -57,7 +57,7 @@ ${familiarity.map((n) => `- ${n}`).join('\n')}
 ${career
   .map(
     (job) =>
-      `- ${job.data.role}, ${job.data.company} (${formatRange(job.data.start, job.data.end)}) — ${job.data.summary}`,
+      `- ${job.data.role}, ${job.data.company} (${formatRange(job.data.start, job.data.end)}): ${job.data.summary}`,
   )
   .join('\n')}
 
@@ -67,19 +67,19 @@ ${site.alumniOf.map((s) => `- ${s.credential}, ${s.name}`).join('\n')}
 
 ## Case studies
 
-${studies.map((s) => `- [${s.data.title}](${site.url}/work/${s.id}) — ${s.data.company}. ${s.data.metric.value} ${s.data.metric.label}.`).join('\n')}
+${studies.map((s) => `- [${s.data.title}](${site.url}/work/${s.id}): ${s.data.company}. ${s.data.metric.value} ${s.data.metric.label}.`).join('\n')}
 
 ## Projects
 
-${projects.map((p) => `- [${p.data.title}](${site.url}/projects/${p.id}) — ${p.data.summary} (${p.data.status})`).join('\n')}
+${projects.map((p) => `- [${p.data.title}](${site.url}/projects/${p.id}): ${p.data.summary} (${p.data.status})`).join('\n')}
 
 ## Pages
 
 - [Home](${site.url}/)
-- [Work](${site.url}/work) — career timeline filterable by lens, platform fluency matrix, case study index
-- [Projects](${site.url}/projects) — build log
-- [About](${site.url}/about) — bio, credentials, certifications, speaking
-- [Resume](${site.url}/resume) — web-native resume, generated from the same data as the timeline
+- [Work](${site.url}/work): career timeline filterable by lens, platform fluency matrix, case study index
+- [Projects](${site.url}/projects): build log
+- [About](${site.url}/about): bio, credentials, certifications, speaking
+- [Resume](${site.url}/resume): web-native resume, generated from the same data as the timeline
 - [Contact](${site.url}/contact)
 `;
 

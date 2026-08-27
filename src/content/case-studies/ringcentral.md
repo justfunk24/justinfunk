@@ -4,8 +4,8 @@ company: RingCentral
 metric:
   value: 108%
   label: of MBO, at 9.7 NPS
-summary: Three roles across two stints — accounts, then enablement, then enterprise customer success — and one of the first RingCentral Contact Center deployments in North America.
-period: 2015 — 2020, across three roles
+summary: Three roles across two stints, covering accounts, then enablement, then enterprise customer success, plus one of the first RingCentral Contact Center deployments in North America.
+period: 2015 to 2020, across three roles
 lenses:
   - cx-contact-center
   - customer-success
@@ -18,7 +18,7 @@ unverified: []
 ---
 
 <!-- ==========================================================================
-     DRAFT — every fact here comes from your resume. The connective prose is
+     DRAFT: every fact here comes from your resume. The connective prose is
      my reconstruction; correct it, then set draft: false.
      ======================================================================= -->
 
@@ -26,15 +26,15 @@ unverified: []
 
 I was at RingCentral three separate times, and the shape of it matters more than the count.
 
-First as a Signature Accounts Manager, carrying 500+ accounts and about $1M ARR — high volume, full lifecycle, learning the product by being responsible for whether customers actually used it. Then as a Sales Enablement Manager, building the onboarding that got new sellers ready across every segment from SOHO to Enterprise. I left for Cloud Elements to build an enablement function from scratch, and came back in 2019 to run enterprise customer success.
+First as a Signature Accounts Manager, carrying 500+ accounts and about $1M ARR. High volume, full lifecycle, learning the product by being responsible for whether customers actually used it. Then as a Sales Enablement Manager, building the onboarding that got new sellers ready across every segment from SOHO to Enterprise. I left for Cloud Elements to build an enablement function from scratch, and came back in 2019 to run enterprise customer success.
 
 That last role is where the numbers are: 40+ enterprise accounts, $5M+ ARR, UCaaS and Contact Center.
 
 ## What I did
 
-**Made discovery structured rather than conversational.** At forty-plus accounts you either build a system for deciding where attention goes, or the loudest customer gets it and the quiet one churns without warning. The same questions, in the same order, of every account — what the queues actually look like, who touches reporting, which workflows have shadow processes around them. Consistency is what makes discovery comparable across a book that size.
+**Made discovery structured rather than conversational.** At forty-plus accounts you either build a system for deciding where attention goes, or the loudest customer gets it and the quiet one churns without warning. The same questions, in the same order, of every account: what the queues actually look like, who touches reporting, which workflows have shadow processes around them. Consistency is what makes discovery comparable across a book that size.
 
-**Sold Contact Center before it was the obvious motion.** One of the first RingCentral Contact Center deployments in North America, partnered with NICE, into a major enterprise account. Selling a contact center is not selling phones — the buying committee is different, the risk is operational rather than technical, and the questions are about queues and reporting rather than handsets.
+**Sold Contact Center before it was the obvious motion.** One of the first RingCentral Contact Center deployments in North America, partnered with NICE, into a major enterprise account. Selling a contact center is not selling phones. The buying committee is different, the risk is operational rather than technical, and the questions are about queues and reporting rather than handsets.
 
 **Owned the full lifecycle.** Implementations, migrations, and operational requests, as primary contact across IT, operations, and executive stakeholders. Ran adoption campaigns that aligned feature rollouts to actual customer workflows, and used usage analytics with Sales to surface expansion.
 
@@ -42,9 +42,9 @@ That last role is where the numbers are: 40+ enterprise accounts, $5M+ ARR, UCaa
 
 ## Outcome
 
-**108% of MBO** at a **9.7 NPS**, across 40+ enterprise accounts and $5M+ ARR — and election by peers to RingCentral's Customer Success Advisory Board.
+**108% of MBO** at a **9.7 NPS**, across 40+ enterprise accounts and $5M+ ARR, plus election by peers to RingCentral's Customer Success Advisory Board.
 
-<!-- PLACEHOLDER — Justin: one or two sentences on what the Advisory Board
+<!-- PLACEHOLDER: one or two sentences on what the Advisory Board
      actually did and what you pushed for on it. "Elected by peers" is good;
      "elected by peers, and argued successfully for X" is much better. -->
 
