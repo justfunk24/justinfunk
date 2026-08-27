@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+import { site, home } from '../lib/site';
+import headshot from '../assets/justin-funk.jpeg';
+
+/**
+ * THE HOMEPAGE HERO
+ *
+ * Identity first: name, what he does, then the claim the rest of the site has
+ * to support. A reader landing cold should know who this is and what he's for
+ * before being asked to navigate anywhere.
+ *
+ * This replaced a routing-diagram hero that linked to Work, Projects, and
+ * About — the same three destinations as the top nav and the same three as the
+ * lanes further down the page. Three navigations to the same places is not
+ * three chances to be found, it's one decision asked three times. Navigation
+ * now happens once, in the lanes; the hero's job is to say who he is and give
+ * the two actions a hiring reader actually wants.
+ */
+---
+
+<section class="shell pt-12 pb-10 sm:pt-20 sm:pb-14">
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start lg:gap-16">
+    <div>
+      <p class="annotation">
+        {site.location.city}, {site.location.region === 'CO' ? 'Colorado' : site.location.region}
+      </p>
+
+      <h1 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+        {site.name}
+      </h1>
+      <p class="font-display text-signal mt-2 text-lg font-medium sm:text-xl">{site.role}</p>
+
+      {
+        /* The thesis. Demoted from <h1> to a lead paragraph — it reads as a
+          claim rather than a title, and it was never a heading in the semantic
+          sense, just a big one. */
+      }
+      <p class="max-w-measure mt-7 text-lg leading-relaxed text-balance sm:text-xl">
+        {home.thesis}
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href="/work"
+          class="bg-ink text-ground hover:bg-signal px-5 py-2.5 text-sm font-medium transition-colors"
+        >
+          See the work
+        </a>
+        <a
+          href="/resume"
+          class="border-line hover:border-signal hover:text-signal border px-5 py-2.5 text-sm transition-colors"
+        >
+          Read the resume
+        </a>
+      </div>
+    </div>
+
+    {
+      /* Capped and ordered last in the DOM so the name, not the portrait, is
+        the first thing read aloud and the first thing rendered on mobile. */
+    }
+    <figure class="order-last max-w-56 lg:max-w-none">
+      <Image
+        src={headshot}
+        alt={`${site.name}, ${site.role}`}
+        widths={[240, 480]}
+        sizes="(min-width: 64rem) 240px, 224px"
+        loading="eager"
+        class="border-line aspect-square w-full border object-cover object-top"
+      />
+    </figure>
+  </div>
+</section>

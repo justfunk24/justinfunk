@@ -83,15 +83,22 @@ export const site = {
   /** Certifications, in the order they should render — most significant first,
    *  which is not the same as most recent.
    *
-   *  `earned` is "YYYY-MM", or bare "YYYY" where the month isn't known — both
-   *  sort correctly against each other as plain strings. It drives the "latest
-   *  certification" card on the
-   *  homepage. It is deliberately separate from array position so the sidebar
-   *  can lead with the credential that matters most while the homepage shows
-   *  the newest one. null means the date isn't recorded yet — those are simply
-   *  skipped when working out which is latest, so filling them in later can
-   *  only improve the result, never break it. */
+   *  `earned` is "YYYY-MM-DD", "YYYY-MM", or bare "YYYY" — whatever precision
+   *  is actually known. All three sort correctly against each other as plain
+   *  strings, and a vaguer value sorts before a more precise one in the same
+   *  period, which is the conservative reading when comparing them.
+   *
+   *  It drives the "latest certification" card on the homepage, and is kept
+   *  separate from array position so the sidebar can lead with the credential
+   *  that matters most while the homepage shows the newest. null means the date
+   *  isn't recorded — those are skipped when working out which is latest, so
+   *  filling one in later can only improve the answer, never break it. */
   certifications: [
+    {
+      name: 'Zoom ZCX/ZVA AI Deployment',
+      status: 'Certified',
+      earned: '2026-08-17' as string | null,
+    },
     {
       name: 'Dialpad Contact Center & Agentic Delivery Partner',
       status: 'Certified',
@@ -112,9 +119,8 @@ export const site = {
 /* ----------------------------------------------------------------------------
    HOMEPAGE COPY
 
-   The hero is a routing diagram: a reader's question comes in on the left and
-   routes to the part of the site that answers it. Editing the wording below
-   changes the hero — no component file involved.
+   The thesis and the proof numbers. Editing them here changes the homepage —
+   no component file involved.
    -------------------------------------------------------------------------*/
 
 export const home = {
@@ -122,9 +128,6 @@ export const home = {
    *  Opens with an opinion rather than a title, which is how Justin writes. */
   thesis:
     'In contact centers, the technology is almost never what fails. Adoption is. I build agentic AI environments where that fact decides whether they work.',
-
-  /** The inbound call on the diagram — the question a reader actually arrives with. */
-  inbound: 'Can he do this job?',
 
   /** The proof strip. Five hard numbers, each pointing at the thing that
    *  substantiates it. A number without an `href` renders as plain text —
@@ -136,28 +139,11 @@ export const home = {
     { value: '60%', label: 'YoY support ticket reduction', href: '/work/twilio' },
     { value: '108%', label: 'MBO at 9.7 NPS, RingCentral', href: '/work/ringcentral' },
     {
-      value: 'Certified',
-      label: 'Dialpad Contact Center & Agentic Delivery Partner',
-      href: '/work/matrice',
-    },
-  ],
-
-  /** The three routes. Each is a real destination in the nav. */
-  routes: [
-    {
-      label: 'CX & Contact Center',
-      href: '/work',
-      detail: 'A decade across six companies, and the numbers behind each one.',
-    },
-    {
-      label: 'Applied AI',
-      href: '/projects',
-      detail: 'Agentic builds on Zoom and Dialpad, plus what I write in code.',
-    },
-    {
-      label: 'Background',
+      value: '2',
+      // Links to /about rather than a case study: that page lists both
+      // certifications, and a claim should land where it can be checked.
+      label: 'platform AI delivery certifications — Zoom and Dialpad',
       href: '/about',
-      detail: 'Credentials, certifications, and how I got here.',
     },
   ],
 } as const;

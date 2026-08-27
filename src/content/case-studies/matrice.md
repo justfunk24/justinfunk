@@ -33,7 +33,7 @@ That gap is where I work. The engagements that succeed are the ones where somebo
 
 **Design the guardrails alongside the workflow.** In Dialpad I build the agents themselves — the workflows, the skills, and the guardrails behind a natural, reliable experience. Human-in-the-loop escalation is specified as part of the design rather than bolted on when something goes wrong, because the moment a customer moves from the agent to a person is where the whole deployment gets judged.
 
-**Earned the Dialpad Contact Center & Agentic Delivery Partner certification.** A real credential with a real scope — it means Dialpad's own delivery standards are the baseline I work to rather than something I assembled myself.
+**Certified to deliver on both platforms.** Zoom ZCX/ZVA AI Deployment and Dialpad Contact Center & Agentic Delivery Partner — one for each platform I build on. Real credentials with real scope: each vendor's own delivery standards are the baseline I work to, rather than a bar I set for myself.
 
 **Advise the partner side too.** I work with reseller and partner teams on aligning CCaaS and UCaaS solutions to CX outcomes across RingCentral, Twilio, Zoom, and Dialpad, with enough landscape fluency across NICE, Five9, Genesys, and Cisco to say plainly when something else is the better fit. I also build the enablement content that gets partner teams certified and sales-ready — the same work I did at Cloud Elements and Twilio, pointed at a new problem.
 
@@ -44,7 +44,7 @@ That gap is where I work. The engagements that succeed are the ones where somebo
      time-to-deploy. Name clients only where you have permission. Everything
      above this line is drawn from your resume and is safe to publish. -->
 
-Currently delivering agentic contact center environments on both Zoom and Dialpad, with the Dialpad Contact Center & Agentic Delivery Partner certification behind the work.
+Currently delivering agentic contact center environments on both Zoom and Dialpad, with each vendor's delivery certification behind the work.
 
 The through-line from more than a decade in this industry is that the technology was rarely the constraint. Adoption was. The same is true of agentic AI, just faster and more expensively — a badly deployed agent damages the customer relationship at machine speed. Knowing where the routing breaks and where a human has to catch it is the part that takes the background.
 

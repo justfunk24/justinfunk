@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import RoutingHero from '../components/RoutingHero.astro';
+import Hero from '../components/Hero.astro';
 import ProofStrip from '../components/ProofStrip.astro';
 import { site } from '../lib/site';
 import { getCaseStudies, getProjects } from '../lib/content';
@@ -100,7 +100,7 @@ const schema = {
 ---
 
 <Base title={`${site.name} — ${site.role}`} description={site.tagline} schema={schema}>
-  <RoutingHero />
+  <Hero />
   <ProofStrip />
 
   <!-- Three lanes -->
